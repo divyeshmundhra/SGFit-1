@@ -9,7 +9,7 @@ class Startup extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: true,
-      title: "SGFit SG",
+      title: "SGFit",
       home: LogoDisplay()
     );
   }
