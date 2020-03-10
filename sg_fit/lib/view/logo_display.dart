@@ -1,3 +1,8 @@
+/**
+ * This class displays the logo the application when it is launched.
+ *
+ * @author XYZ
+ */
 import 'package:flutter/material.dart';
 
 class LogoDisplay extends StatelessWidget {
