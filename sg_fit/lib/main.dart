@@ -4,7 +4,7 @@
  * @author XYZ
  */
 import 'package:flutter/material.dart';
-import 'package:sgfit/view/logo_display.dart';
+import 'package:sgfit/view/display_form.dart';
 
 void main() => runApp(Startup());
 
@@ -15,7 +15,12 @@ class Startup extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: true,
       title: "SGFit",
-      home: LogoDisplay()
+      theme: ThemeData(
+            textTheme: Theme.of(context).textTheme.apply(
+                fontFamily: 'Open Sans',
+                bodyColor: Colors.white,
+                displayColor: Colors.white)),
+      home: DisplayForm()
     );
   }
 }
