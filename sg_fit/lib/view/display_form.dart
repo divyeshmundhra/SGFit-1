@@ -3,7 +3,7 @@
  * the application for the first time and input details which include Height,
  * Weight and Age.
  *
- * @author XYZ
+ * @author Jay Gupta
  */
 import 'package:flutter/material.dart';
 
