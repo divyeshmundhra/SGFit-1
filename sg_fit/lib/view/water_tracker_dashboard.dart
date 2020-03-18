@@ -6,11 +6,10 @@
 import 'package:flutter/material.dart';
 
 class WaterTrackerDashboard extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-
+    return Scaffold(
+      backgroundColor: Color.fromRGBO(0, 0, 0, 0.5),
     );
   }
 }
