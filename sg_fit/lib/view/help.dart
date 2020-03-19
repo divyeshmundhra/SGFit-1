@@ -9,7 +9,13 @@ class Help extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width * 0.05;
-    return new Scaffold(
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.cyan[900],
+          iconTheme: IconThemeData(
+            color: Colors.white, //change your color here
+          ),
+        ),
         backgroundColor: Colors.cyan[900],
         body: Center(
           child: Column(

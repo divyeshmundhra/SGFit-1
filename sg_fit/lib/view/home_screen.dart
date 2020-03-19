@@ -5,6 +5,8 @@
  */
 import 'package:flutter/material.dart';
 import 'package:sgfit/view/help.dart';
+import 'package:sgfit/view/update_particulars.dart';
+import 'package:sgfit/view/diet_tracker_dashboard.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -55,10 +57,11 @@ class HomeScreen extends StatelessWidget {
                     textColor: Colors.white,
                     color: Colors.cyan[700],
                     onPressed: () {
-                      // Navigator.push(
-                      //  context,
-                      // MaterialPageRoute(builder: (context) => DisplayForm()),
-                      //);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DietTrackerDashboard()),
+                      );
                     },
                     child: Column(children: <Widget>[
                       Icon(
@@ -101,10 +104,11 @@ class HomeScreen extends StatelessWidget {
                     textColor: Colors.white,
                     color: Colors.cyan[900],
                     onPressed: () {
-                      // Navigator.push(
-                      //  context,
-                      // MaterialPageRoute(builder: (context) => DisplayForm()),
-                      //);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => UpdateParticulars()),
+                      );
                     },
                     child: Column(children: <Widget>[
                       Text("UPDATE PARTICULARS",

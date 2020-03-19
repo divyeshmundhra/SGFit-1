@@ -1,7 +1,6 @@
 /**
- * This class implements the one-time registration of the user when they launch
- * the application for the first time and input details which include Height,
- * Weight and Age.
+ * This class implements the Update Particulars page where the users can update
+ * their Age, Weight and Height.
  *
  * @author Jay Gupta
  */
@@ -10,18 +9,17 @@ import 'package:sgfit/controller/user_data_read_write.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sgfit/view/home_screen.dart';
 
-class DisplayForm extends StatefulWidget {
-  State createState() => RegistrationPageState();
+class UpdateParticulars extends StatefulWidget {
+  State createState() => UpdateParticularsStage();
 }
 
-class RegistrationPageState extends State<DisplayForm> {
+class UpdateParticularsStage extends State<UpdateParticulars> {
   String _value;
   final formKey = GlobalKey<FormState>();
-  var _name = new TextEditingController();
-  var _age = new TextEditingController();
+  var _age = TextEditingController();
   // var _gender = new TextEditingController();
-  var _height = new TextEditingController();
-  var _weight = new TextEditingController();
+  var _height = TextEditingController();
+  var _weight = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +49,7 @@ class RegistrationPageState extends State<DisplayForm> {
                               child: Container(
                                   margin: EdgeInsets.only(top: 170),
                                   child: Center(
-                                      child: Text("Welcome",
+                                      child: Text("Update Details",
                                           style: TextStyle(
                                               fontSize: 40,
                                               fontWeight: FontWeight.bold))))),
@@ -61,8 +59,7 @@ class RegistrationPageState extends State<DisplayForm> {
                       padding: EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 0.0),
                       child: Container(
                           child: Center(
-                              child: Text(
-                                  "To get started, we'll need to know some details!",
+                              child: Text("Update the desired fields below",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 20,
@@ -91,22 +88,6 @@ class RegistrationPageState extends State<DisplayForm> {
                                           bottom: BorderSide(
                                               color: Colors.grey[100]))),
                                   child: TextField(
-                                    controller: _name,
-                                    style: TextStyle(color: Colors.black),
-                                    decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: "Name",
-                                        hintStyle:
-                                            TextStyle(color: Colors.grey[400])),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(8.0),
-                                  decoration: BoxDecoration(
-                                      border: Border(
-                                          bottom: BorderSide(
-                                              color: Colors.grey[100]))),
-                                  child: TextField(
                                     controller: _age,
                                     style: TextStyle(color: Colors.black),
                                     keyboardType: TextInputType.number,
@@ -117,50 +98,6 @@ class RegistrationPageState extends State<DisplayForm> {
                                             TextStyle(color: Colors.grey[400])),
                                   ),
                                 ),
-                                Container(
-                                    padding: EdgeInsets.all(8.0),
-                                    decoration: BoxDecoration(
-                                      border: Border(
-                                          bottom: BorderSide(
-                                              color: Colors.grey[100])),
-                                    ),
-                                    child: Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: DropdownButton<String>(
-                                        items: [
-                                          DropdownMenuItem<String>(
-                                            child: Text('Male',
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                )),
-                                            value: 'Male',
-                                          ),
-                                          DropdownMenuItem<String>(
-                                            child: Text('Female',
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                )),
-                                            value: 'Female',
-                                          ),
-                                          DropdownMenuItem<String>(
-                                            child: Text('Others',
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                )),
-                                            value: 'Others',
-                                          ),
-                                        ],
-                                        onChanged: (String value) {
-                                          setState(() {
-                                            _value = value;
-                                          });
-                                        },
-                                        hint: Text('Select Gender',
-                                            style: TextStyle(
-                                                color: Colors.grey[400])),
-                                        value: _value,
-                                      ),
-                                    )),
                                 Container(
                                   padding: EdgeInsets.all(8.0),
                                   decoration: BoxDecoration(
@@ -204,14 +141,12 @@ class RegistrationPageState extends State<DisplayForm> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(22.0)),
                               onPressed: () {
-                                if (_age.text.isEmpty ||
-                                    _weight.text.isEmpty ||
-                                    _name.text.isEmpty ||
+                                print(_age.text);
+                                if (_age.text.isEmpty &&
+                                    _weight.text.isEmpty &&
                                     _height.text.isEmpty) {
-                                  _showErrorToast("All fields must be filled.");
-                                } else if (_name.text.length > 15) {
                                   _showErrorToast(
-                                      "Name should be less than 15 characters.");
+                                      "Any one of the fields should be filled.");
                                 } else if (int.parse(_age.text) < 12 ||
                                     int.parse(_age.text) > 100) {
                                   _showErrorToast("Enter a Valid Age.");
@@ -225,16 +160,12 @@ class RegistrationPageState extends State<DisplayForm> {
                                   writeToFileAge(_age.text);
                                   writeToFileHeight(_height.text);
                                   writeToFileWeight(_weight.text);
-                                  writeToFileisRegistered("1");
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => HomeScreen()),
-                                  );
+                                  _showErrorToast(
+                                      "Detailed saved successfully.");
                                 }
                               },
                               color: Colors.cyan[300],
-                              child: Center(child: Text("Register")))
+                              child: Center(child: Text("Update")))
                         ],
                       ))
                 ])))));
