@@ -4,8 +4,10 @@
  * @author XYZ
  */
 import 'package:flutter/material.dart';
+import 'package:sgfit/view/display_form.dart';
 import 'dart:async';
-import 'package:sgfit/view/welcome_screen.dart';
+
+import 'package:sgfit/view/home_screen.dart';
 
 void main() async {
   runApp(Startup());
@@ -23,6 +25,6 @@ class Startup extends StatelessWidget {
                 fontFamily: 'Open Sans',
                 bodyColor: Colors.white,
                 displayColor: Colors.white)),
-        home: WelcomeScreen());
+        home: HomeScreen());
   }
 }

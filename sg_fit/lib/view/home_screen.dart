@@ -4,6 +4,7 @@
  * @author Jay Gupta
  */
 import 'package:flutter/material.dart';
+import 'package:sgfit/view/help.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -79,10 +80,10 @@ class HomeScreen extends StatelessWidget {
                     textColor: Colors.white,
                     color: Colors.cyan[900],
                     onPressed: () {
-                      // Navigator.push(
-                      //  context,
-                      // MaterialPageRoute(builder: (context) => DisplayForm()),
-                      //);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Help()),
+                      );
                     },
                     child: Column(children: <Widget>[
                       Text("HELP",
