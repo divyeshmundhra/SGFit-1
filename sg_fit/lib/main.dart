@@ -4,8 +4,8 @@
  * @author XYZ
  */
 import 'package:flutter/material.dart';
-import 'package:sgfit/view/welcome_screen.dart';
 import 'dart:async';
+import 'package:sgfit/view/welcome_screen.dart';
 
 void main() async {
   runApp(Startup());
