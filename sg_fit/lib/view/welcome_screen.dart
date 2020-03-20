@@ -1,6 +1,6 @@
 /**
- * This class decides the welcome screen of application. If the user is not registerd,
- * then they are redirected to the one-time-registration page.
+ * This class decides the welcome screen of application. If the user is not
+ * registerd, then they are redirected to the one-time-registration page.
  *
  * @author Jay Gupta
  */

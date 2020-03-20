@@ -6,7 +6,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:sgfit/controller/nutritionix_rakuten.dart';
+import 'package:sgfit/model/nutritionix_rakuten.dart';
 
 class DietTrackerDashboard extends StatelessWidget {
   // This widget is the root of your application.

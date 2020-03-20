@@ -6,8 +6,7 @@
  */
 import 'package:flutter/material.dart';
 import 'package:sgfit/controller/user_data_read_write.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:sgfit/view/home_screen.dart';
+import 'package:sgfit/view/toast_message.dart';
 
 class UpdateParticulars extends StatefulWidget {
   State createState() => UpdateParticularsStage();
@@ -145,23 +144,26 @@ class UpdateParticularsStage extends State<UpdateParticulars> {
                                 if (_age.text.isEmpty &&
                                     _weight.text.isEmpty &&
                                     _height.text.isEmpty) {
-                                  _showErrorToast(
+                                  ToastMessage.showErrorToast(
                                       "Any one of the fields should be filled.");
                                 } else if (int.parse(_age.text) < 12 ||
                                     int.parse(_age.text) > 100) {
-                                  _showErrorToast("Enter a Valid Age.");
+                                  ToastMessage.showErrorToast(
+                                      "Enter a Valid Age.");
                                 } else if (int.parse(_height.text) < 120 ||
                                     int.parse(_height.text) > 240) {
-                                  _showErrorToast("Enter a Valid Height.");
+                                  ToastMessage.showErrorToast(
+                                      "Enter a Valid Height.");
                                 } else if (int.parse(_weight.text) < 20 ||
                                     int.parse(_weight.text) > 140) {
-                                  _showErrorToast("Enter a Valid Weight.");
+                                  ToastMessage.showErrorToast(
+                                      "Enter a Valid Weight.");
                                 } else {
                                   writeToFileAge(_age.text);
                                   writeToFileHeight(_height.text);
                                   writeToFileWeight(_weight.text);
-                                  _showErrorToast(
-                                      "Detailed saved successfully.");
+                                  ToastMessage.showErrorToast(
+                                      "Details saved successfully.");
                                 }
                               },
                               color: Colors.cyan[300],
@@ -170,13 +172,4 @@ class UpdateParticularsStage extends State<UpdateParticulars> {
                       ))
                 ])))));
   }
-}
-
-void _showErrorToast(String errormsg) {
-  Fluttertoast.showToast(
-      msg: errormsg,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      backgroundColor: Colors.white,
-      textColor: Colors.black);
 }

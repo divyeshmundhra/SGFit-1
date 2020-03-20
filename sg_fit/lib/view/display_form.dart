@@ -7,8 +7,8 @@
  */
 import 'package:flutter/material.dart';
 import 'package:sgfit/controller/user_data_read_write.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sgfit/view/home_screen.dart';
+import 'package:sgfit/view/toast_message.dart';
 
 class DisplayForm extends StatefulWidget {
   State createState() => RegistrationPageState();
@@ -19,7 +19,6 @@ class RegistrationPageState extends State<DisplayForm> {
   final formKey = GlobalKey<FormState>();
   var _name = new TextEditingController();
   var _age = new TextEditingController();
-  // var _gender = new TextEditingController();
   var _height = new TextEditingController();
   var _weight = new TextEditingController();
 
@@ -29,7 +28,7 @@ class RegistrationPageState extends State<DisplayForm> {
         appBar: AppBar(
           backgroundColor: Colors.cyan[900],
           iconTheme: IconThemeData(
-            color: Colors.white, //change your color here
+            color: Colors.white,
           ),
         ),
         backgroundColor: Colors.cyan[900],
@@ -208,19 +207,23 @@ class RegistrationPageState extends State<DisplayForm> {
                                     _weight.text.isEmpty ||
                                     _name.text.isEmpty ||
                                     _height.text.isEmpty) {
-                                  _showErrorToast("All fields must be filled.");
+                                  ToastMessage.showErrorToast(
+                                      "All fields must be filled.");
                                 } else if (_name.text.length > 15) {
-                                  _showErrorToast(
+                                  ToastMessage.showErrorToast(
                                       "Name should be less than 15 characters.");
                                 } else if (int.parse(_age.text) < 12 ||
                                     int.parse(_age.text) > 100) {
-                                  _showErrorToast("Enter a Valid Age.");
+                                  ToastMessage.showErrorToast(
+                                      "Enter a Valid Age.");
                                 } else if (int.parse(_height.text) < 120 ||
                                     int.parse(_height.text) > 240) {
-                                  _showErrorToast("Enter a Valid Height.");
+                                  ToastMessage.showErrorToast(
+                                      "Enter a Valid Height.");
                                 } else if (int.parse(_weight.text) < 20 ||
                                     int.parse(_weight.text) > 140) {
-                                  _showErrorToast("Enter a Valid Weight.");
+                                  ToastMessage.showErrorToast(
+                                      "Enter a Valid Weight.");
                                 } else {
                                   writeToFileAge(_age.text);
                                   writeToFileHeight(_height.text);
@@ -239,13 +242,4 @@ class RegistrationPageState extends State<DisplayForm> {
                       ))
                 ])))));
   }
-}
-
-void _showErrorToast(String errormsg) {
-  Fluttertoast.showToast(
-      msg: errormsg,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      backgroundColor: Colors.white,
-      textColor: Colors.black);
 }
