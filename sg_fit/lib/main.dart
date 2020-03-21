@@ -4,7 +4,6 @@
  * @author Jay Gupta
  */
 import 'package:flutter/material.dart';
-import 'dart:async';
 import 'package:sgfit/view/welcome_screen.dart';
 
 void main() async {

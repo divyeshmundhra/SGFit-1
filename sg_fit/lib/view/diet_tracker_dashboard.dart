@@ -27,9 +27,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  void Function() doSomething() {
-    print("hi");
-  }
 
   Future<Album> futureAlbum;
   final myController = TextEditingController();
@@ -57,16 +54,19 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: <Widget>[
                       IconButton(
                         icon: Icon(Icons.home),
+                        color: Colors.white,
                         disabledColor: Colors.white,
                         tooltip: 'Navigation menu',
-                        onPressed: doSomething(),
+                        onPressed: (){
+                          // Navigator.pop(context);
+                        },
                         iconSize: 50.0,
                         padding: EdgeInsets.only(left: 10, top: 40),
                       ),
                       IconButton(
                         icon: Icon(Icons.cloud),
                         tooltip: 'Navigation menu',
-                        onPressed: doSomething(),
+                        onPressed: null,
                         alignment: Alignment.topRight,
                         iconSize: 50.0,
                         padding: EdgeInsets.only(left: 180, top: 40),
@@ -94,16 +94,18 @@ class _MyHomePageState extends State<MyHomePage> {
                             builder: (context, snapshot) {
                               if (snapshot.hasData) {
                                 return Center(
-                                  child: Column(children: <Widget>[
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: <Widget>[
                                     SizedBox(height: 85),
                                     Center(
                                       child: Text(
-                                        snapshot.data.calories.toString(),
+                                        snapshot.data.calories.toString(),style: TextStyle(color: Colors.white, fontSize: 60),
                                       ),
                                     ),
                                     Center(
                                       child: Text(
-                                        "Calories",
+                                        "Calories", style: TextStyle(color: Colors.white, fontSize: 30,fontFamily: 'Montserrat')
                                       ),
                                     ),
                                   ]),
@@ -220,6 +222,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         Container(
                           child: IconButton(
+                            onPressed: null,
                             color: Colors.cyan,
                             icon: Icon(Icons.chat),
                             iconSize: 40,

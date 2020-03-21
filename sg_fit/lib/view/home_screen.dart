@@ -8,6 +8,8 @@ import 'package:sgfit/view/help.dart';
 import 'package:sgfit/view/update_particulars.dart';
 import 'package:sgfit/view/diet_tracker_dashboard.dart';
 
+import 'water_tracker_dashboard.dart';
+
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -31,10 +33,10 @@ class HomeScreen extends StatelessWidget {
                     textColor: Colors.white,
                     color: Colors.cyan[700],
                     onPressed: () {
-                      // Navigator.push(
-                      //  context,
-                      // MaterialPageRoute(builder: (context) => DisplayForm()),
-                      //);
+                      Navigator.push(
+                       context,
+                      MaterialPageRoute(builder: (context) => Display()),
+                      );
                     },
                     child: Column(children: <Widget>[
                       Icon(

@@ -13,7 +13,6 @@ class UpdateParticulars extends StatefulWidget {
 }
 
 class UpdateParticularsStage extends State<UpdateParticulars> {
-  String _value;
   final formKey = GlobalKey<FormState>();
   var _age = TextEditingController();
   // var _gender = new TextEditingController();
