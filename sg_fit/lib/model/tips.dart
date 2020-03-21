@@ -1,4 +1,5 @@
 library my_prj.globals;
+
 import 'dart:math' show Random;
 
 int workoutmins = 0;
@@ -12,13 +13,16 @@ int waterconsumedi = 0;
 
 int target = 0;
 
-var commontips = ['Remember to\ndrink your water\n in slow sips!', 'Add flavour to\nyour water to\n drink more!', 'Drink a glass\nafter every\nbathroom break!'];
+var commontips = [
+  'Remember to\ndrink your water\n in slow sips!',
+  'Add flavour to\nyour water to\n drink more!',
+  'Drink a glass\nafter every\nbathroom break!'
+];
 
-int getTipsIndex(){
+int getTipsIndex() {
   var randomizer = new Random();
   var num = randomizer.nextInt(2);
   return num;
-
 }
 
 int index = getTipsIndex();
