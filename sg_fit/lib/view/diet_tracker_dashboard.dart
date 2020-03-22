@@ -7,6 +7,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:sgfit/model/nutritionix_rakuten.dart';
+import 'package:sgfit/model/weather_details.dart';
+import 'package:sgfit/view/home_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class DietTrackerDashboard extends StatelessWidget {
   // This widget is the root of your application.
@@ -28,13 +32,55 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  String caloriesConsumed = "0";
+  int control_flag = 0;
+  Future<WeatherDetails> tempdata;
   Future<Album> futureAlbum;
   final myController = TextEditingController();
 
+  void initState() {
+    super.initState();
+    tempdata = getWeatherDetails();
+    getDailyCalories();
+  }
+  
   @override
   void dispose() {
     myController.dispose();
     super.dispose();
+  }
+
+  Future<dynamic> getDailyCalories() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final dailyCals = prefs.get('calories');
+    if (dailyCals != null) {
+      setState(() {
+        caloriesConsumed = dailyCals.toStringAsFixed(1);
+      });
+    } else {
+      setState(() {
+        caloriesConsumed = "0.0";
+      });
+    }
+  }
+
+  Future<dynamic> reset() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      caloriesConsumed = "0.0";
+
+    });
+    await prefs.setDouble('calories', 0);
+  }
+
+  Future<dynamic> saveCalories(double newCals) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if(control_flag == 1){
+      final calsToAdd = double.parse(caloriesConsumed) + newCals;
+      prefs.setDouble('calories', calsToAdd);
+    }
+    control_flag = 0;
+    getDailyCalories();
   }
 
   @override
@@ -53,12 +99,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   Row(
                     children: <Widget>[
                       IconButton(
-                        icon: Icon(Icons.home),
+                        icon: Icon(Icons.arrow_back),
                         color: Colors.white,
                         disabledColor: Colors.white,
                         tooltip: 'Navigation menu',
                         onPressed: (){
-                          // Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomeScreen()),
+                    );
                         },
                         iconSize: 50.0,
                         padding: EdgeInsets.only(left: 10, top: 40),
@@ -72,35 +121,47 @@ class _MyHomePageState extends State<MyHomePage> {
                         padding: EdgeInsets.only(left: 180, top: 40),
                         disabledColor: Colors.white,
                       ),
-                      Container(
-                        child: Text(
-                          '32°C',
+                Container(
+                  child: FutureBuilder<WeatherDetails>(
+                    future: tempdata,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return Text(
+                          snapshot.data.temp.toString() + '°C',
                           style: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontSize: 28,
                             color: Colors.white,
+                            fontSize: 25,
                           ),
-                        ),
-                        margin: const EdgeInsets.only(top: 40),
-                      ),
+                        );
+                      } else if (snapshot.hasError) {
+                        return Text("${snapshot.error}");
+                      }
+
+                      // By default, show a loading spinner.
+                      return CircularProgressIndicator();
+                    },
+                  ),
+                  margin: const EdgeInsets.only(top: 40, left: 15),
+                ),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Container(
+                      Container (
                         child: FutureBuilder<Album>(
                             future: futureAlbum,
-                            builder: (context, snapshot) {
+                            builder: (context, snapshot) {                              
                               if (snapshot.hasData) {
+                                saveCalories(snapshot.data.calories);
                                 return Center(
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: <Widget>[
-                                    SizedBox(height: 85),
+                                    SizedBox(height: 75),
                                     Center(
                                       child: Text(
-                                        snapshot.data.calories.toString(),style: TextStyle(color: Colors.white, fontSize: 60),
+                                        '$caloriesConsumed',style: TextStyle(color: Colors.white, fontSize: 60),
                                       ),
                                     ),
                                     Center(
@@ -108,10 +169,27 @@ class _MyHomePageState extends State<MyHomePage> {
                                         "Calories", style: TextStyle(color: Colors.white, fontSize: 30,fontFamily: 'Montserrat')
                                       ),
                                     ),
-                                  ]),
+                                  ]
+                                  ),
                                 );
                               }
-                              return Text("");
+                              return Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: <Widget>[
+                                  SizedBox(height: 60),
+                                  Center(
+                                    child: Text(
+                                      "$caloriesConsumed",style: TextStyle(color: Colors.white, fontSize: 60),
+                                    ),
+                                  ),
+                                  Center(
+                                    child: Text(
+                                      "Calories", style: TextStyle(color: Colors.white, fontSize: 30,fontFamily: 'Montserrat')
+                                    ),
+                                  ),
+                                ]),
+                              );
                             }),
                         margin: const EdgeInsets.only(top: 40),
                         width: 250,
@@ -124,21 +202,38 @@ class _MyHomePageState extends State<MyHomePage> {
                     ],
                   ),
                   Row(
+                    children: <Widget>[
+                      Expanded(
+                        child:Center(
+                        child: Container(                                                        
+                        child: IconButton(                      
+                        icon: Icon(Icons.refresh),
+                        tooltip: 'Reset diet tracker value',
+                        color: Colors.white,
+                        padding: EdgeInsets.only(left: 0),
+                        onPressed:() {
+                          reset();
+                        },
+                        iconSize: 50.0,
+                        )
+                      ),
+                    ),
+                    ),
+                    ]
+                  ),
+                  Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Expanded(
                           child: Container(
                               child: FlatButton(
-                                onPressed: () {
-                                  setState(() {
-                                    futureAlbum = fetchAlbum(myController.text);
-                                  });
-                                },
+                                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 23),
+                                onPressed: null,
                                 disabledColor: Colors.white,
-                                child: Text('Enter \nFood!',
+                                child: Text('Enter Food',
                                     style: TextStyle(
                                       color: Colors.cyan[700],
-                                      fontSize: 32,
+                                      fontSize: 25,
                                     )),
 
                                 //textColor: Colors.white,
@@ -157,6 +252,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Expanded(
                           child: Container(
                               child: FlatButton(
+                            
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 30, vertical: 10),
                                 onPressed: null,
@@ -196,18 +292,22 @@ class _MyHomePageState extends State<MyHomePage> {
                         Expanded(
                           child: Container(
                               child: FlatButton(
+                                onPressed: () {
+                                  setState(() async {
+                                    futureAlbum = fetchAlbum(myController.text);
+                                    control_flag = 1;
+                                  });
+                                },
                                 padding: EdgeInsets.symmetric(
-                                    horizontal: 30, vertical: 20),
+                                    horizontal: 10, vertical: 10),
 
-                                onPressed: null,
+          
                                 disabledColor: Colors.white,
                                 child: Text(
-                                    '         Talk to your \n'
-                                    'Personal Nutritionist \n '
-                                    '              today!',
+                                    '    Confirm Entered Food',
                                     style: TextStyle(
                                       color: Colors.cyan[700],
-                                      fontSize: 22,
+                                      fontSize: 18,
                                     )),
 
                                 //textColor: Colors.white,
@@ -218,17 +318,51 @@ class _MyHomePageState extends State<MyHomePage> {
                                         style: BorderStyle.solid),
                                     borderRadius: BorderRadius.circular(10)),
                               ),
-                              padding: EdgeInsets.only(top: 20, left: 15)),
+                              padding: EdgeInsets.only(top: 10, left: 15,right:15)),
                         ),
-                        Container(
+                      ]),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                         Container(
+                              child: FlatButton(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 10),
+
+                                onPressed: null,
+                                disabledColor: Colors.white,
+                                child: Row(
+                                  children: <Widget>[
+                                    Text(
+                                        '         Talk to your \n'
+                                        'Personal Nutritionist \n '
+                                        '              Today!',
+                                        style: TextStyle(
+                                          color: Colors.cyan[700],
+                                          fontSize: 18,
+                                        ),
+                                        ),
+                                        Container(
                           child: IconButton(
                             onPressed: null,
-                            color: Colors.cyan,
                             icon: Icon(Icons.chat),
                             iconSize: 40,
                             alignment: Alignment.centerLeft,
                           ),
                         )
+                                  ],
+                                ),
+
+                                //textColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                    side: BorderSide(
+                                        color: Colors.cyan[700],
+                                        width: 3,
+                                        style: BorderStyle.solid),
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                              padding: EdgeInsets.only(top: 10, left: 15,right:15)),
+                        
                       ])
                 ]),
           ),
