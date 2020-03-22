@@ -1,8 +1,6 @@
-  
 import 'package:flutter/material.dart';
 import 'package:sgfit/model/fact_message.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
-
 
 class FlutterFactsDialogFlow extends StatefulWidget {
   FlutterFactsDialogFlow({Key key, this.title}) : super(key: key);
@@ -10,7 +8,8 @@ class FlutterFactsDialogFlow extends StatefulWidget {
   final String title;
 
   @override
-  _FlutterFactsDialogFlowState createState() => new _FlutterFactsDialogFlowState();
+  _FlutterFactsDialogFlowState createState() =>
+      new _FlutterFactsDialogFlowState();
 }
 
 class _FlutterFactsDialogFlowState extends State<FlutterFactsDialogFlow> {
@@ -25,9 +24,11 @@ class _FlutterFactsDialogFlowState extends State<FlutterFactsDialogFlow> {
           children: <Widget>[
             Flexible(
               child: TextField(
+                style: TextStyle(color: Colors.black),
                 controller: _textController,
                 onSubmitted: _submitQuery,
-                decoration: InputDecoration.collapsed(hintText: "Send a message"),
+                decoration:
+                    InputDecoration.collapsed(hintText: "Send a message"),
               ),
             ),
             Container(
@@ -43,14 +44,15 @@ class _FlutterFactsDialogFlowState extends State<FlutterFactsDialogFlow> {
   }
 
   void _dialogFlowResponse(query) async {
-     _textController.clear();
+    _textController.clear();
     AuthGoogle authGoogle =
-    await AuthGoogle(fileJson: "assets/sgfit.json").build();
-    Dialogflow dialogFlow = Dialogflow(authGoogle: authGoogle, language: Language.english);
+        await AuthGoogle(fileJson: "assets/sgfit.json").build();
+    Dialogflow dialogFlow =
+        Dialogflow(authGoogle: authGoogle, language: Language.english);
     AIResponse response = await dialogFlow.detectIntent(query);
     FactsMessage message = FactsMessage(
       text: response.getMessage() ??
-           CardDialogflow(response.getListMessage()[0]).title,
+          CardDialogflow(response.getListMessage()[0]).title,
       name: "Nutrition Bot",
       type: false,
     );
@@ -75,45 +77,46 @@ class _FlutterFactsDialogFlowState extends State<FlutterFactsDialogFlow> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.cyan[900],
+        centerTitle: true,
+        title: Text("Conversational Nutrition Expert"),
+        iconTheme: IconThemeData(
+          color: Colors.white, //change your color here
+        ),
+      ),
       backgroundColor: Colors.cyan[900],
-      // appBar: AppBar(
-      //   centerTitle: true,
-      //   title: Text("Nutrition Facts"),
-      // ),
       body: Column(children: <Widget>[
-         Row(
-              children: <Widget>[
-                IconButton(
-                  icon: Icon(Icons.home),
-                  disabledColor: Colors.white,
-                  tooltip: 'Navigation menu',
-                  onPressed: null,
-                  iconSize: 50.0,
-                  padding: EdgeInsets.only(left : 10, top : 40),
-                ),
-                IconButton(
-                  icon: Icon(Icons.close),
-                  tooltip: 'Navigation menu',
-                  onPressed: null,
-                  alignment: Alignment.topRight,
-                  iconSize: 50.0,
-                  padding: EdgeInsets.only(left: 280, top : 40),
-                  disabledColor: Colors.white,
-                ),
-
-                
-              ],
+        Row(
+          children: <Widget>[
+            /*
+            IconButton(
+              icon: Icon(Icons.home),
+              disabledColor: Colors.white,
+              tooltip: 'Navigation menu',
+              onPressed: null,
+              iconSize: 50.0,
+              padding: EdgeInsets.only(left: 10, top: 40),
             ),
-
-
-
+            IconButton(
+              icon: Icon(Icons.close),
+              tooltip: 'Navigation menu',
+              onPressed: null,
+              alignment: Alignment.topRight,
+              iconSize: 50.0,
+              padding: EdgeInsets.only(left: 280, top: 40),
+              disabledColor: Colors.white,
+            ),
+            */
+          ],
+        ),
         Flexible(
             child: ListView.builder(
-              padding: EdgeInsets.all(8.0),
-              reverse: true, //To keep the latest messages at the bottom
-              itemBuilder: (_, int index) => _messages[index],
-              itemCount: _messages.length,
-            )),
+          padding: EdgeInsets.all(8.0),
+          reverse: true, //To keep the latest messages at the bottom
+          itemBuilder: (_, int index) => _messages[index],
+          itemCount: _messages.length,
+        )),
         Divider(height: 1.0),
         Container(
           decoration: new BoxDecoration(color: Theme.of(context).cardColor),

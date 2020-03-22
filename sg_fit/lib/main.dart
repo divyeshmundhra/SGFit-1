@@ -5,7 +5,6 @@
  */
 import 'package:flutter/material.dart';
 import 'package:sgfit/view/welcome_screen.dart';
-import 'package:sgfit/view/chatbot_display.dart';
 
 void main() async {
   runApp(Startup());
@@ -23,6 +22,6 @@ class Startup extends StatelessWidget {
                 fontFamily: 'Open Sans',
                 bodyColor: Colors.white,
                 displayColor: Colors.white)),
-        home: FlutterFactsDialogFlow());
+        home: WelcomeScreen());
   }
 }
