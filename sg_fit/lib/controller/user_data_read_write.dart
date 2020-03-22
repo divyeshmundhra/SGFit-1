@@ -70,3 +70,23 @@ Future<String> readFromFile() async {
     return "No Files to read";
   }
 }
+
+// Read Age
+Future<String> readFromFileAge() async {
+  try {
+    final file = await _localFileAge;
+    return await file.readAsString();
+  } catch (e) {
+    return "No Files to read";
+  }
+}
+
+// Read Weight
+Future<String> readFromFileWeight() async {
+  try {
+    final file = await _localFileWeight;
+    return await file.readAsString();
+  } catch (e) {
+    return "No Files to read";
+  }
+}

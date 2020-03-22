@@ -6,6 +6,7 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'package:sgfit/model/weather_details.dart';
 import 'package:sgfit/model/tips.dart' as globals;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sgfit/controller/user_data_read_write.dart';
 
 //void main() => runApp(MyApp());
 
@@ -419,6 +420,8 @@ class _DisplayState extends State<Display> {
 
   @override
   Widget build(BuildContext context) {
+    int age = 0;
+    int weight = 0;
     return Scaffold(
       backgroundColor: Colors.cyan[900],
       body: Column(
@@ -485,6 +488,26 @@ class _DisplayState extends State<Display> {
                           fontSize: 60,
                         ),
                       ),
+                      FutureBuilder(
+                          future: readFromFileAge(),
+                          builder: (BuildContext context,
+                              AsyncSnapshot<String> data) {
+                            if (data.hasData != null) {
+                              age = int.parse(data.data.toString());
+                              print(age);
+                              return Text('');
+                            }
+                          }),
+                      FutureBuilder(
+                          future: readFromFileWeight(),
+                          builder: (BuildContext context,
+                              AsyncSnapshot<String> data) {
+                            if (data.hasData != null) {
+                              weight = int.parse(data.data.toString());
+                              print(weight);
+                              return Text('');
+                            }
+                          }),
                       FutureBuilder<WeatherDetails>(
                         future: tempdata,
                         builder: (context, snapshot) {
@@ -492,8 +515,8 @@ class _DisplayState extends State<Display> {
                             double a = (snapshot.data.temp.toInt() * 6.5) +
                                 (globals.workoutintensity * 75) +
                                 (globals.workoutmins * 0.845) -
-                                (globals.age * 0.15) +
-                                (globals.weight * 28.4) +
+                                (age * 0.15) +
+                                (weight * 28.4) +
                                 (globals.gender * 200);
                             globals.target = a.toInt();
                             finaltarget = globals.target.toString();
