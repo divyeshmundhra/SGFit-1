@@ -1,8 +1,3 @@
-/**
- * This class implements the Conversational Nutritional Expert chat-bot feature.
- *
- * @author Soham Dandapath
- */
 import 'package:flutter/material.dart';
 import 'package:sgfit/model/fact_message.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
@@ -29,6 +24,7 @@ class _FlutterFactsDialogFlowState extends State<FlutterFactsDialogFlow> {
           children: <Widget>[
             Flexible(
               child: TextField(
+                style: TextStyle(color: Colors.black),
                 controller: _textController,
                 onSubmitted: _submitQuery,
                 decoration:
@@ -50,7 +46,7 @@ class _FlutterFactsDialogFlowState extends State<FlutterFactsDialogFlow> {
   void _dialogFlowResponse(query) async {
     _textController.clear();
     AuthGoogle authGoogle =
-        await AuthGoogle(fileJson: "asset/sgfit.json").build();
+        await AuthGoogle(fileJson: "assets/sgfit.json").build();
     Dialogflow dialogFlow =
         Dialogflow(authGoogle: authGoogle, language: Language.english);
     AIResponse response = await dialogFlow.detectIntent(query);
@@ -81,14 +77,19 @@ class _FlutterFactsDialogFlowState extends State<FlutterFactsDialogFlow> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.cyan[900],
+        centerTitle: true,
+        title: Text("Conversational Nutrition Expert"),
+        iconTheme: IconThemeData(
+          color: Colors.white, //change your color here
+        ),
+      ),
       backgroundColor: Colors.cyan[900],
-      // appBar: AppBar(
-      //   centerTitle: true,
-      //   title: Text("Nutrition Facts"),
-      // ),
       body: Column(children: <Widget>[
         Row(
           children: <Widget>[
+            /*
             IconButton(
               icon: Icon(Icons.home),
               disabledColor: Colors.white,
@@ -106,6 +107,7 @@ class _FlutterFactsDialogFlowState extends State<FlutterFactsDialogFlow> {
               padding: EdgeInsets.only(left: 280, top: 40),
               disabledColor: Colors.white,
             ),
+            */
           ],
         ),
         Flexible(

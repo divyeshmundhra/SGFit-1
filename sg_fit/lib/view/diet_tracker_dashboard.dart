@@ -351,7 +351,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         ),
                                         Container(
                           child: IconButton(
-                            onPressed: null,
+                            onPressed:null,
                             icon: Icon(Icons.chat),
                             iconSize: 40,
                             alignment: Alignment.centerLeft,

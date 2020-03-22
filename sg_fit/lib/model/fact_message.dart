@@ -8,24 +8,30 @@ class FactsMessage extends StatelessWidget {
   final bool type;
 
   List<Widget> botMessage(context) {
-    return 
-    
-    <Widget>[
+    return <Widget>[
       Container(
         margin: const EdgeInsets.only(right: 16.0),
-        child: CircleAvatar(child: new Icon(Icons.face), backgroundColor: Colors.white,foregroundColor: Colors.black,),
+        child: CircleAvatar(
+          child: new Icon(Icons.face),
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+        ),
       ),
       Expanded(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(this.name,
-                style: TextStyle(fontWeight: FontWeight.bold)),
+            Text(this.name, style: TextStyle(fontWeight: FontWeight.bold)),
             Container(
               margin: const EdgeInsets.only(top: 5.0),
               padding: EdgeInsets.all(10),
-              child: Text(text),
-              decoration: BoxDecoration(color: Colors.white,),
+              child: Text(
+                text,
+                style: TextStyle(color: Colors.black),
+              ),
+              decoration: BoxDecoration(
+                color: Colors.white,
+              ),
             ),
           ],
         ),
@@ -44,14 +50,20 @@ class FactsMessage extends StatelessWidget {
               margin: const EdgeInsets.only(top: 5.0),
               padding: EdgeInsets.all(10),
               child: Text(text),
-              decoration: BoxDecoration(color: Colors.cyan[500],),
+              decoration: BoxDecoration(
+                color: Colors.cyan[500],
+              ),
             ),
           ],
         ),
       ),
       Container(
         margin: const EdgeInsets.only(left: 16.0),
-        child: CircleAvatar(child: new Icon(Icons.account_circle), backgroundColor: Colors.white, foregroundColor: Colors.black,), //Text(this.name[0])
+        child: CircleAvatar(
+          child: new Icon(Icons.account_circle),
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+        ), //Text(this.name[0])
       ),
     ];
   }
