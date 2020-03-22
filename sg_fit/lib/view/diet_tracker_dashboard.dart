@@ -9,6 +9,7 @@ import 'dart:async';
 import 'package:sgfit/model/nutritionix_rakuten.dart';
 import 'package:sgfit/model/weather_details.dart';
 import 'package:sgfit/view/home_screen.dart';
+import 'package:sgfit/view/chatbot_display.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
@@ -293,7 +294,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Container(
                               child: FlatButton(
                                 onPressed: () {
-                                  setState(() async {
+                                  setState(() {
                                     futureAlbum = fetchAlbum(myController.text);
                                     control_flag = 1;
                                   });
@@ -329,7 +330,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 10),
 
-                                onPressed: null,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => FlutterFactsDialogFlow()),
+                        );
+                      },
                                 disabledColor: Colors.white,
                                 child: Row(
                                   children: <Widget>[
