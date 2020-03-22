@@ -31,11 +31,9 @@ class WelcomeScreen extends StatelessWidget {
                             height: 50,
                             width: 200,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                gradient: LinearGradient(colors: [
-                                  Color.fromRGBO(143, 148, 251, 1),
-                                  Color.fromRGBO(143, 148, 251, .6),
-                                ])),
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.cyan[700],
+                            ),
                             child: Center(child: Text("You are Registered")));
                       } else {
                         return Container(
@@ -43,17 +41,14 @@ class WelcomeScreen extends StatelessWidget {
                             width: 200,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                gradient: LinearGradient(colors: [
-                                  Color.fromRGBO(143, 148, 251, 1),
-                                  Color.fromRGBO(143, 148, 251, .6),
-                                ])),
+                                color: Colors.cyan[700]),
                             child:
                                 Center(child: Text("You are not Registered")));
                       }
                     }
                   }),
               Container(
-                height: 220,
+                height: 300,
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/images/reg_page_logo.png'))),
@@ -61,12 +56,19 @@ class WelcomeScreen extends StatelessWidget {
                   children: <Widget>[
                     Positioned(
                         child: Container(
-                            margin: EdgeInsets.only(top: 170),
+                            margin: EdgeInsets.only(top: 200),
                             child: Center(
                                 child: RaisedButton(
-                              textColor: Colors.black,
-                              color: Colors.cyan[300],
-                              child: Text('Tap to Continue'),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                  side: BorderSide(color: Colors.white)),
+                              padding: EdgeInsets.fromLTRB(50, 10, 50, 10),
+                              textColor: Colors.white,
+                              color: Colors.cyan[700],
+                              child: Text('Tap to Continue',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                  )),
                               onPressed: () {
                                 if (userRegistered == "1") {
                                   Navigator.push(
