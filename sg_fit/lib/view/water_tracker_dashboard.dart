@@ -239,199 +239,207 @@ class _DisplayState extends State<Display> {
   }
 
   Widget _popupBodyContainer() {
-    return Column(
-      children: <Widget>[
-        Row(children: <Widget>[
-          Container(
-            width: 120,
-            height: 90,
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.white, width: 2),
-            ),
-            margin: EdgeInsets.only(top: 50, left: 20, right: 20, bottom: 20),
-            child: FloatingActionButton.extended(
-              onPressed: () {
-                globals.containersize = 100;
+    return Container(
+      child: MediaQuery.removePadding(
+        context: context,
+            removeTop: true,
+              child: SingleChildScrollView(
+                child: Column(
+            children: <Widget>[
+              Row(children: <Widget>[
+                Container(
+                  width: 120,
+                  height: 90,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white, width: 2),
+                  ),
+                  margin: EdgeInsets.only(top: 50, left: 20, right: 20, bottom: 20),
+                  child: FloatingActionButton.extended(
+                    onPressed: () {
+                      globals.containersize = 100;
 
-                try {
-                  Navigator.pop(context); //close the popup
-                } catch (e) {}
-                // Add your onPressed code here!
-              },
-              label: Text('100 ml',
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    color: Colors.white,
-                    fontSize: 19,
-                    fontWeight: FontWeight.w700,
-                  )),
-              icon: Icon(
-                FontAwesome5Solid.glass_martini,
-                color: Colors.white,
-              ),
-              //icon: Icon(FontAwesome5.getIconData("glass_martini", weight: IconWeight.Solid));
-              backgroundColor: Colors.blue[800],
-              shape: RoundedRectangleBorder(),
-            ),
-          ),
-          Container(
-            width: 120,
-            height: 90,
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.white, width: 2)),
-            margin: EdgeInsets.only(
-              top: 28,
-            ),
-            child: FloatingActionButton.extended(
-              onPressed: () {
-                globals.containersize = 250;
+                      try {
+                        Navigator.pop(context); //close the popup
+                      } catch (e) {}
+                      // Add your onPressed code here!
+                    },
+                    label: Text('100 ml',
+                        style: TextStyle(
+                          fontFamily: 'Roboto',
+                          color: Colors.white,
+                          fontSize: 19,
+                          fontWeight: FontWeight.w700,
+                        )),
+                    icon: Icon(
+                      FontAwesome5Solid.glass_martini,
+                      color: Colors.white,
+                    ),
+                    //icon: Icon(FontAwesome5.getIconData("glass_martini", weight: IconWeight.Solid));
+                    backgroundColor: Colors.blue[800],
+                    shape: RoundedRectangleBorder(),
+                  ),
+                ),
+                Container(
+                  width: 120,
+                  height: 90,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white, width: 2)),
+                  margin: EdgeInsets.only(
+                    top: 28,
+                  ),
+                  child: FloatingActionButton.extended(
+                    onPressed: () {
+                      globals.containersize = 250;
 
-                try {
-                  Navigator.pop(context); //close the popup
-                } catch (e) {}
-                // Add your onPressed code here!
-              },
-              label: Text('250 ml',
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    color: Colors.white,
-                    fontSize: 19,
-                    fontWeight: FontWeight.w700,
-                  )),
-              icon: Icon(
-                FontAwesome5Solid.coffee,
-                color: Colors.white,
-              ),
-              backgroundColor: Colors.blue[800],
-              shape: RoundedRectangleBorder(),
-            ),
-          ),
-        ]),
-        Row(children: <Widget>[
-          Container(
-            width: 120,
-            height: 90,
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.white, width: 2)),
-            margin: EdgeInsets.all(20),
-            child: FloatingActionButton.extended(
-              onPressed: () {
-                globals.containersize = 350;
+                      try {
+                        Navigator.pop(context); //close the popup
+                      } catch (e) {}
+                      // Add your onPressed code here!
+                    },
+                    label: Text('250 ml',
+                        style: TextStyle(
+                          fontFamily: 'Roboto',
+                          color: Colors.white,
+                          fontSize: 19,
+                          fontWeight: FontWeight.w700,
+                        )),
+                    icon: Icon(
+                      FontAwesome5Solid.coffee,
+                      color: Colors.white,
+                    ),
+                    backgroundColor: Colors.blue[800],
+                    shape: RoundedRectangleBorder(),
+                  ),
+                ),
+              ]),
+              Row(children: <Widget>[
+                Container(
+                  width: 120,
+                  height: 90,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white, width: 2)),
+                  margin: EdgeInsets.all(20),
+                  child: FloatingActionButton.extended(
+                    onPressed: () {
+                      globals.containersize = 350;
 
-                try {
-                  Navigator.pop(context); //close the popup
-                } catch (e) {}
-                // Add your onPressed code here!
-              },
-              label: Text('350 ml',
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    color: Colors.white,
-                    fontSize: 19,
-                    fontWeight: FontWeight.w700,
-                  )),
-              icon: Icon(
-                FontAwesome5Solid.glass_whiskey,
-                color: Colors.white,
-              ),
-              backgroundColor: Colors.blue[800],
-              shape: RoundedRectangleBorder(),
-            ),
-          ),
-          Container(
-            width: 120,
-            height: 90,
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.white, width: 2)),
-            child: FloatingActionButton.extended(
-              onPressed: () {
-                globals.containersize = 500;
+                      try {
+                        Navigator.pop(context); //close the popup
+                      } catch (e) {}
+                      // Add your onPressed code here!
+                    },
+                    label: Text('350 ml',
+                        style: TextStyle(
+                          fontFamily: 'Roboto',
+                          color: Colors.white,
+                          fontSize: 19,
+                          fontWeight: FontWeight.w700,
+                        )),
+                    icon: Icon(
+                      FontAwesome5Solid.glass_whiskey,
+                      color: Colors.white,
+                    ),
+                    backgroundColor: Colors.blue[800],
+                    shape: RoundedRectangleBorder(),
+                  ),
+                ),
+                Container(
+                  width: 120,
+                  height: 90,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white, width: 2)),
+                  child: FloatingActionButton.extended(
+                    onPressed: () {
+                      globals.containersize = 500;
 
-                try {
-                  Navigator.pop(context); //close the popup
-                } catch (e) {}
-                // Add your onPressed code here!
-              },
-              label: Text('500 ml',
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    color: Colors.white,
-                    fontSize: 19,
-                    fontWeight: FontWeight.w700,
-                  )),
-              icon: Icon(
-                MaterialCommunityIcons.glass_mug,
-                color: Colors.white,
-              ),
-              backgroundColor: Colors.blue[800],
-              shape: RoundedRectangleBorder(),
-            ),
-          ),
-        ]),
-        Row(children: <Widget>[
-          Container(
-            width: 120,
-            height: 90,
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.white, width: 2)),
-            margin: EdgeInsets.all(20),
-            child: FloatingActionButton.extended(
-              onPressed: () {
-                globals.containersize = 750;
+                      try {
+                        Navigator.pop(context); //close the popup
+                      } catch (e) {}
+                      // Add your onPressed code here!
+                    },
+                    label: Text('500 ml',
+                        style: TextStyle(
+                          fontFamily: 'Roboto',
+                          color: Colors.white,
+                          fontSize: 19,
+                          fontWeight: FontWeight.w700,
+                        )),
+                    icon: Icon(
+                      MaterialCommunityIcons.glass_mug,
+                      color: Colors.white,
+                    ),
+                    backgroundColor: Colors.blue[800],
+                    shape: RoundedRectangleBorder(),
+                  ),
+                ),
+              ]),
+              Row(children: <Widget>[
+                Container(
+                  width: 120,
+                  height: 90,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white, width: 2)),
+                  margin: EdgeInsets.all(20),
+                  child: FloatingActionButton.extended(
+                    onPressed: () {
+                      globals.containersize = 750;
 
-                try {
-                  Navigator.pop(context); //close the popup
-                } catch (e) {}
-                // Add your onPressed code here!
-              },
-              label: Text('750 ml',
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    color: Colors.white,
-                    fontSize: 19,
-                    fontWeight: FontWeight.w700,
-                  )),
-              icon: Icon(
-                FontAwesome5Solid.prescription_bottle,
-                color: Colors.white,
-              ),
-              backgroundColor: Colors.blue[800],
-              shape: RoundedRectangleBorder(),
-            ),
-          ),
-          Container(
-            width: 120,
-            height: 90,
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.white, width: 2),
-            ),
-            child: FloatingActionButton.extended(
-              onPressed: () {
-                globals.containersize = 1000;
+                      try {
+                        Navigator.pop(context); //close the popup
+                      } catch (e) {}
+                      // Add your onPressed code here!
+                    },
+                    label: Text('750 ml',
+                        style: TextStyle(
+                          fontFamily: 'Roboto',
+                          color: Colors.white,
+                          fontSize: 19,
+                          fontWeight: FontWeight.w700,
+                        )),
+                    icon: Icon(
+                      FontAwesome5Solid.prescription_bottle,
+                      color: Colors.white,
+                    ),
+                    backgroundColor: Colors.blue[800],
+                    shape: RoundedRectangleBorder(),
+                  ),
+                ),
+                Container(
+                  width: 120,
+                  height: 90,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white, width: 2),
+                  ),
+                  child: FloatingActionButton.extended(
+                    onPressed: () {
+                      globals.containersize = 1000;
 
-                try {
-                  Navigator.pop(context); //close the popup
-                } catch (e) {}
-                // Add your onPressed code here!
-              },
-              label: Text('1000 ml',
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    color: Colors.white,
-                    fontSize: 19,
-                    fontWeight: FontWeight.w700,
-                  )),
-              icon: Icon(
-                MaterialCommunityIcons.bottle_wine,
-                color: Colors.white,
-                size: 35,
-              ),
-              backgroundColor: Colors.blue[800],
-              shape: RoundedRectangleBorder(),
-            ),
+                      try {
+                        Navigator.pop(context); //close the popup
+                      } catch (e) {}
+                      // Add your onPressed code here!
+                    },
+                    label: Text('1000 ml',
+                        style: TextStyle(
+                          fontFamily: 'Roboto',
+                          color: Colors.white,
+                          fontSize: 19,
+                          fontWeight: FontWeight.w700,
+                        )),
+                    icon: Icon(
+                      MaterialCommunityIcons.bottle_wine,
+                      color: Colors.white,
+                      size: 35,
+                    ),
+                    backgroundColor: Colors.blue[800],
+                    shape: RoundedRectangleBorder(),
+                  ),
+                ),
+              ]),
+            ],
           ),
-        ]),
-      ],
+        ),
+      ),
     );
   }
 
@@ -441,279 +449,287 @@ class _DisplayState extends State<Display> {
     int weight = 0;
     return Scaffold(
       backgroundColor: Colors.blue[800],
-      body: Column(
-          // Center is a layout widget. It takes a single child and positions it
-          // in the middle of the parent.
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                IconButton(
-                  icon: Icon(Icons.arrow_back),
-                  color: Colors.white,
-                  disabledColor: Colors.white,
-                  tooltip: 'Navigation menu',
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  iconSize: 50.0,
-                  padding: EdgeInsets.only(left: 10, top: 40),
-                ),
-                IconButton(
-                  icon: Icon(Icons.cloud),
-                  tooltip: 'Navigation menu',
-                  onPressed: null,
-                  alignment: Alignment.topRight,
-                  iconSize: 50.0,
-                  padding: EdgeInsets.only(left: 180, top: 40),
-                  disabledColor: Colors.white,
-                ),
-                Container(
-                  child: FutureBuilder<WeatherDetails>(
-                    future: tempdata,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        return Text(
-                          snapshot.data.temp.toString() + '°C',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 25,
-                          ),
-                        );
-                      } else if (snapshot.hasError) {
-                        return Text("${snapshot.error}");
-                      }
-
-                      // By default, show a loading spinner.
-                      return CircularProgressIndicator();
-                    },
-                  ),
-                  margin: const EdgeInsets.only(top: 40, left: 15),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
+      body: Container(
+        child: MediaQuery.removePadding(
+          context: context,
+            removeTop: true,
+                child: SingleChildScrollView(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                // Center is a layout widget. It takes a single child and positions it
+                // in the middle of the parent.
+                children: <Widget>[
+                  Row(
                     children: <Widget>[
-                      Text(
-                        '$waterconsumeds' + ' ml',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 60,
-                        ),
-                      ),
-                      
-                      FutureBuilder(
-                          future: readFromFileWeight(),
-                          builder: (BuildContext context,
-                              AsyncSnapshot<String> data) {
-                            if (data.hasData != null) {
-                              weight = int.parse(data.data.toString());
-                              print(weight);
-                              return Text('');
-                            }
-                          }),
-                      FutureBuilder<WeatherDetails>(
-                        future: tempdata,
-                        builder: (context, snapshot) {
-                          if (snapshot.hasData) {
-                            double a = (snapshot.data.temp.toInt() * 6.5) +
-                                (globals.workoutintensity * 75) +
-                                (globals.workoutmins * 0.845) -
-                                (age * 0.15) +
-                                (weight * 28.4) +
-                                (globals.gender * 200);
-                            globals.target = a.toInt();
-                            finaltarget = globals.target.toString();
-                            return Text(
-                              '/' + '$finaltarget' + 'ml',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                              ),
-                            );
-                          } else if (snapshot.hasError) {
-                            return Text("${snapshot.error}");
-                          }
-
-                          // By default, show a loading spinner.
-                          return CircularProgressIndicator();
+                      IconButton(
+                        icon: Icon(Icons.arrow_back),
+                        color: Colors.white,
+                        disabledColor: Colors.white,
+                        tooltip: 'Navigation menu',
+                        onPressed: () {
+                          Navigator.pop(context);
                         },
+                        iconSize: 50.0,
+                        padding: EdgeInsets.only(left: 10, top: 40),
                       ),
-                      FutureBuilder(
-                          future: readFromFileAge(),
-                          builder: (BuildContext context,
-                              AsyncSnapshot<String> data) {
-                            if (data.hasData != null) {
-                              age = int.parse(data.data.toString());
-                              print(age);
-                              return Text('');
+                      IconButton(
+                        icon: Icon(Icons.cloud),
+                        tooltip: 'Navigation menu',
+                        onPressed: null,
+                        alignment: Alignment.topRight,
+                        iconSize: 50.0,
+                        padding: EdgeInsets.only(left: 180, top: 40),
+                        disabledColor: Colors.white,
+                      ),
+                      Container(
+                        child: FutureBuilder<WeatherDetails>(
+                          future: tempdata,
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              return Text(
+                                snapshot.data.temp.toString() + '°C',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 25,
+                                ),
+                              );
+                            } else if (snapshot.hasError) {
+                              return Text("${snapshot.error}");
                             }
-                          }),
+
+                            // By default, show a loading spinner.
+                            return CircularProgressIndicator();
+                          },
+                        ),
+                        margin: const EdgeInsets.only(top: 40, left: 15),
+                      ),
                     ],
                   ),
-                  margin: const EdgeInsets.only(top: 40),
-                  width: 250,
-                  height: 250,
-                  decoration: new BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.transparent,
-                      border: Border.all(color: Colors.white, width: 6)),
-                ),
-              ],
-            ),
-            Column(
-              
-              children: <Widget>[
-              Container(
-                  child: FlatButton.icon(
-              onPressed: () {
-                reset();
-              },
-              label: Text('Reset Water Intake',
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    color: Colors.white,
-                    fontSize: 19,
-                    fontWeight: FontWeight.w300,
-                  )),
-              icon: Icon(Icons.refresh,
-                color: Colors.white,
-                size: 50.0,
-              ),
-            
-              // backgroundColor: Colors.cyan[900],
-              shape: RoundedRectangleBorder(),
-            ),
-              ),
-                
-
-              Container(
-                  child: FlatButton.icon(
-              onPressed: () {
-                showPopup(
-                      context, _popupBodyContainer(), 'CHOOSE A CONTAINER');
-              },
-              label: Text('Change Container',
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    color: Colors.white,
-                    fontSize: 19,
-                    fontWeight: FontWeight.w300,
-                  )),
-              icon: Icon(Icons.local_drink,
-                color: Colors.white,
-                size: 50.0,
-              ),
-            
-              // backgroundColor: Colors.cyan[900],
-              shape: RoundedRectangleBorder(),
-            ),
-              ),
-
-
-            ]),
-            Row(children: <Widget>[
-              Container(
-                  child: FlatButton(
-                    color: Colors.blue[500],
-                    onPressed: () async {
-                      print('start');
-                      SharedPreferences prefs =
-                          await SharedPreferences.getInstance();
-                      setState(() {
-                        globals.waterconsumedi =
-                            globals.waterconsumedi + globals.containersize;
-                        waterconsumeds = (globals.waterconsumedi).toString();
-                        print(globals.containersize);
-                      });
-
-                      await prefs.setInt(
-                          'waterconsumed', globals.waterconsumedi);
-                      print('end');
-                    },
-                    disabledColor: Colors.white,
-                    child: Text('CONFIRM WATER INTAKE!',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 22,
-                        )),
-
-                    //textColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                        side: BorderSide(
-                            color: Colors.white,
-                            width: 3,
-                            style: BorderStyle.solid),
-                        borderRadius: BorderRadius.circular(10)),
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-                  ),
-                  padding: EdgeInsets.only(top: 60, left: 43))
-            ]),
-            Row(children: <Widget>[
-              Container(
-                child: Column(
-                    // decoration: BoxDecoration(),
-                    mainAxisSize: MainAxisSize.min,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Icon(
-                        Icons.lightbulb_outline,
-                        color: Colors.white,
-                      ),
-                      Text('$tip',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
+                      Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              '$waterconsumeds' + ' ml',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 60,
+                              ),
+                            ),
                             
-                            fontFamily: 'Montserrat',
-                            fontSize: 16,
-                            color: Colors.white,
-                          ))
-                    ] //
+                            FutureBuilder(
+                                future: readFromFileWeight(),
+                                builder: (BuildContext context,
+                                    AsyncSnapshot<String> data) {
+                                  if (data.hasData != null) {
+                                    weight = int.parse(data.data.toString());
+                                    print(weight);
+                                    return Text('');
+                                  }
+                                }),
+                            FutureBuilder<WeatherDetails>(
+                              future: tempdata,
+                              builder: (context, snapshot) {
+                                if (snapshot.hasData) {
+                                  double a = (snapshot.data.temp.toInt() * 6.5) +
+                                      (globals.workoutintensity * 75) +
+                                      (globals.workoutmins * 0.845) -
+                                      (age * 0.15) +
+                                      (weight * 28.4) +
+                                      (globals.gender * 200);
+                                  globals.target = a.toInt();
+                                  finaltarget = globals.target.toString();
+                                  return Text(
+                                    '/' + '$finaltarget' + 'ml',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                    ),
+                                  );
+                                } else if (snapshot.hasError) {
+                                  return Text("${snapshot.error}");
+                                }
+
+                                // By default, show a loading spinner.
+                                return CircularProgressIndicator();
+                              },
+                            ),
+                            FutureBuilder(
+                                future: readFromFileAge(),
+                                builder: (BuildContext context,
+                                    AsyncSnapshot<String> data) {
+                                  if (data.hasData != null) {
+                                    age = int.parse(data.data.toString());
+                                    print(age);
+                                    return Text('');
+                                  }
+                                }),
+                          ],
+                        ),
+                        margin: const EdgeInsets.only(top: 40),
+                        width: 250,
+                        height: 250,
+                        decoration: new BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.transparent,
+                            border: Border.all(color: Colors.white, width: 6)),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    
+                    children: <Widget>[
+                    Container(
+                        child: FlatButton.icon(
+                    onPressed: () {
+                      reset();
+                    },
+                    label: Text('Reset Water Intake',
+                        style: TextStyle(
+                          fontFamily: 'Roboto',
+                          color: Colors.white,
+                          fontSize: 19,
+                          fontWeight: FontWeight.w300,
+                        )),
+                    icon: Icon(Icons.refresh,
+                      color: Colors.white,
+                      size: 50.0,
                     ),
-                decoration: BoxDecoration(
                   
-                    border: Border.all(
-                  color: Colors.white,
-                )),
-                margin: const EdgeInsets.only(left: 30, top: 32, right: 25),
-                width: 150,
-                height: 95,
-                padding: EdgeInsets.only(top: 4.3),
-              ),
-              
-              Container(
-                  width: 180,
-                  height: 130,
-                  child: FloatingActionButton.extended(
+                    // backgroundColor: Colors.cyan[900],
+                    shape: RoundedRectangleBorder(),
+                  ),
+                    ),
+                      
+
+                    Container(
+                        child: FlatButton.icon(
                     onPressed: () {
                       showPopup(
-                          context, _popupBodyWorkout(), 'WORKOUT DETAILS');
-                      //reset();
+                            context, _popupBodyContainer(), 'CHOOSE A CONTAINER');
                     },
-                    backgroundColor: Colors.white,
-
-                    label: Text('ADD WORKOUT\nDETAILS!',
-                        textAlign: TextAlign.center,
+                    label: Text('Change Container',
                         style: TextStyle(
-                          color: Colors.blue[500],
-                          fontSize: 18,
+                          fontFamily: 'Roboto',
+                          color: Colors.white,
+                          fontSize: 19,
+                          fontWeight: FontWeight.w300,
                         )),
-
-                    //textColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                        side: BorderSide(
-                            color: Colors.blue[500],
-                            width: 3,
-                            style: BorderStyle.solid),
-                        borderRadius: BorderRadius.circular(10)),
-                    // padding: EdgeInsets.symmetric(horizontal: 30, vertical: 25),
+                    icon: Icon(Icons.local_drink,
+                      color: Colors.white,
+                      size: 50.0,
+                    ),
+                  
+                    // backgroundColor: Colors.cyan[900],
+                    shape: RoundedRectangleBorder(),
                   ),
-                  padding: EdgeInsets.only(top: 35, left: 5)),
-            ]),
-          ]),
+                    ),
+
+
+                  ]),
+                  Row(children: <Widget>[
+                    Container(
+                        child: FlatButton(
+                          color: Colors.blue[500],
+                          onPressed: () async {
+                            print('start');
+                            SharedPreferences prefs =
+                                await SharedPreferences.getInstance();
+                            setState(() {
+                              globals.waterconsumedi =
+                                  globals.waterconsumedi + globals.containersize;
+                              waterconsumeds = (globals.waterconsumedi).toString();
+                              print(globals.containersize);
+                            });
+
+                            await prefs.setInt(
+                                'waterconsumed', globals.waterconsumedi);
+                            print('end');
+                          },
+                          disabledColor: Colors.white,
+                          child: Text('CONFIRM WATER INTAKE!',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22,
+                              )),
+
+                          //textColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                  color: Colors.white,
+                                  width: 3,
+                                  style: BorderStyle.solid),
+                              borderRadius: BorderRadius.circular(10)),
+                          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                        ),
+                        padding: EdgeInsets.only(top: 60, left: 43))
+                  ]),
+                  Row(children: <Widget>[
+                    Container(
+                      child: Column(
+                          // decoration: BoxDecoration(),
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Icon(
+                              Icons.lightbulb_outline,
+                              color: Colors.white,
+                            ),
+                            Text('$tip',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  
+                                  fontFamily: 'Montserrat',
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                ))
+                          ] //
+                          ),
+                      decoration: BoxDecoration(
+                        
+                          border: Border.all(
+                        color: Colors.white,
+                      )),
+                      margin: const EdgeInsets.only(left: 30, top: 32, right: 25),
+                      width: 150,
+                      height: 95,
+                      padding: EdgeInsets.only(top: 4.3),
+                    ),
+                    
+                    Container(
+                        width: 180,
+                        height: 130,
+                        child: FloatingActionButton.extended(
+                          onPressed: () {
+                            showPopup(
+                                context, _popupBodyWorkout(), 'WORKOUT DETAILS');
+                            //reset();
+                          },
+                          backgroundColor: Colors.white,
+
+                          label: Text('ADD WORKOUT\nDETAILS!',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.blue[500],
+                                fontSize: 18,
+                              )),
+
+                          //textColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                  color: Colors.blue[500],
+                                  width: 3,
+                                  style: BorderStyle.solid),
+                              borderRadius: BorderRadius.circular(10)),
+                          // padding: EdgeInsets.symmetric(horizontal: 30, vertical: 25),
+                        ),
+                        padding: EdgeInsets.only(top: 35, left: 5)),
+                  ]),
+                ]),
+          ),
+        ),
+      ),
     );
   }
 }

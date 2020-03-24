@@ -12,6 +12,8 @@ import 'package:sgfit/view/home_screen.dart';
 import 'package:sgfit/view/chatbot_display.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+
+
 class DietTrackerDashboard extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -84,7 +86,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[250],
+      backgroundColor: Colors.blue[800],
+ 
       body: Container(
         child: MediaQuery.removePadding(
           context: context,
@@ -98,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: <Widget>[
                       IconButton(
                         icon: Icon(Icons.arrow_back),
-                        color: Colors.blue[400],
+                        color: Colors.white,
                         disabledColor: Colors.white,
                         tooltip: 'Navigation menu',
                         onPressed: () {
@@ -112,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         padding: EdgeInsets.only(left: 10, top: 40),
                       ),
                       IconButton(
-                        icon: Icon(Icons.cloud, color: Colors.blue[400]),
+                        icon: Icon(Icons.cloud, color: Colors.white),
                         tooltip: 'Navigation menu',
                         onPressed: null,
                         alignment: Alignment.topRight,
@@ -128,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               return Text(
                                 snapshot.data.temp.toString() + '°C',
                                 style: TextStyle(
-                                  color: Colors.blue[400],
+                                  color: Colors.white,
                                   fontSize: 25,
                                 ),
                               );
@@ -163,14 +166,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                           child: Text(
                                             '$caloriesConsumed',
                                             style: TextStyle(
-                                                color: Colors.blue[600],
+                                                color: Colors.white,
                                                 fontSize: 60),
                                           ),
                                         ),
                                         Center(
                                           child: Text("Calories",
                                               style: TextStyle(
-                                                  color: Colors.blue[600],
+                                                  color: Colors.white,
                                                   fontSize: 30,
                                                   fontFamily: 'Montserrat')),
                                         ),
@@ -186,14 +189,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "$caloriesConsumed",
                                           style: TextStyle(
-                                              color: Colors.blue[600],
+                                              color: Colors.white,
                                               fontSize: 60),
                                         ),
                                       ),
                                       Center(
                                         child: Text("Calories",
                                             style: TextStyle(
-                                                color: Colors.blue[600],
+                                                color: Colors.white,
                                                 fontSize: 30,
                                                 fontFamily: 'Montserrat')),
                                       ),
@@ -207,7 +210,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             shape: BoxShape.circle,
                             color: Colors.transparent,
                             border:
-                                Border.all(color: Colors.blue[600], width: 6)),
+                                Border.all(color: Colors.white, width: 6)),
                       )
                     ],
                   ),
@@ -219,7 +222,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             child: IconButton(
                           icon: Icon(Icons.refresh),
                           tooltip: 'Reset diet tracker value',
-                          color: Colors.blue[600],
+                          color: Colors.white,
                           padding: EdgeInsets.only(left: 0),
                           onPressed: () {
                             reset();
@@ -228,7 +231,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         )),
                         Text("Reset Calories",
                             style: TextStyle(
-                                color: Colors.blue[600], fontSize: 25))
+                                color: Colors.white, fontSize: 25))
                       ]),
                   SizedBox(
                     height: 50,
@@ -242,10 +245,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 23),
                                 onPressed: null,
-                                color: Colors.blue[600],
+                                color: Colors.white,
                                 child: Text('Enter Food',
                                     style: TextStyle(
-                                      color: Colors.blue[600],
+                                      color: Colors.white,
                                       fontSize: 25,
                                     )),
 
@@ -260,7 +263,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Container(
                               child: FlatButton(
                                 padding: EdgeInsets.symmetric(
-                                    horizontal: 30, vertical: 5),
+                                    horizontal: 30,),
                                 onPressed: null,
                                 disabledColor: Colors.grey[50],
                                 child: Container(
@@ -270,10 +273,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                         TextCapitalization.words,
                                     controller: myController,
                                     style: TextStyle(
-                                        color: Colors.black, fontSize: 25),
+                                        color: Colors.blue[800], fontSize: 25),
                                     decoration: InputDecoration(
                                       border: InputBorder.none,
-                                      hintText: 'Enter food here',
+                                      hintText: 'Enter food here...',
                                       hintStyle: TextStyle(
                                           fontSize: 15.0, color: Colors.black),
                                     ),
@@ -296,6 +299,20 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: <Widget>[
                         Expanded(
                           child: Container(
+                            decoration: new BoxDecoration(
+    boxShadow: [
+      BoxShadow(
+        color: Colors.blue[900],
+        blurRadius: 20.0, // has the effect of softening the shadow
+        spreadRadius: 2.0, // has the effect of extending the shadow
+        offset: Offset(
+          3.0, // horizontal, move right 10
+          3.0, // vertical, move down 10
+        ),
+      )
+    ],
+    
+  ),
                               child: FlatButton(
                                 onPressed: () {
                                   setState(() {
@@ -306,17 +323,19 @@ class _MyHomePageState extends State<MyHomePage> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 10),
 
-                                color: Colors.grey[200],
-                                child: Text('    Confirm Entered Food',
+          
+                                color: Colors.blue[500],
+                                child: Text(
+                                    '    GET CALORIES!    ',
                                     style: TextStyle(
-                                      color: Colors.blue[600],
+                                      color: Colors.white,
                                       fontSize: 18,
                                     )),
 
                                 //textColor: Colors.white,
                                 shape: RoundedRectangleBorder(
                                     side: BorderSide(
-                                        color: Colors.blue[600],
+                                        color: Colors.white,
                                         width: 3,
                                         style: BorderStyle.solid),
                                     borderRadius: BorderRadius.circular(10)),
@@ -331,6 +350,20 @@ class _MyHomePageState extends State<MyHomePage> {
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: <
                       Widget>[
                     Container(
+                      decoration: new BoxDecoration(
+    boxShadow: [
+      BoxShadow(
+        color: Colors.blue[900],
+        blurRadius: 20.0, // has the effect of softening the shadow
+        spreadRadius: 2.0, // has the effect of extending the shadow
+        offset: Offset(
+          3.0, // horizontal, move right 10
+          3.0, // vertical, move down 10
+        ),
+      )
+    ],
+    
+  ),
                         child: FlatButton(
                           padding: EdgeInsets.symmetric(
                               horizontal: 10, vertical: 10),
@@ -343,7 +376,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       FlutterFactsDialogFlow()),
                             );
                           },
-                          color: Colors.blue[400],
+                          color: Colors.blue[800],
                           child: Row(
                             children: <Widget>[
                               Text(
@@ -366,16 +399,17 @@ class _MyHomePageState extends State<MyHomePage> {
                             ],
                           ),
 
-                          //textColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                  color: Colors.cyan[700],
-                                  width: 3,
-                                  style: BorderStyle.solid),
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                        padding: EdgeInsets.only(top: 10, left: 15, right: 15)),
-                  ])
+                                //textColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                    side: BorderSide(
+                                        color: Colors.white,
+                                        width: 3,
+                                        style: BorderStyle.solid),
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                              padding: EdgeInsets.only(top: 10, left: 15,right:15)),
+                        
+                      ])
                 ]),
           ),
         ),
