@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:sgfit/view/help.dart';
 import 'package:sgfit/view/update_particulars.dart';
 import 'package:sgfit/view/diet_tracker_dashboard.dart';
+import 'package:sgfit/view/diettrackertry.dart';
 
 import 'water_tracker_dashboard.dart';
 
