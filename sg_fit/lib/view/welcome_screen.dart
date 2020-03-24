@@ -14,7 +14,7 @@ class WelcomeScreen extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.cyan[900],
+        backgroundColor: Colors.grey[50],
         body: Center(
             child: MediaQuery.removePadding(
           context: context,
@@ -32,7 +32,7 @@ class WelcomeScreen extends StatelessWidget {
                             width: 200,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: Colors.cyan[700],
+                              color: Colors.blue[600],
                             ),
                             child: Center(child: Text("You are Registered")));
                       } else {
@@ -41,7 +41,7 @@ class WelcomeScreen extends StatelessWidget {
                             width: 200,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: Colors.cyan[700]),
+                                color: Colors.blue[600]),
                             child:
                                 Center(child: Text("You are not Registered")));
                       }
@@ -61,10 +61,10 @@ class WelcomeScreen extends StatelessWidget {
                                 child: RaisedButton(
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(18.0),
-                                  side: BorderSide(color: Colors.white)),
+                                  side: BorderSide(color: Colors.grey)),
                               padding: EdgeInsets.fromLTRB(50, 10, 50, 10),
-                              textColor: Colors.white,
-                              color: Colors.cyan[700],
+                              textColor: Colors.black,
+                              color: Colors.grey[50],
                               child: Text('Tap to Continue',
                                   style: TextStyle(
                                     fontSize: 20,

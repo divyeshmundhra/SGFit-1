@@ -15,7 +15,7 @@ class Startup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: true,
+        debugShowCheckedModeBanner: false,
         title: "SGFit",
         theme: ThemeData(
             textTheme: Theme.of(context).textTheme.apply(

@@ -12,7 +12,6 @@ import 'package:sgfit/view/home_screen.dart';
 import 'package:sgfit/view/chatbot_display.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class DietTrackerDashboard extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -32,7 +31,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   String caloriesConsumed = "0";
   int control_flag = 0;
   Future<WeatherDetails> tempdata;
@@ -44,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
     tempdata = getWeatherDetails();
     getDailyCalories();
   }
-  
+
   @override
   void dispose() {
     myController.dispose();
@@ -69,14 +67,13 @@ class _MyHomePageState extends State<MyHomePage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       caloriesConsumed = "0.0";
-
     });
     await prefs.setDouble('calories', 0);
   }
 
   Future<dynamic> saveCalories(double newCals) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if(control_flag == 1){
+    if (control_flag == 1) {
       final calsToAdd = double.parse(caloriesConsumed) + newCals;
       prefs.setDouble('calories', calsToAdd);
     }
@@ -104,17 +101,18 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.blue[400],
                         disabledColor: Colors.white,
                         tooltip: 'Navigation menu',
-                        onPressed: (){
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomeScreen()),
-                    );
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomeScreen()),
+                          );
                         },
                         iconSize: 50.0,
                         padding: EdgeInsets.only(left: 10, top: 40),
                       ),
                       IconButton(
-                        icon: Icon(Icons.cloud,color:Colors.blue[400]),
+                        icon: Icon(Icons.cloud, color: Colors.blue[400]),
                         tooltip: 'Navigation menu',
                         onPressed: null,
                         alignment: Alignment.topRight,
@@ -122,74 +120,84 @@ class _MyHomePageState extends State<MyHomePage> {
                         padding: EdgeInsets.only(left: 180, top: 40),
                         disabledColor: Colors.white,
                       ),
-                Container(
-                  child: FutureBuilder<WeatherDetails>(
-                    future: tempdata,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        return Text(
-                          snapshot.data.temp.toString() + '°C',
-                          style: TextStyle(
-                            color: Colors.blue[400],
-                            fontSize: 25,
-                          ),
-                        );
-                      } else if (snapshot.hasError) {
-                        return Text("${snapshot.error}");
-                      }
+                      Container(
+                        child: FutureBuilder<WeatherDetails>(
+                          future: tempdata,
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              return Text(
+                                snapshot.data.temp.toString() + '°C',
+                                style: TextStyle(
+                                  color: Colors.blue[400],
+                                  fontSize: 25,
+                                ),
+                              );
+                            } else if (snapshot.hasError) {
+                              return Text("${snapshot.error}");
+                            }
 
-                      // By default, show a loading spinner.
-                      return CircularProgressIndicator();
-                    },
-                  ),
-                  margin: const EdgeInsets.only(top: 40, left: 15),
-                ),
+                            // By default, show a loading spinner.
+                            return CircularProgressIndicator();
+                          },
+                        ),
+                        margin: const EdgeInsets.only(top: 40, left: 15),
+                      ),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Container (
+                      Container(
                         child: FutureBuilder<Album>(
                             future: futureAlbum,
-                            builder: (context, snapshot) {                              
+                            builder: (context, snapshot) {
                               if (snapshot.hasData) {
                                 saveCalories(snapshot.data.calories);
                                 return Center(
                                   child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: <Widget>[
-                                    SizedBox(height: 75),
-                                    Center(
-                                      child: Text(
-                                        '$caloriesConsumed',style: TextStyle(color: Colors.blue[600], fontSize: 60),
-                                      ),
-                                    ),
-                                    Center(
-                                      child: Text(
-                                        "Calories", style: TextStyle(color: Colors.blue[600], fontSize: 30,fontFamily: 'Montserrat')
-                                      ),
-                                    ),
-                                  ]
-                                  ),
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: <Widget>[
+                                        SizedBox(height: 75),
+                                        Center(
+                                          child: Text(
+                                            '$caloriesConsumed',
+                                            style: TextStyle(
+                                                color: Colors.blue[600],
+                                                fontSize: 60),
+                                          ),
+                                        ),
+                                        Center(
+                                          child: Text("Calories",
+                                              style: TextStyle(
+                                                  color: Colors.blue[600],
+                                                  fontSize: 30,
+                                                  fontFamily: 'Montserrat')),
+                                        ),
+                                      ]),
                                 );
                               }
                               return Center(
                                 child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                  SizedBox(height: 60),
-                                  Center(
-                                    child: Text(
-                                      "$caloriesConsumed",style: TextStyle(color: Colors.blue[600], fontSize: 60),
-                                    ),
-                                  ),
-                                  Center(
-                                    child: Text(
-                                      "Calories", style: TextStyle(color: Colors.blue[600], fontSize: 30,fontFamily: 'Montserrat')
-                                    ),
-                                  ),
-                                ]),
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: <Widget>[
+                                      SizedBox(height: 60),
+                                      Center(
+                                        child: Text(
+                                          "$caloriesConsumed",
+                                          style: TextStyle(
+                                              color: Colors.blue[600],
+                                              fontSize: 60),
+                                        ),
+                                      ),
+                                      Center(
+                                        child: Text("Calories",
+                                            style: TextStyle(
+                                                color: Colors.blue[600],
+                                                fontSize: 30,
+                                                fontFamily: 'Montserrat')),
+                                      ),
+                                    ]),
                               );
                             }),
                         margin: const EdgeInsets.only(top: 40),
@@ -198,34 +206,32 @@ class _MyHomePageState extends State<MyHomePage> {
                         decoration: new BoxDecoration(
                             shape: BoxShape.circle,
                             color: Colors.transparent,
-                            border: Border.all(color:Colors.blue[600], width: 6)),
+                            border:
+                                Border.all(color: Colors.blue[600], width: 6)),
                       )
                     ],
                   ),
-                  SizedBox(height:10),
+                  SizedBox(height: 10),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      
-                        
-                       Container(                                                        
-                        child: IconButton( 
-                                             
-                        icon: Icon(Icons.refresh),
-                        tooltip: 'Reset diet tracker value',
-                        color: Colors.blue[600],
-                        padding: EdgeInsets.only(left: 0),
-                        onPressed:() {
-                          reset();
-                        },
-                        iconSize: 50.0,
-                        )
-                      ),
-                      Text("Reset Calories", style:TextStyle(color: Colors.blue[600], fontSize: 25))
-                    
-                
-                    
-                    ]
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                            child: IconButton(
+                          icon: Icon(Icons.refresh),
+                          tooltip: 'Reset diet tracker value',
+                          color: Colors.blue[600],
+                          padding: EdgeInsets.only(left: 0),
+                          onPressed: () {
+                            reset();
+                          },
+                          iconSize: 50.0,
+                        )),
+                        Text("Reset Calories",
+                            style: TextStyle(
+                                color: Colors.blue[600], fontSize: 25))
+                      ]),
+                  SizedBox(
+                    height: 50,
                   ),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -233,7 +239,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         Expanded(
                           child: Container(
                               child: FlatButton(
-                                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 23),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 23),
                                 onPressed: null,
                                 color: Colors.blue[600],
                                 child: Text('Enter Food',
@@ -243,7 +250,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                     )),
 
                                 //textColor: Colors.white,
-                                
                               ),
                               padding: EdgeInsets.only(top: 10, left: 15)),
                         ),
@@ -253,7 +259,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         Expanded(
                           child: Container(
                               child: FlatButton(
-                            
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 30, vertical: 5),
                                 onPressed: null,
@@ -270,8 +275,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       border: InputBorder.none,
                                       hintText: 'Enter food here',
                                       hintStyle: TextStyle(
-                                          fontSize: 15.0,
-                                          color: Colors.black),
+                                          fontSize: 15.0, color: Colors.black),
                                     ),
                                   ),
                                 ),
@@ -302,10 +306,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 10),
 
-          
                                 color: Colors.grey[200],
-                                child: Text(
-                                    '    Confirm Entered Food',
+                                child: Text('    Confirm Entered Food',
                                     style: TextStyle(
                                       color: Colors.blue[600],
                                       fontSize: 18,
@@ -319,58 +321,61 @@ class _MyHomePageState extends State<MyHomePage> {
                                         style: BorderStyle.solid),
                                     borderRadius: BorderRadius.circular(10)),
                               ),
-                              padding: EdgeInsets.only(top: 10, left: 15,right:15)),
+                              padding: EdgeInsets.only(
+                                  top: 10, left: 15, right: 15)),
                         ),
                       ]),
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                         Container(
-                              child: FlatButton(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 10),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: <
+                      Widget>[
+                    Container(
+                        child: FlatButton(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 10),
 
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => FlutterFactsDialogFlow()),
-                        );
-                      },
-                                color: Colors.blue[400],
-                                child: Row(
-                                  children: <Widget>[
-                                    Text(
-                                        '         Talk to your \n'
-                                        'Personal Nutritionist \n '
-                                        '              Today!',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 18,
-                                        ),
-                                        ),
-                                        Container(
-                          child: IconButton(
-                            onPressed:null,
-                            icon: Icon(Icons.chat,color: Colors.white),
-                            iconSize: 40,
-                            alignment: Alignment.centerLeft,
-                          ),
-                        )
-                                  ],
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      FlutterFactsDialogFlow()),
+                            );
+                          },
+                          color: Colors.blue[400],
+                          child: Row(
+                            children: <Widget>[
+                              Text(
+                                '         Talk to your \n'
+                                'Personal Nutritionist \n '
+                                '              Today!',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
                                 ),
-
-                                //textColor: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                    side: BorderSide(
-                                        color: Colors.cyan[700],
-                                        width: 3,
-                                        style: BorderStyle.solid),
-                                    borderRadius: BorderRadius.circular(10)),
                               ),
-                              padding: EdgeInsets.only(top: 10, left: 15,right:15)),
-                        
-                      ])
+                              Container(
+                                child: IconButton(
+                                  onPressed: null,
+                                  icon: Icon(Icons.chat, color: Colors.white),
+                                  iconSize: 40,
+                                  alignment: Alignment.centerLeft,
+                                ),
+                              )
+                            ],
+                          ),
+
+                          //textColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                  color: Colors.cyan[700],
+                                  width: 3,
+                                  style: BorderStyle.solid),
+                              borderRadius: BorderRadius.circular(10)),
+                        ),
+                        padding: EdgeInsets.only(top: 10, left: 15, right: 15)),
+                  ])
                 ]),
           ),
         ),

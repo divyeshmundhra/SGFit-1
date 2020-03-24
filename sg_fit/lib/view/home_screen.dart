@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
     double _width_small = MediaQuery.of(context).size.width * 0.10;
 
     return new Scaffold(
-        backgroundColor: Colors.cyan[900],
+        backgroundColor: Colors.grey[50],
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -32,11 +32,11 @@ class HomeScreen extends StatelessWidget {
                         side: BorderSide(color: Colors.white)),
                     padding: EdgeInsets.fromLTRB(_width, 20, _width, 20),
                     textColor: Colors.white,
-                    color: Colors.cyan[700],
+                    color: Colors.blue[600],
                     onPressed: () {
                       Navigator.push(
-                       context,
-                      MaterialPageRoute(builder: (context) => Display()),
+                        context,
+                        MaterialPageRoute(builder: (context) => Display()),
                       );
                     },
                     child: Column(children: <Widget>[
@@ -58,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                     padding:
                         EdgeInsets.fromLTRB(_width + 12, 20, _width + 12, 25),
                     textColor: Colors.white,
-                    color: Colors.cyan[700],
+                    color: Colors.blue[600],
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -84,7 +84,7 @@ class HomeScreen extends StatelessWidget {
                         side: BorderSide(color: Colors.white)),
                     padding: EdgeInsets.fromLTRB(_width, 10, _width, 10),
                     textColor: Colors.white,
-                    color: Colors.cyan[900],
+                    color: Colors.blue[400],
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -105,7 +105,7 @@ class HomeScreen extends StatelessWidget {
                     padding:
                         EdgeInsets.fromLTRB(_width_small, 10, _width_small, 10),
                     textColor: Colors.white,
-                    color: Colors.cyan[900],
+                    color: Colors.blue[400],
                     onPressed: () {
                       Navigator.push(
                         context,

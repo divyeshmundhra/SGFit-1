@@ -11,12 +11,12 @@ class Help extends StatelessWidget {
     double _width = MediaQuery.of(context).size.width * 0.05;
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.cyan[900],
+          backgroundColor: Colors.grey[50],
           iconTheme: IconThemeData(
-            color: Colors.white, //change your color here
+            color: Colors.blue[600], //change your color here
           ),
         ),
-        backgroundColor: Colors.cyan[900],
+        backgroundColor: Colors.grey[50],
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -25,12 +25,13 @@ class Help extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   RaisedButton(
+                    elevation: 0,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0),
-                        side: BorderSide(color: Colors.white)),
+                        side: BorderSide(color: Colors.grey[50])),
                     padding: EdgeInsets.fromLTRB(_width, 20, _width, 20),
-                    textColor: Colors.white,
-                    color: Colors.cyan[700],
+                    textColor: Colors.blue[600],
+                    color: Colors.grey[50],
                     onPressed: () {
                       // Navigator.push(
                       //  context,
@@ -40,7 +41,7 @@ class Help extends StatelessWidget {
                     child: Column(children: <Widget>[
                       Icon(
                         Icons.fitness_center,
-                        color: Colors.white,
+                        color: Colors.blue[400],
                         size: 100,
                       ),
                       SizedBox(height: 20),
@@ -48,8 +49,10 @@ class Help extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 35, fontWeight: FontWeight.bold)),
                       Text(
-                          "SGFit application aims to facilitate and encourage fitness, hydration and nutritional food intake in Singapore. ",
-                          style: TextStyle(fontSize: 15)),
+                        "SGFit application aims to facilitate and encourage fitness, hydration and nutritional food intake in Singapore. ",
+                        style: TextStyle(fontSize: 15),
+                        textAlign: TextAlign.center,
+                      ),
                       SizedBox(height: 30),
                       Text("Contact",
                           style: TextStyle(

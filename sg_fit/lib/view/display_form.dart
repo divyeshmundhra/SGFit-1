@@ -26,12 +26,12 @@ class RegistrationPageState extends State<DisplayForm> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.cyan[900],
+          backgroundColor: Colors.grey[50],
           iconTheme: IconThemeData(
-            color: Colors.white,
+            color: Colors.blue[600],
           ),
         ),
-        backgroundColor: Colors.cyan[900],
+        backgroundColor: Colors.grey[50],
         body: Container(
             child: MediaQuery.removePadding(
                 context: context,
@@ -53,7 +53,8 @@ class RegistrationPageState extends State<DisplayForm> {
                                       child: Text("Welcome",
                                           style: TextStyle(
                                               fontSize: 40,
-                                              fontWeight: FontWeight.bold))))),
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.blue[600]))))),
                         ],
                       )),
                   Padding(
@@ -65,7 +66,8 @@ class RegistrationPageState extends State<DisplayForm> {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 20,
-                                      fontWeight: FontWeight.normal))))),
+                                      fontWeight: FontWeight.normal,
+                                      color: Colors.blue[400]))))),
                   Padding(
                       padding: EdgeInsets.all(30.0),
                       child: Column(
@@ -73,7 +75,7 @@ class RegistrationPageState extends State<DisplayForm> {
                           Container(
                               padding: EdgeInsets.all(5),
                               decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: Colors.grey[200],
                                   borderRadius: BorderRadius.circular(10),
                                   boxShadow: [
                                     BoxShadow(
@@ -236,8 +238,10 @@ class RegistrationPageState extends State<DisplayForm> {
                                   );
                                 }
                               },
-                              color: Colors.cyan[300],
-                              child: Center(child: Text("Register")))
+                              color: Colors.blue[600],
+                              child: Center(
+                                  child: Text("Register",
+                                      style: TextStyle(color: Colors.white))))
                         ],
                       ))
                 ])))));

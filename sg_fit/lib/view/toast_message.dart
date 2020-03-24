@@ -7,7 +7,7 @@ class ToastMessage {
         msg: errormsg,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
-        backgroundColor: Colors.white,
-        textColor: Colors.black);
+        backgroundColor: Colors.blue[600],
+        textColor: Colors.white);
   }
 }
