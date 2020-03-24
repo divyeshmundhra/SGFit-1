@@ -78,14 +78,14 @@ class _FlutterFactsDialogFlowState extends State<FlutterFactsDialogFlow> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.cyan[900],
+        backgroundColor: Colors.blue[600],
         centerTitle: true,
         title: Text("Conversational Nutrition Expert"),
         iconTheme: IconThemeData(
           color: Colors.white, //change your color here
         ),
       ),
-      backgroundColor: Colors.cyan[900],
+      backgroundColor: Colors.grey[50],
       body: Column(children: <Widget>[
         Row(
           children: <Widget>[

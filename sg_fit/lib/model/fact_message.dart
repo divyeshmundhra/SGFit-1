@@ -27,10 +27,10 @@ class FactsMessage extends StatelessWidget {
               padding: EdgeInsets.all(10),
               child: Text(
                 text,
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(color: Colors.white),
               ),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.blue[600],
               ),
             ),
           ],
@@ -49,9 +49,12 @@ class FactsMessage extends StatelessWidget {
             Container(
               margin: const EdgeInsets.only(top: 5.0),
               padding: EdgeInsets.all(10),
-              child: Text(text),
+              child: Text(
+                text,
+                style: TextStyle(color: Colors.white),
+              ),
               decoration: BoxDecoration(
-                color: Colors.cyan[500],
+                color: Colors.blue[600],
               ),
             ),
           ],
