@@ -51,10 +51,10 @@ class FactsMessage extends StatelessWidget {
               padding: EdgeInsets.all(10),
               child: Text(
                 text,
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.black),
               ),
               decoration: BoxDecoration(
-                color: Colors.blue[600],
+                color: Colors.grey[300],
               ),
             ),
           ],

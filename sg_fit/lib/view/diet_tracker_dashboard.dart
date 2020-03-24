@@ -12,8 +12,6 @@ import 'package:sgfit/view/home_screen.dart';
 import 'package:sgfit/view/chatbot_display.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
-
 class DietTrackerDashboard extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -87,7 +85,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue[800],
- 
       body: Container(
         child: MediaQuery.removePadding(
           context: context,
@@ -209,8 +206,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         decoration: new BoxDecoration(
                             shape: BoxShape.circle,
                             color: Colors.transparent,
-                            border:
-                                Border.all(color: Colors.white, width: 6)),
+                            border: Border.all(color: Colors.white, width: 6)),
                       )
                     ],
                   ),
@@ -230,8 +226,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           iconSize: 50.0,
                         )),
                         Text("Reset Calories",
-                            style: TextStyle(
-                                color: Colors.white, fontSize: 25))
+                            style: TextStyle(color: Colors.white, fontSize: 25))
                       ]),
                   SizedBox(
                     height: 50,
@@ -263,7 +258,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Container(
                               child: FlatButton(
                                 padding: EdgeInsets.symmetric(
-                                    horizontal: 30,),
+                                  horizontal: 30,
+                                ),
                                 onPressed: null,
                                 disabledColor: Colors.grey[50],
                                 child: Container(
@@ -276,7 +272,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         color: Colors.blue[800], fontSize: 25),
                                     decoration: InputDecoration(
                                       border: InputBorder.none,
-                                      hintText: 'Enter food here...',
+                                      hintText: 'Enter Food here',
                                       hintStyle: TextStyle(
                                           fontSize: 15.0, color: Colors.black),
                                     ),
@@ -299,20 +295,21 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: <Widget>[
                         Expanded(
                           child: Container(
-                            decoration: new BoxDecoration(
-    boxShadow: [
-      BoxShadow(
-        color: Colors.blue[900],
-        blurRadius: 20.0, // has the effect of softening the shadow
-        spreadRadius: 2.0, // has the effect of extending the shadow
-        offset: Offset(
-          3.0, // horizontal, move right 10
-          3.0, // vertical, move down 10
-        ),
-      )
-    ],
-    
-  ),
+                              decoration: new BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.blue[900],
+                                    blurRadius:
+                                        20.0, // has the effect of softening the shadow
+                                    spreadRadius:
+                                        2.0, // has the effect of extending the shadow
+                                    offset: Offset(
+                                      3.0, // horizontal, move right 10
+                                      3.0, // vertical, move down 10
+                                    ),
+                                  )
+                                ],
+                              ),
                               child: FlatButton(
                                 onPressed: () {
                                   setState(() {
@@ -321,12 +318,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                   });
                                 },
                                 padding: EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 10),
+                                    horizontal: 10, vertical: 20),
 
-          
                                 color: Colors.blue[500],
-                                child: Text(
-                                    '    GET CALORIES!    ',
+                                child: Text('    GET CALORIES!    ',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18,
@@ -350,20 +345,21 @@ class _MyHomePageState extends State<MyHomePage> {
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: <
                       Widget>[
                     Container(
-                      decoration: new BoxDecoration(
-    boxShadow: [
-      BoxShadow(
-        color: Colors.blue[900],
-        blurRadius: 20.0, // has the effect of softening the shadow
-        spreadRadius: 2.0, // has the effect of extending the shadow
-        offset: Offset(
-          3.0, // horizontal, move right 10
-          3.0, // vertical, move down 10
-        ),
-      )
-    ],
-    
-  ),
+                        decoration: new BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.blue[900],
+                              blurRadius:
+                                  20.0, // has the effect of softening the shadow
+                              spreadRadius:
+                                  2.0, // has the effect of extending the shadow
+                              offset: Offset(
+                                3.0, // horizontal, move right 10
+                                3.0, // vertical, move down 10
+                              ),
+                            )
+                          ],
+                        ),
                         child: FlatButton(
                           padding: EdgeInsets.symmetric(
                               horizontal: 10, vertical: 10),
@@ -381,8 +377,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             children: <Widget>[
                               Text(
                                 '         Talk to your \n'
-                                'Personal Nutritionist \n '
-                                '              Today!',
+                                'Personal Nutritionist',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 18,
@@ -399,17 +394,16 @@ class _MyHomePageState extends State<MyHomePage> {
                             ],
                           ),
 
-                                //textColor: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                    side: BorderSide(
-                                        color: Colors.white,
-                                        width: 3,
-                                        style: BorderStyle.solid),
-                                    borderRadius: BorderRadius.circular(10)),
-                              ),
-                              padding: EdgeInsets.only(top: 10, left: 15,right:15)),
-                        
-                      ])
+                          //textColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                  color: Colors.white,
+                                  width: 3,
+                                  style: BorderStyle.solid),
+                              borderRadius: BorderRadius.circular(10)),
+                        ),
+                        padding: EdgeInsets.only(top: 10, left: 15, right: 15)),
+                  ])
                 ]),
           ),
         ),
