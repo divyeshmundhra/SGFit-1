@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.cyan[900],
+      backgroundColor: Colors.grey[250],
       body: Container(
         child: MediaQuery.removePadding(
           context: context,
@@ -101,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: <Widget>[
                       IconButton(
                         icon: Icon(Icons.arrow_back),
-                        color: Colors.white,
+                        color: Colors.blue[400],
                         disabledColor: Colors.white,
                         tooltip: 'Navigation menu',
                         onPressed: (){
@@ -114,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         padding: EdgeInsets.only(left: 10, top: 40),
                       ),
                       IconButton(
-                        icon: Icon(Icons.cloud),
+                        icon: Icon(Icons.cloud,color:Colors.blue[400]),
                         tooltip: 'Navigation menu',
                         onPressed: null,
                         alignment: Alignment.topRight,
@@ -130,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         return Text(
                           snapshot.data.temp.toString() + '°C',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.blue[400],
                             fontSize: 25,
                           ),
                         );
@@ -162,12 +162,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                     SizedBox(height: 75),
                                     Center(
                                       child: Text(
-                                        '$caloriesConsumed',style: TextStyle(color: Colors.white, fontSize: 60),
+                                        '$caloriesConsumed',style: TextStyle(color: Colors.blue[600], fontSize: 60),
                                       ),
                                     ),
                                     Center(
                                       child: Text(
-                                        "Calories", style: TextStyle(color: Colors.white, fontSize: 30,fontFamily: 'Montserrat')
+                                        "Calories", style: TextStyle(color: Colors.blue[600], fontSize: 30,fontFamily: 'Montserrat')
                                       ),
                                     ),
                                   ]
@@ -181,12 +181,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                   SizedBox(height: 60),
                                   Center(
                                     child: Text(
-                                      "$caloriesConsumed",style: TextStyle(color: Colors.white, fontSize: 60),
+                                      "$caloriesConsumed",style: TextStyle(color: Colors.blue[600], fontSize: 60),
                                     ),
                                   ),
                                   Center(
                                     child: Text(
-                                      "Calories", style: TextStyle(color: Colors.white, fontSize: 30,fontFamily: 'Montserrat')
+                                      "Calories", style: TextStyle(color: Colors.blue[600], fontSize: 30,fontFamily: 'Montserrat')
                                     ),
                                   ),
                                 ]),
@@ -198,7 +198,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         decoration: new BoxDecoration(
                             shape: BoxShape.circle,
                             color: Colors.transparent,
-                            border: Border.all(color: Colors.white, width: 6)),
+                            border: Border.all(color:Colors.blue[600], width: 6)),
                       )
                     ],
                   ),
@@ -213,7 +213,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                              
                         icon: Icon(Icons.refresh),
                         tooltip: 'Reset diet tracker value',
-                        color: Colors.white,
+                        color: Colors.blue[600],
                         padding: EdgeInsets.only(left: 0),
                         onPressed:() {
                           reset();
@@ -221,7 +221,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         iconSize: 50.0,
                         )
                       ),
-                      Text("Reset Calories", style:TextStyle(color: Colors.white, fontSize: 25))
+                      Text("Reset Calories", style:TextStyle(color: Colors.blue[600], fontSize: 25))
                     
                 
                     
@@ -235,10 +235,10 @@ class _MyHomePageState extends State<MyHomePage> {
                               child: FlatButton(
                                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 23),
                                 onPressed: null,
-                                color: Colors.cyan[700],
+                                color: Colors.blue[600],
                                 child: Text('Enter Food',
                                     style: TextStyle(
-                                      color: Colors.cyan[700],
+                                      color: Colors.blue[600],
                                       fontSize: 25,
                                     )),
 
@@ -255,9 +255,9 @@ class _MyHomePageState extends State<MyHomePage> {
                               child: FlatButton(
                             
                                 padding: EdgeInsets.symmetric(
-                                    horizontal: 30, vertical: 10),
+                                    horizontal: 30, vertical: 5),
                                 onPressed: null,
-                                disabledColor: Colors.white,
+                                disabledColor: Colors.grey[50],
                                 child: Container(
                                   width: 200,
                                   child: TextField(
@@ -265,13 +265,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                         TextCapitalization.words,
                                     controller: myController,
                                     style: TextStyle(
-                                        color: Colors.cyan[700], fontSize: 25),
+                                        color: Colors.black, fontSize: 25),
                                     decoration: InputDecoration(
                                       border: InputBorder.none,
                                       hintText: 'Enter food here',
                                       hintStyle: TextStyle(
                                           fontSize: 15.0,
-                                          color: Colors.grey[500]),
+                                          color: Colors.black),
                                     ),
                                   ),
                                 ),
@@ -279,7 +279,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 //textColor: Colors.white,
                                 shape: RoundedRectangleBorder(
                                     side: BorderSide(
-                                        color: Colors.cyan[100],
+                                        color: Colors.blue[600],
                                         width: 3,
                                         style: BorderStyle.solid),
                                     borderRadius: BorderRadius.circular(10)),
@@ -303,18 +303,18 @@ class _MyHomePageState extends State<MyHomePage> {
                                     horizontal: 10, vertical: 10),
 
           
-                                color: Colors.white,
+                                color: Colors.grey[200],
                                 child: Text(
                                     '    Confirm Entered Food',
                                     style: TextStyle(
-                                      color: Colors.cyan[700],
+                                      color: Colors.blue[600],
                                       fontSize: 18,
                                     )),
 
                                 //textColor: Colors.white,
                                 shape: RoundedRectangleBorder(
                                     side: BorderSide(
-                                        color: Colors.cyan[700],
+                                        color: Colors.blue[600],
                                         width: 3,
                                         style: BorderStyle.solid),
                                     borderRadius: BorderRadius.circular(10)),
@@ -337,7 +337,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               builder: (context) => FlutterFactsDialogFlow()),
                         );
                       },
-                                color: Colors.white,
+                                color: Colors.blue[400],
                                 child: Row(
                                   children: <Widget>[
                                     Text(
@@ -345,14 +345,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                         'Personal Nutritionist \n '
                                         '              Today!',
                                         style: TextStyle(
-                                          color: Colors.cyan[700],
+                                          color: Colors.white,
                                           fontSize: 18,
                                         ),
                                         ),
                                         Container(
                           child: IconButton(
                             onPressed:null,
-                            icon: Icon(Icons.chat),
+                            icon: Icon(Icons.chat,color: Colors.white),
                             iconSize: 40,
                             alignment: Alignment.centerLeft,
                           ),
