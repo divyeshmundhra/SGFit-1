@@ -84,10 +84,10 @@ class _DisplayState extends State<Display> {
     Navigator.push(
       context,
       PopupLayout(
-        top: 100,
-        left: 45,
-        right: 45,
-        bottom: 100,
+        top: 140,
+        left: 55,
+        right: 55,
+        bottom: 140,
         child: PopupContent(
           content: Scaffold(
             appBar: AppBar(
@@ -95,10 +95,11 @@ class _DisplayState extends State<Display> {
                 title,
                 style: TextStyle(
                   color: Colors.white,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              backgroundColor: Colors.cyan[700],
+              backgroundColor: Colors.blue[800],
               leading: new Builder(builder: (context) {
                 return IconButton(
                   icon: Icon(Icons.close),
@@ -113,7 +114,7 @@ class _DisplayState extends State<Display> {
             ),
             resizeToAvoidBottomPadding: false,
             body: widget,
-            backgroundColor: Colors.cyan[700],
+            backgroundColor: Colors.white,
           ),
         ),
       ),
@@ -122,27 +123,39 @@ class _DisplayState extends State<Display> {
 
   Widget _popupBodyWorkout() {
     return Column(
+      
+      // mainAxisAlignment: MainAxisAlignment.center,
+      
       children: <Widget>[
+        
         // Row(children: <Widget>[
         Container(
+
           height: 125,
           padding: EdgeInsets.only(top: 90),
           child: Text(
             "How long is your workout?",
             style: TextStyle(
                 fontFamily: 'Roboto',
-                color: Colors.white,
+                color: Colors.blue[800],
                 fontSize: 18,
                 fontWeight: FontWeight.w700),
           ),
         ),
         Container(
           margin: EdgeInsets.only(left: 20, right: 20),
-          padding: EdgeInsets.all(2.0),
+          // padding: EdgeInsets.all(2.0),
+          //padding: EdgeInsets.only(bottom: 20),
+          //color: Colors.grey[100],
           decoration: BoxDecoration(
+            color: Colors.grey[200],
               border: Border.all(
-                  color: Colors.white, width: 2, style: BorderStyle.solid)),
+                  color: Colors.blue[800], width: 2, style: BorderStyle.solid)),
+         
+         
           child: TextField(
+            
+            
             textAlign: TextAlign.center,
             controller: myController1,
             keyboardType: TextInputType.number,
@@ -164,7 +177,7 @@ class _DisplayState extends State<Display> {
             "Rate the Intensity",
             style: TextStyle(
                 fontFamily: 'Roboto',
-                color: Colors.white,
+                color: Colors.blue[800],
                 fontSize: 18,
                 fontWeight: FontWeight.w700),
           ),
@@ -172,9 +185,11 @@ class _DisplayState extends State<Display> {
         Container(
           margin: EdgeInsets.only(left: 20, right: 20),
           padding: EdgeInsets.all(2.0),
+          //color: Colors.grey[100],
           decoration: BoxDecoration(
+            color: Colors.grey[200],
               border: Border.all(
-                  color: Colors.white, width: 2, style: BorderStyle.solid)),
+                  color: Colors.blue[800], width: 2, style: BorderStyle.solid)),
           child: TextField(
             textAlign: TextAlign.center,
             controller: myController2,
@@ -207,14 +222,14 @@ class _DisplayState extends State<Display> {
             label: Text('CONFIRM',
                 style: TextStyle(
                   fontFamily: 'Roboto',
-                  color: Colors.cyan[900],
+                  color: Colors.white,
                   fontSize: 19,
                   fontWeight: FontWeight.w700,
                 )),
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.blue[800],
             shape: RoundedRectangleBorder(),
           ),
-          margin: const EdgeInsets.only(top: 50),
+          margin: const EdgeInsets.only(top: 30),
         ),
 
         // ]
@@ -246,16 +261,16 @@ class _DisplayState extends State<Display> {
               label: Text('100 ml',
                   style: TextStyle(
                     fontFamily: 'Roboto',
-                    color: Colors.cyan[900],
+                    color: Colors.white,
                     fontSize: 19,
                     fontWeight: FontWeight.w700,
                   )),
               icon: Icon(
                 FontAwesome5Solid.glass_martini,
-                color: Colors.cyan[900],
+                color: Colors.white,
               ),
               //icon: Icon(FontAwesome5.getIconData("glass_martini", weight: IconWeight.Solid));
-              backgroundColor: Colors.white,
+              backgroundColor: Colors.blue[800],
               shape: RoundedRectangleBorder(),
             ),
           ),
@@ -279,15 +294,15 @@ class _DisplayState extends State<Display> {
               label: Text('250 ml',
                   style: TextStyle(
                     fontFamily: 'Roboto',
-                    color: Colors.cyan[900],
+                    color: Colors.white,
                     fontSize: 19,
                     fontWeight: FontWeight.w700,
                   )),
               icon: Icon(
                 FontAwesome5Solid.coffee,
-                color: Colors.cyan[900],
+                color: Colors.white,
               ),
-              backgroundColor: Colors.white,
+              backgroundColor: Colors.blue[800],
               shape: RoundedRectangleBorder(),
             ),
           ),
@@ -311,15 +326,15 @@ class _DisplayState extends State<Display> {
               label: Text('350 ml',
                   style: TextStyle(
                     fontFamily: 'Roboto',
-                    color: Colors.cyan[900],
+                    color: Colors.white,
                     fontSize: 19,
                     fontWeight: FontWeight.w700,
                   )),
               icon: Icon(
                 FontAwesome5Solid.glass_whiskey,
-                color: Colors.cyan[900],
+                color: Colors.white,
               ),
-              backgroundColor: Colors.white,
+              backgroundColor: Colors.blue[800],
               shape: RoundedRectangleBorder(),
             ),
           ),
@@ -340,15 +355,15 @@ class _DisplayState extends State<Display> {
               label: Text('500 ml',
                   style: TextStyle(
                     fontFamily: 'Roboto',
-                    color: Colors.cyan[900],
+                    color: Colors.white,
                     fontSize: 19,
                     fontWeight: FontWeight.w700,
                   )),
               icon: Icon(
                 MaterialCommunityIcons.glass_mug,
-                color: Colors.cyan[900],
+                color: Colors.white,
               ),
-              backgroundColor: Colors.white,
+              backgroundColor: Colors.blue[800],
               shape: RoundedRectangleBorder(),
             ),
           ),
@@ -372,15 +387,15 @@ class _DisplayState extends State<Display> {
               label: Text('750 ml',
                   style: TextStyle(
                     fontFamily: 'Roboto',
-                    color: Colors.cyan[900],
+                    color: Colors.white,
                     fontSize: 19,
                     fontWeight: FontWeight.w700,
                   )),
               icon: Icon(
                 FontAwesome5Solid.prescription_bottle,
-                color: Colors.cyan[900],
+                color: Colors.white,
               ),
-              backgroundColor: Colors.white,
+              backgroundColor: Colors.blue[800],
               shape: RoundedRectangleBorder(),
             ),
           ),
@@ -402,16 +417,16 @@ class _DisplayState extends State<Display> {
               label: Text('1000 ml',
                   style: TextStyle(
                     fontFamily: 'Roboto',
-                    color: Colors.cyan[900],
+                    color: Colors.white,
                     fontSize: 19,
                     fontWeight: FontWeight.w700,
                   )),
               icon: Icon(
                 MaterialCommunityIcons.bottle_wine,
-                color: Colors.cyan[900],
+                color: Colors.white,
                 size: 35,
               ),
-              backgroundColor: Colors.white,
+              backgroundColor: Colors.blue[800],
               shape: RoundedRectangleBorder(),
             ),
           ),
@@ -425,7 +440,7 @@ class _DisplayState extends State<Display> {
     int age = 0;
     int weight = 0;
     return Scaffold(
-      backgroundColor: Colors.cyan[900],
+      backgroundColor: Colors.blue[800],
       body: Column(
           // Center is a layout widget. It takes a single child and positions it
           // in the middle of the parent.
@@ -604,7 +619,7 @@ class _DisplayState extends State<Display> {
             Row(children: <Widget>[
               Container(
                   child: FlatButton(
-                    color: Colors.cyan[700],
+                    color: Colors.blue[500],
                     onPressed: () async {
                       print('start');
                       SharedPreferences prefs =
@@ -649,7 +664,9 @@ class _DisplayState extends State<Display> {
                         color: Colors.white,
                       ),
                       Text('$tip',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
+                            
                             fontFamily: 'Montserrat',
                             fontSize: 16,
                             color: Colors.white,
@@ -681,14 +698,14 @@ class _DisplayState extends State<Display> {
                     label: Text('ADD WORKOUT\nDETAILS!',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: Colors.cyan[700],
+                          color: Colors.blue[500],
                           fontSize: 18,
                         )),
 
                     //textColor: Colors.white,
                     shape: RoundedRectangleBorder(
                         side: BorderSide(
-                            color: Colors.cyan[700],
+                            color: Colors.blue[500],
                             width: 3,
                             style: BorderStyle.solid),
                         borderRadius: BorderRadius.circular(10)),
