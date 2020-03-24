@@ -13,7 +13,7 @@ import 'package:sgfit/view/chatbot_display.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
-class DietTrackerDashboard extends StatelessWidget {
+class DietTrackerDashboard1 extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.cyan[900],
+      backgroundColor: Color(0xFF111328),
       body: Container(
         child: MediaQuery.removePadding(
           context: context,
@@ -238,7 +238,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 color: Colors.cyan[700],
                                 child: Text('Enter Food',
                                     style: TextStyle(
-                                      color: Colors.cyan[700],
+                                      color: Colors.white,
                                       fontSize: 25,
                                     )),
 
@@ -257,7 +257,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 30, vertical: 10),
                                 onPressed: null,
-                                disabledColor: Colors.white,
+                                disabledColor: Color(0xFF1D1E33),
                                 child: Container(
                                   width: 200,
                                   child: TextField(
@@ -279,7 +279,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 //textColor: Colors.white,
                                 shape: RoundedRectangleBorder(
                                     side: BorderSide(
-                                        color: Colors.cyan[100],
+                                        color: Colors.white,
                                         width: 3,
                                         style: BorderStyle.solid),
                                     borderRadius: BorderRadius.circular(10)),
@@ -303,18 +303,18 @@ class _MyHomePageState extends State<MyHomePage> {
                                     horizontal: 10, vertical: 10),
 
           
-                                color: Colors.white,
+                                color: Color(0xFF1D1E33),
                                 child: Text(
                                     '    Confirm Entered Food',
                                     style: TextStyle(
-                                      color: Colors.cyan[700],
+                                      color: Colors.white,
                                       fontSize: 18,
                                     )),
 
                                 //textColor: Colors.white,
                                 shape: RoundedRectangleBorder(
                                     side: BorderSide(
-                                        color: Colors.cyan[700],
+                                        color: Colors.white,
                                         width: 3,
                                         style: BorderStyle.solid),
                                     borderRadius: BorderRadius.circular(10)),
@@ -337,7 +337,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               builder: (context) => FlutterFactsDialogFlow()),
                         );
                       },
-                                color: Colors.white,
+                                color: Color(0xFF1D1E33),
                                 child: Row(
                                   children: <Widget>[
                                     Text(
@@ -345,16 +345,16 @@ class _MyHomePageState extends State<MyHomePage> {
                                         'Personal Nutritionist \n '
                                         '              Today!',
                                         style: TextStyle(
-                                          color: Colors.cyan[700],
+                                          color: Colors.white,
                                           fontSize: 18,
                                         ),
                                         ),
                                         Container(
-                          child: IconButton(
-                            onPressed:null,
-                            icon: Icon(Icons.chat),
-                            iconSize: 40,
-                            alignment: Alignment.centerLeft,
+                                          padding: EdgeInsets.only(left:15),
+                          child: Icon(
+                            Icons.chat,
+                            color: Colors.white,
+                        
                           ),
                         )
                                   ],
@@ -363,7 +363,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 //textColor: Colors.white,
                                 shape: RoundedRectangleBorder(
                                     side: BorderSide(
-                                        color: Colors.cyan[700],
+                                        color: Colors.white,
                                         width: 3,
                                         style: BorderStyle.solid),
                                     borderRadius: BorderRadius.circular(10)),
