@@ -94,7 +94,7 @@ class _DisplayState extends State<Display> {
               title: Text(
                 title,
                 style: TextStyle(
-                  color: Colors.cyan[900],
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -143,6 +143,7 @@ class _DisplayState extends State<Display> {
               border: Border.all(
                   color: Colors.white, width: 2, style: BorderStyle.solid)),
           child: TextField(
+            textAlign: TextAlign.center,
             controller: myController1,
             keyboardType: TextInputType.number,
             inputFormatters: [WhitelistingTextInputFormatter.digitsOnly],
@@ -152,7 +153,7 @@ class _DisplayState extends State<Display> {
                 hintText: "Time in mins",
                 hintStyle: TextStyle(
                   fontFamily: 'Roboto',
-                  color: Colors.grey[400],
+                  color: Colors.cyan[900],
                 )),
           ),
         ),
@@ -175,6 +176,7 @@ class _DisplayState extends State<Display> {
               border: Border.all(
                   color: Colors.white, width: 2, style: BorderStyle.solid)),
           child: TextField(
+            textAlign: TextAlign.center,
             controller: myController2,
             keyboardType: TextInputType.number,
             inputFormatters: [WhitelistingTextInputFormatter.digitsOnly],
@@ -184,7 +186,7 @@ class _DisplayState extends State<Display> {
                 hintText: "From 1 to 5",
                 hintStyle: TextStyle(
                   fontFamily: 'Roboto',
-                  color: Colors.grey[400],
+                  color: Colors.cyan[900],
                 )),
           ),
         ),
@@ -431,7 +433,7 @@ class _DisplayState extends State<Display> {
             Row(
               children: <Widget>[
                 IconButton(
-                  icon: Icon(Icons.home),
+                  icon: Icon(Icons.arrow_back),
                   color: Colors.white,
                   disabledColor: Colors.white,
                   tooltip: 'Navigation menu',
@@ -488,16 +490,7 @@ class _DisplayState extends State<Display> {
                           fontSize: 60,
                         ),
                       ),
-                      FutureBuilder(
-                          future: readFromFileAge(),
-                          builder: (BuildContext context,
-                              AsyncSnapshot<String> data) {
-                            if (data.hasData != null) {
-                              age = int.parse(data.data.toString());
-                              print(age);
-                              return Text('');
-                            }
-                          }),
+                      
                       FutureBuilder(
                           future: readFromFileWeight(),
                           builder: (BuildContext context,
@@ -535,6 +528,16 @@ class _DisplayState extends State<Display> {
                           return CircularProgressIndicator();
                         },
                       ),
+                      FutureBuilder(
+                          future: readFromFileAge(),
+                          builder: (BuildContext context,
+                              AsyncSnapshot<String> data) {
+                            if (data.hasData != null) {
+                              age = int.parse(data.data.toString());
+                              print(age);
+                              return Text('');
+                            }
+                          }),
                     ],
                   ),
                   margin: const EdgeInsets.only(top: 40),
@@ -547,36 +550,56 @@ class _DisplayState extends State<Display> {
                 ),
               ],
             ),
-            Row(children: <Widget>[
+            Column(
+              
+              children: <Widget>[
               Container(
-                  child: IconButton(
-                icon: Icon(Icons.refresh),
-                tooltip: 'Reset water consumed',
+                  child: FlatButton.icon(
+              onPressed: () {
+                reset();
+              },
+              label: Text('Reset Water Intake',
+                  style: TextStyle(
+                    fontFamily: 'Roboto',
+                    color: Colors.white,
+                    fontSize: 19,
+                    fontWeight: FontWeight.w300,
+                  )),
+              icon: Icon(Icons.refresh,
                 color: Colors.white,
-                padding: EdgeInsets.only(left: 70),
-                onPressed: () {
-                  reset();
-                },
-                iconSize: 50.0,
-              )),
-              IconButton(
-                icon: Icon(Icons.local_drink),
-                tooltip: 'Navigation menu',
-                color: Colors.white,
-                onPressed: () {
-                  showPopup(
+                size: 50.0,
+              ),
+            
+              // backgroundColor: Colors.cyan[900],
+              shape: RoundedRectangleBorder(),
+            ),
+              ),
+                
+
+              Container(
+                  child: FlatButton.icon(
+              onPressed: () {
+                showPopup(
                       context, _popupBodyContainer(), 'CHOOSE A CONTAINER');
-                },
-                alignment: Alignment.topRight,
-                iconSize: 50.0,
-                padding: EdgeInsets.only(left: 160),
-                disabledColor: Colors.white,
+              },
+              label: Text('Change Container',
+                  style: TextStyle(
+                    fontFamily: 'Roboto',
+                    color: Colors.white,
+                    fontSize: 19,
+                    fontWeight: FontWeight.w300,
+                  )),
+              icon: Icon(Icons.local_drink,
+                color: Colors.white,
+                size: 50.0,
               ),
-              Container(
-                child: Text('CHANGE',
-                    style: TextStyle(color: Colors.white, fontSize: 13)),
-                padding: EdgeInsets.only(top: 25),
+            
+              // backgroundColor: Colors.cyan[900],
+              shape: RoundedRectangleBorder(),
+            ),
               ),
+
+
             ]),
             Row(children: <Widget>[
               Container(
@@ -613,7 +636,7 @@ class _DisplayState extends State<Display> {
                         borderRadius: BorderRadius.circular(10)),
                     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                   ),
-                  padding: EdgeInsets.only(top: 60, left: 38))
+                  padding: EdgeInsets.only(top: 60, left: 43))
             ]),
             Row(children: <Widget>[
               Container(
@@ -634,13 +657,16 @@ class _DisplayState extends State<Display> {
                     ] //
                     ),
                 decoration: BoxDecoration(
+                  
                     border: Border.all(
                   color: Colors.white,
                 )),
-                margin: const EdgeInsets.only(left: 30, top: 32),
+                margin: const EdgeInsets.only(left: 30, top: 32, right: 25),
                 width: 150,
                 height: 95,
+                padding: EdgeInsets.only(top: 4.3),
               ),
+              
               Container(
                   width: 180,
                   height: 130,
