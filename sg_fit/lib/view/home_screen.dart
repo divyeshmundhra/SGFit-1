@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:sgfit/view/help.dart';
 import 'package:sgfit/view/update_particulars.dart';
 import 'package:sgfit/view/diet_tracker_dashboard.dart';
-import 'package:sgfit/view/diettrackertry.dart';
+import 'package:sgfit/animation/fade_animation.dart';
 
 import 'water_tracker_dashboard.dart';
 
@@ -26,57 +26,65 @@ class HomeScreen extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  RaisedButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                        side: BorderSide(color: Colors.white)),
-                    padding: EdgeInsets.fromLTRB(_width, 20, _width, 20),
-                    textColor: Colors.white,
-                    color: Colors.blue[600],
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Display()),
-                      );
-                    },
-                    child: Column(children: <Widget>[
-                      Icon(
-                        Icons.opacity,
-                        color: Colors.white,
-                        size: 100,
-                      ),
-                      Text("Water Tracker",
-                          style: TextStyle(
-                              fontSize: 25, fontWeight: FontWeight.bold))
-                    ]),
-                  ),
+                  FadeAnimation(
+                      0.2,
+                      Container(
+                          child: RaisedButton(
+                        elevation: 10,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.white)),
+                        padding: EdgeInsets.fromLTRB(_width, 20, _width, 20),
+                        textColor: Colors.white,
+                        color: Colors.blue[600],
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Display()),
+                          );
+                        },
+                        child: Column(children: <Widget>[
+                          Icon(
+                            Icons.opacity,
+                            color: Colors.white,
+                            size: 100,
+                          ),
+                          Text("Water Tracker",
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold))
+                        ]),
+                      ))),
                   SizedBox(height: 20),
-                  RaisedButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                        side: BorderSide(color: Colors.white)),
-                    padding:
-                        EdgeInsets.fromLTRB(_width + 12, 20, _width + 12, 25),
-                    textColor: Colors.white,
-                    color: Colors.blue[600],
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => DietTrackerDashboard()),
-                      );
-                    },
-                    child: Column(children: <Widget>[
-                      Icon(
-                        Icons.fastfood,
-                        color: Colors.white,
-                        size: 100,
-                      ),
-                      Text("Diet Tracker",
-                          style: TextStyle(
-                              fontSize: 25, fontWeight: FontWeight.bold))
-                    ]),
-                  ),
+                  FadeAnimation(
+                      0.4,
+                      Container(
+                          child: RaisedButton(
+                        elevation: 10,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.white)),
+                        padding: EdgeInsets.fromLTRB(
+                            _width + 12, 20, _width + 12, 25),
+                        textColor: Colors.white,
+                        color: Colors.blue[600],
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DietTrackerDashboard()),
+                          );
+                        },
+                        child: Column(children: <Widget>[
+                          Icon(
+                            Icons.fastfood,
+                            color: Colors.white,
+                            size: 100,
+                          ),
+                          Text("Diet Tracker",
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold))
+                        ]),
+                      ))),
                   SizedBox(height: 40),
                   RaisedButton(
                     shape: RoundedRectangleBorder(

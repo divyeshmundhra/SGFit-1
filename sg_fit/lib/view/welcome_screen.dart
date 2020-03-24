@@ -27,44 +27,38 @@ class WelcomeScreen extends StatelessWidget {
                     if (data.hasData != null) {
                       userRegistered = data.data.toString();
                       if (userRegistered == "1") {
-                        return Container(
-                            height: 50,
-                            width: 200,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.blue[600],
-                            ),
-                            child: Center(child: Text("You are Registered")));
+                        return DefaultTextStyle(
+                            style: TextStyle(color: Colors.blue[400]),
+                            child: Container(
+                              height: 0,
+                              width: 0,
+                            ));
                       } else {
                         return Container(
-                            height: 50,
-                            width: 200,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.blue[600]),
-                            child:
-                                Center(child: Text("You are not Registered")));
+                          height: 0,
+                          width: 0,
+                        );
                       }
                     }
                   }),
               Container(
-                height: 300,
+                height: 340,
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('assets/images/reg_page_logo.png'))),
+                        image: AssetImage('assets/images/logo_full.png'))),
                 child: Stack(
                   children: <Widget>[
                     Positioned(
                         child: Container(
-                            margin: EdgeInsets.only(top: 200),
+                            margin: EdgeInsets.only(top: 290),
                             child: Center(
                                 child: RaisedButton(
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(18.0),
-                                  side: BorderSide(color: Colors.grey)),
+                                  side: BorderSide(color: Colors.white)),
                               padding: EdgeInsets.fromLTRB(50, 10, 50, 10),
-                              textColor: Colors.black,
-                              color: Colors.grey[50],
+                              textColor: Colors.white,
+                              color: Colors.blue[600],
                               child: Text('Tap to Continue',
                                   style: TextStyle(
                                     fontSize: 20,
