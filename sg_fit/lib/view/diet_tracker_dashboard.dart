@@ -17,6 +17,7 @@ class DietTrackerDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MyHomePage(title: 'Water Tracker'),
     );
   }
@@ -321,7 +322,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     horizontal: 10, vertical: 20),
 
                                 color: Colors.blue[500],
-                                child: Text('    GET CALORIES!    ',
+                                child: Text('    CONFIRM FOOD INTAKE!   ',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18,
