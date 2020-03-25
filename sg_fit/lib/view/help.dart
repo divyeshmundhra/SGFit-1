@@ -12,6 +12,7 @@ class Help extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.grey[50],
+          elevation: 0.0,
           iconTheme: IconThemeData(
             color: Colors.blue[600], //change your color here
           ),

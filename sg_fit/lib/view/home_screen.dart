@@ -18,6 +18,24 @@ class HomeScreen extends StatelessWidget {
     double _width_small = MediaQuery.of(context).size.width * 0.10;
 
     return new Scaffold(
+        appBar: AppBar(
+            title: Text("SGFit",
+                style: TextStyle(
+                    color: Colors.blue[600],
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold)),
+            backgroundColor: Colors.grey[50],
+            brightness: Brightness.light,
+            elevation: 0,
+            iconTheme: IconThemeData(
+              color: Colors.grey[50], //change your color here
+            ),
+            bottom: PreferredSize(
+                child: Container(
+                  color: Colors.blue[600],
+                  height: 4.0,
+                ),
+                preferredSize: Size.fromHeight(4.0))),
         backgroundColor: Colors.grey[50],
         body: Center(
           child: Column(
