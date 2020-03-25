@@ -118,7 +118,7 @@ class HomeScreen extends StatelessWidget {
                       );
                     },
                     child: Column(children: <Widget>[
-                      Text("HELP",
+                      Text("ABOUT",
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold))
                     ]),

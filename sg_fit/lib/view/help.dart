@@ -4,6 +4,7 @@
  * @author Jay Gupta
  */
 import 'package:flutter/material.dart';
+import 'package:sgfit/animation/fade_animation.dart';
 
 class Help extends StatelessWidget {
   @override
@@ -11,12 +12,23 @@ class Help extends StatelessWidget {
     double _width = MediaQuery.of(context).size.width * 0.05;
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.grey[50],
-          elevation: 0.0,
-          iconTheme: IconThemeData(
-            color: Colors.blue[600], //change your color here
-          ),
-        ),
+            title: Text("About",
+                style: TextStyle(
+                    color: Colors.blue[600],
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold)),
+            backgroundColor: Colors.grey[50],
+            brightness: Brightness.light,
+            elevation: 0,
+            iconTheme: IconThemeData(
+              color: Colors.blue[600], //change your color here
+            ),
+            bottom: PreferredSize(
+                child: Container(
+                  color: Colors.blue[600],
+                  height: 4.0,
+                ),
+                preferredSize: Size.fromHeight(4.0))),
         backgroundColor: Colors.grey[50],
         body: Center(
           child: Column(
@@ -25,54 +37,64 @@ class Help extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  RaisedButton(
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                        side: BorderSide(color: Colors.grey[50])),
-                    padding: EdgeInsets.fromLTRB(_width, 20, _width, 20),
-                    textColor: Colors.blue[600],
-                    color: Colors.grey[50],
-                    onPressed: () {
-                      // Navigator.push(
-                      //  context,
-                      // MaterialPageRoute(builder: (context) => DisplayForm()),
-                      //);
-                    },
-                    child: Column(children: <Widget>[
-                      Icon(
-                        Icons.fitness_center,
-                        color: Colors.blue[400],
-                        size: 100,
-                      ),
-                      SizedBox(height: 20),
-                      Text("SGFit",
-                          style: TextStyle(
-                              fontSize: 35, fontWeight: FontWeight.bold)),
-                      Text(
-                        "SGFit application aims to facilitate and encourage fitness, hydration and nutritional food intake in Singapore. ",
-                        style: TextStyle(fontSize: 15),
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(height: 30),
-                      Text("Contact",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold)),
-                      SizedBox(height: 10),
-                      Text("Jay - JAY002@e.ntu.edu.sg",
-                          style: TextStyle(fontSize: 15)),
-                      Text("Divyesh - DIVYESH001@e.ntu.edu.sg",
-                          style: TextStyle(fontSize: 15)),
-                      Text("Swathi - SWATHI005@e.ntu.edu.sg",
-                          style: TextStyle(fontSize: 15)),
-                      Text("Soham - SOHAM003@e.ntu.edu.sg",
-                          style: TextStyle(fontSize: 15)),
-                      Text("Ritik - RITIK001@e.ntu.edu.sg",
-                          style: TextStyle(fontSize: 15)),
-                      Text("Nishka - NISHKA001@e.ntu.edu.sg",
-                          style: TextStyle(fontSize: 15))
-                    ]),
-                  ),
+                  FadeAnimation(
+                      0.5,
+                      Container(
+                          height: 320,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                      'assets/images/logo_full.png'))),
+                          child: Stack(
+                            children: <Widget>[
+                              Positioned(
+                                  child: Container(
+                                      margin: EdgeInsets.only(top: 260),
+                                      child: Center(
+                                          child: Text("SGFit v1.0",
+                                              style: TextStyle(
+                                                  fontSize: 40,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.blue[600]))))),
+                            ],
+                          ))),
+                  FadeAnimation(
+                      0.8,
+                      RaisedButton(
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.grey[50])),
+                        padding: EdgeInsets.fromLTRB(_width, 0, _width, 20),
+                        textColor: Colors.blue[600],
+                        color: Colors.grey[50],
+                        onPressed: () {
+                          // Navigator.push(
+                          //  context,
+                          // MaterialPageRoute(builder: (context) => DisplayForm()),
+                          //);
+                        },
+                        child: Column(children: <Widget>[
+                          Text(
+                            "SGFit application aims to facilitate and encourage fitness, hydration and nutritional food intake throughout Singapore. ",
+                            style: TextStyle(fontSize: 15),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(height: 30),
+                          Text("Creators",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold)),
+                          SizedBox(height: 10),
+                          Text("Jay Gupta", style: TextStyle(fontSize: 15)),
+                          Text("Divyesh Mundhra",
+                              style: TextStyle(fontSize: 15)),
+                          Text("Swathi Kumar", style: TextStyle(fontSize: 15)),
+                          Text("Soham Dandapath",
+                              style: TextStyle(fontSize: 15)),
+                          Text("Ritik Bhatia", style: TextStyle(fontSize: 15)),
+                          Text("Nishka Khendry", style: TextStyle(fontSize: 15))
+                        ]),
+                      )),
                 ],
               )
             ],
