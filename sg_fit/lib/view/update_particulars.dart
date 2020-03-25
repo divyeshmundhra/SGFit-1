@@ -24,12 +24,23 @@ class UpdateParticularsStage extends State<UpdateParticulars> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.grey[50],
-          elevation: 0.0,
-          iconTheme: IconThemeData(
-            color: Colors.blue[600], //change your color here
-          ),
-        ),
+            title: Text("Update Details",
+                style: TextStyle(
+                    color: Colors.blue[600],
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold)),
+            backgroundColor: Colors.grey[50],
+            brightness: Brightness.light,
+            elevation: 0,
+            iconTheme: IconThemeData(
+              color: Colors.blue[600], //change your color here
+            ),
+            bottom: PreferredSize(
+                child: Container(
+                  color: Colors.blue[600],
+                  height: 4.0,
+                ),
+                preferredSize: Size.fromHeight(4.0))),
         backgroundColor: Colors.grey[50],
         body: Container(
             child: MediaQuery.removePadding(
@@ -37,27 +48,17 @@ class UpdateParticularsStage extends State<UpdateParticulars> {
                 removeTop: true,
                 child: SingleChildScrollView(
                     child: Column(children: <Widget>[
+                  SizedBox(
+                    height: 70,
+                  ),
                   FadeAnimation(
-                      0.5,
-                      Container(
-                          height: 220,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                      'assets/images/reg_page_logo.png'))),
-                          child: Stack(
-                            children: <Widget>[
-                              Positioned(
-                                  child: Container(
-                                      margin: EdgeInsets.only(top: 170),
-                                      child: Center(
-                                          child: Text("Update Details",
-                                              style: TextStyle(
-                                                  fontSize: 40,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.blue[600]))))),
-                            ],
-                          ))),
+                    0.5,
+                    Icon(
+                      Icons.supervised_user_circle,
+                      color: Colors.blue[600],
+                      size: 200,
+                    ),
+                  ),
                   FadeAnimation(
                       0.7,
                       Padding(
@@ -180,7 +181,8 @@ class UpdateParticularsStage extends State<UpdateParticulars> {
                                   child: Center(
                                       child: Text(
                                     "Update",
-                                    style: TextStyle(color: Colors.white),
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
                                   )))
                             ],
                           )))
