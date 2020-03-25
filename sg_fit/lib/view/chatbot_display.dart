@@ -53,7 +53,7 @@ class _FlutterFactsDialogFlowState extends State<FlutterFactsDialogFlow> {
     FactsMessage message = FactsMessage(
       text: response.getMessage() ??
           CardDialogflow(response.getListMessage()[0]).title,
-      name: "Nutrition Bot",
+      name: "Nutrition Expert",
       type: false,
     );
     setState(() {
@@ -65,7 +65,7 @@ class _FlutterFactsDialogFlowState extends State<FlutterFactsDialogFlow> {
     _textController.clear();
     FactsMessage message = new FactsMessage(
       text: text,
-      name: "User",
+      name: "You",
       type: true,
     );
     setState(() {
@@ -78,13 +78,23 @@ class _FlutterFactsDialogFlowState extends State<FlutterFactsDialogFlow> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[600],
-        centerTitle: true,
-        title: Text("Conversational Nutrition Expert"),
-        iconTheme: IconThemeData(
-          color: Colors.white, //change your color here
-        ),
-      ),
+          title: Text("Nutrition Expert",
+              style: TextStyle(
+                  color: Colors.blue[600],
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold)),
+          backgroundColor: Colors.grey[50],
+          brightness: Brightness.light,
+          elevation: 0,
+          iconTheme: IconThemeData(
+            color: Colors.blue[600], //change your color here
+          ),
+          bottom: PreferredSize(
+              child: Container(
+                color: Colors.blue[600],
+                height: 4.0,
+              ),
+              preferredSize: Size.fromHeight(4.0))),
       backgroundColor: Colors.grey[50],
       body: Column(children: <Widget>[
         Row(
@@ -121,6 +131,9 @@ class _FlutterFactsDialogFlowState extends State<FlutterFactsDialogFlow> {
         Container(
           decoration: new BoxDecoration(color: Theme.of(context).cardColor),
           child: _queryInputWidget(context),
+        ),
+        SizedBox(
+          height: 20,
         ),
       ]),
     );

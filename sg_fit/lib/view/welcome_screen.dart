@@ -15,7 +15,7 @@ class WelcomeScreen extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[50],
+        backgroundColor: Colors.blue[600],
         body: Center(
             child: MediaQuery.removePadding(
           context: context,
@@ -51,15 +51,15 @@ class WelcomeScreen extends StatelessWidget {
                         child: FadeAnimation(
                             1,
                             Container(
-                                margin: EdgeInsets.only(top: 290),
+                                margin: EdgeInsets.only(top: 200),
                                 child: Center(
                                     child: RaisedButton(
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(18.0),
                                       side: BorderSide(color: Colors.white)),
                                   padding: EdgeInsets.fromLTRB(50, 10, 50, 10),
-                                  textColor: Colors.white,
-                                  color: Colors.blue[600],
+                                  textColor: Colors.blue[600],
+                                  color: Colors.grey[50],
                                   child: Text('Tap to Continue',
                                       style: TextStyle(
                                         fontSize: 20,

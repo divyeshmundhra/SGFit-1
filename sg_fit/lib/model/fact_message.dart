@@ -12,7 +12,10 @@ class FactsMessage extends StatelessWidget {
       Container(
         margin: const EdgeInsets.only(right: 16.0),
         child: CircleAvatar(
-          child: new Icon(Icons.face),
+          child: new Icon(
+            Icons.face,
+            size: 50,
+          ),
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
         ),
@@ -27,7 +30,7 @@ class FactsMessage extends StatelessWidget {
               padding: EdgeInsets.all(10),
               child: Text(
                 text,
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white, fontSize: 20),
               ),
               decoration: BoxDecoration(
                 color: Colors.blue[600],
@@ -51,7 +54,7 @@ class FactsMessage extends StatelessWidget {
               padding: EdgeInsets.all(10),
               child: Text(
                 text,
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(color: Colors.black, fontSize: 20),
               ),
               decoration: BoxDecoration(
                 color: Colors.grey[300],
@@ -61,9 +64,9 @@ class FactsMessage extends StatelessWidget {
         ),
       ),
       Container(
-        margin: const EdgeInsets.only(left: 16.0),
+        margin: const EdgeInsets.only(left: 16.0, right: 16),
         child: CircleAvatar(
-          child: new Icon(Icons.account_circle),
+          child: new Icon(Icons.account_circle, size: 50),
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
         ), //Text(this.name[0])
