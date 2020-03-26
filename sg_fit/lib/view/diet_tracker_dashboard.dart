@@ -17,10 +17,7 @@ class DietTrackerDashboard extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MyHomePage(title: 'Water Tracker'),
-    );
+    return MyHomePage();
   }
 }
 
@@ -32,7 +29,7 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
+class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   String caloriesConsumed = "0";
   int control_flag = 0;
   Future<WeatherDetails> tempdata;
@@ -40,7 +37,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
   final myController = TextEditingController();
   AnimationController _controller;
   Animation<double> _animation;
-  
 
   void initState() {
     super.initState();
@@ -95,15 +91,32 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
   @override
   Widget build(BuildContext context) {
     _animation = new Tween<double>(
-        begin: _animation.value,
-        end: double.parse('$caloriesConsumed'),
+      begin: _animation.value,
+      end: double.parse('$caloriesConsumed'),
     ).animate(new CurvedAnimation(
       curve: Curves.fastOutSlowIn,
       parent: _controller,
     ));
     TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      
+      appBar: AppBar(
+          title: Text("Diet Tracker",
+              style: TextStyle(
+                  color: Colors.grey[50],
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold)),
+          backgroundColor: Colors.blue[800],
+          brightness: Brightness.light,
+          elevation: 0,
+          iconTheme: IconThemeData(
+            color: Colors.grey[50], //change your color here
+          ),
+          bottom: PreferredSize(
+              child: Container(
+                color: Colors.grey[50],
+                height: 4.0,
+              ),
+              preferredSize: Size.fromHeight(4.0))),
       backgroundColor: Colors.blue[800],
       body: Container(
         child: MediaQuery.removePadding(
@@ -114,56 +127,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
                 // Center is a layout widget. It takes a single child and positions it
                 // in the middle of the parent.
                 children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      IconButton(
-                        icon: Icon(Icons.arrow_back),
-                        color: Colors.white,
-                        disabledColor: Colors.white,
-                        tooltip: 'Navigation menu',
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HomeScreen()),
-                          );
-                        },
-                        iconSize: 50.0,
-                        padding: EdgeInsets.only(left: 10, top: 40),
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.cloud, color: Colors.white),
-                        tooltip: 'Navigation menu',
-                        onPressed: null,
-                        alignment: Alignment.topRight,
-                        iconSize: 50.0,
-                        padding: EdgeInsets.only(left: 180, top: 40),
-                        disabledColor: Colors.white,
-                      ),
-                      Container(
-                        child: FutureBuilder<WeatherDetails>(
-                          future: tempdata,
-                          builder: (context, snapshot) {
-                            if (snapshot.hasData) {
-                              return Text(
-                                snapshot.data.temp.toString() + '°C',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 25,
-                                ),
-                              );
-                            } else if (snapshot.hasError) {
-                              return Text("${snapshot.error}");
-                            }
-
-                            // By default, show a loading spinner.
-                            return CircularProgressIndicator();
-                          },
-                        ),
-                        margin: const EdgeInsets.only(top: 40, left: 15),
-                      ),
-                    ],
-                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -181,20 +144,26 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
                                         SizedBox(height: 75),
                                         Center(
                                           child: new AnimatedBuilder(
-                animation: _animation,
-                builder: (BuildContext context, Widget child) {
-                  return new Text(
-                    _animation.value.toStringAsFixed(1),
-                    style: TextStyle(color: Colors.white, fontSize: 60),
-                  );
-                },
-              ),
+                                            animation: _animation,
+                                            builder: (BuildContext context,
+                                                Widget child) {
+                                              return new Text(
+                                                _animation.value
+                                                    .toStringAsFixed(1),
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 60),
+                                              );
+                                            },
+                                          ),
                                         ),
                                         Center(
                                           child: Text(
-                  "Calories",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-              ),
+                                            "Calories",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
                                         ),
                                       ]),
                                 );
@@ -250,7 +219,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
                         Text("Reset Calories",
                             style: TextStyle(color: Colors.white, fontSize: 25))
                       ]),
-                    
                   SizedBox(
                     height: 50,
                   ),
@@ -338,16 +306,16 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
                                   setState(() {
                                     futureAlbum = fetchAlbum(myController.text);
                                     control_flag = 1;
-                                     _animation = new Tween<double>(
-                                        begin: _animation.value,
-                                        end: double.parse('$caloriesConsumed'),
+                                    _animation = new Tween<double>(
+                                      begin: _animation.value,
+                                      end: double.parse('$caloriesConsumed'),
                                     ).animate(new CurvedAnimation(
                                       curve: Curves.fastOutSlowIn,
                                       parent: _controller,
                                     ));
                                   });
-                                  
-                                   _controller.forward(from: 0.0);
+
+                                  _controller.forward(from: 0.0);
                                 },
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 20),
@@ -441,18 +409,17 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
         ),
       ),
       floatingActionButton: new FloatingActionButton(
-        shape: CircleBorder(side: BorderSide(color: Colors.white)),
-        child: new Icon(Icons.chat),
-        onPressed: () {
-          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      FlutterFactsDialogFlow()),
-                            );
-          
-        }
-      ),
+          shape: CircleBorder(side: BorderSide(color: Colors.white)),
+          child: new Icon(
+            Icons.chat,
+            size: 20,
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => FlutterFactsDialogFlow()),
+            );
+          }),
     );
   }
 }
