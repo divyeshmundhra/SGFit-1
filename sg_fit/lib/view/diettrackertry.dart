@@ -6,6 +6,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'dart:math';
 import 'package:sgfit/model/nutritionix_rakuten.dart';
 import 'package:sgfit/model/weather_details.dart';
 import 'package:sgfit/view/home_screen.dart';
@@ -31,23 +32,39 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   String caloriesConsumed = "0";
   int control_flag = 0;
   Future<WeatherDetails> tempdata;
   Future<Album> futureAlbum;
   final myController = TextEditingController();
+  AnimationController _controller;
+  Animation<double> _animation;
+  double _miles = 0.0;
+  
 
   void initState() {
     super.initState();
     tempdata = getWeatherDetails();
     getDailyCalories();
+    _controller = new AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1500),
+    );
+    _animation = _controller;
+    super.initState();
   }
   
   @override
   void dispose() {
     myController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void dispose1() {
+    _controller.dispose();
     super.dispose();
   }
 
@@ -86,6 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
       backgroundColor: Color(0xFF111328),
       body: Container(
@@ -97,6 +115,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 // Center is a layout widget. It takes a single child and positions it
                 // in the middle of the parent.
                 children: <Widget>[
+                  new AnimatedBuilder(
+                animation: _animation,
+                builder: (BuildContext context, Widget child) {
+                  return new Text(
+                    _animation.value.toStringAsFixed(1),
+                    style: textTheme.display4.copyWith(fontStyle: FontStyle.italic),
+                  );
+                },
+              ),
+              new Text(
+                  "MILES",
+                  style: textTheme.display1.copyWith(fontStyle: FontStyle.italic),
+              ),
+              
                   Row(
                     children: <Widget>[
                       IconButton(
@@ -374,6 +406,23 @@ class _MyHomePageState extends State<MyHomePage> {
                 ]),
           ),
         ),
+      ),
+         floatingActionButton: new FloatingActionButton(
+        child: new Icon(Icons.directions_run),
+        onPressed: () {
+          Random rng = new Random();
+          setState(() {
+            _miles += rng.nextInt(20) + 0.3;
+            _animation = new Tween<double>(
+                begin: _animation.value,
+                end: _miles,
+            ).animate(new CurvedAnimation(
+              curve: Curves.fastOutSlowIn,
+              parent: _controller,
+            ));
+          });
+          _controller.forward(from: 0.0);
+        }
       ),
     );
   }

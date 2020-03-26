@@ -6,6 +6,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'dart:math';
 import 'package:sgfit/model/nutritionix_rakuten.dart';
 import 'package:sgfit/model/weather_details.dart';
 import 'package:sgfit/view/home_screen.dart';
@@ -31,17 +32,26 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
   String caloriesConsumed = "0";
   int control_flag = 0;
   Future<WeatherDetails> tempdata;
   Future<Album> futureAlbum;
   final myController = TextEditingController();
+  AnimationController _controller;
+  Animation<double> _animation;
+  
 
   void initState() {
     super.initState();
     tempdata = getWeatherDetails();
     getDailyCalories();
+    _controller = new AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 4500),
+    );
+    _animation = _controller;
+    super.initState();
   }
 
   @override
@@ -84,7 +94,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    _animation = new Tween<double>(
+        begin: _animation.value,
+        end: double.parse('$caloriesConsumed'),
+    ).animate(new CurvedAnimation(
+      curve: Curves.fastOutSlowIn,
+      parent: _controller,
+    ));
+    TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
+      
       backgroundColor: Colors.blue[800],
       body: Container(
         child: MediaQuery.removePadding(
@@ -161,19 +180,21 @@ class _MyHomePageState extends State<MyHomePage> {
                                       children: <Widget>[
                                         SizedBox(height: 75),
                                         Center(
-                                          child: Text(
-                                            '$caloriesConsumed',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 60),
-                                          ),
+                                          child: new AnimatedBuilder(
+                animation: _animation,
+                builder: (BuildContext context, Widget child) {
+                  return new Text(
+                    _animation.value.toStringAsFixed(1),
+                    style: TextStyle(color: Colors.white, fontSize: 60),
+                  );
+                },
+              ),
                                         ),
                                         Center(
-                                          child: Text("Calories",
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 30,
-                                                  fontFamily: 'Montserrat')),
+                                          child: Text(
+                  "Calories",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
                                         ),
                                       ]),
                                 );
@@ -229,6 +250,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Text("Reset Calories",
                             style: TextStyle(color: Colors.white, fontSize: 25))
                       ]),
+                    
                   SizedBox(
                     height: 50,
                   ),
@@ -316,7 +338,16 @@ class _MyHomePageState extends State<MyHomePage> {
                                   setState(() {
                                     futureAlbum = fetchAlbum(myController.text);
                                     control_flag = 1;
+                                     _animation = new Tween<double>(
+                                        begin: _animation.value,
+                                        end: double.parse('$caloriesConsumed'),
+                                    ).animate(new CurvedAnimation(
+                                      curve: Curves.fastOutSlowIn,
+                                      parent: _controller,
+                                    ));
                                   });
+                                  
+                                   _controller.forward(from: 0.0);
                                 },
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 20),
@@ -408,6 +439,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 ]),
           ),
         ),
+      ),
+      floatingActionButton: new FloatingActionButton(
+        shape: CircleBorder(side: BorderSide(color: Colors.white)),
+        child: new Icon(Icons.chat),
+        onPressed: () {
+          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      FlutterFactsDialogFlow()),
+                            );
+          
+        }
       ),
     );
   }
