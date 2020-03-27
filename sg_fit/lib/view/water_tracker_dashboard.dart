@@ -523,6 +523,7 @@ class _DisplayState extends State<Display> {
                                     return Text('');
                                   }
                                 }),
+
                                 FutureBuilder(
                                 future: readFromFileAge(),
                                 builder: (BuildContext context,
@@ -584,7 +585,7 @@ class _DisplayState extends State<Display> {
                       ),
                     ],
                   ),
-                  Column(
+                   Column(
                     
                     children: <Widget>[
                     Container(
@@ -637,47 +638,56 @@ class _DisplayState extends State<Display> {
                   ]),
 
                   Row(children: <Widget>[
+                    
                     Container(
+
                       width: 210,
-                      height: 120,
-                      child: FloatingActionButton.extended(
-
-                          backgroundColor: Colors.white,
-
+                      height: 130,
+                      child: FlatButton(
+                          color: Colors.white,
                           onPressed: () async {
-                            SharedPreferences prefs = await SharedPreferences.getInstance();
+                            print('start');
+                            SharedPreferences prefs =
+                                await SharedPreferences.getInstance();
                             setState(() {
                               globals.waterconsumedi =
                                   globals.waterconsumedi + globals.containersize;
                               waterconsumeds = (globals.waterconsumedi).toString();
                               print(globals.containersize);
                             });
-                            await prefs.setInt(
-                                'waterconsumed', globals.waterconsumedi); 
-                          },
 
-                          label: Text('CONFIRM WATER\nINTAKE',
+                            await prefs.setInt(
+                                'waterconsumed', globals.waterconsumedi);
+                            print('end');
+                          },
+                          disabledColor: Colors.white,
+                          
+                          child: Text('CONFIRM WATER INTAKE!',
                               textAlign: TextAlign.center,
                               style: TextStyle(
+                                fontWeight: FontWeight.bold,
                                 color: Colors.blue[500],
                                 fontSize: 18,
                               )),
+                        
 
-                          
+                          //textColor: Colors.white,
                           shape: RoundedRectangleBorder(
                               side: BorderSide(
                                   color: Colors.blue[500],
                                   width: 3,
                                   style: BorderStyle.solid),
                               borderRadius: BorderRadius.circular(10)),
-                          
+                          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                         ),
-                        padding: EdgeInsets.only(top: 35, left: 15)
+                        padding: EdgeInsets.only(top: 35, left: 10)
+                      
                     ),
-                    
+
+
                     Container(
                         width: 190,
-                        height: 120,
+                        height: 130,
                         child: FloatingActionButton.extended(
                           onPressed: () {
                             showPopup(
@@ -689,6 +699,7 @@ class _DisplayState extends State<Display> {
                           label: Text('ADD WORKOUT\nDETAILS!',
                               textAlign: TextAlign.center,
                               style: TextStyle(
+                                fontWeight: FontWeight.bold,
                                 color: Colors.blue[500],
                                 fontSize: 18,
                               )),
@@ -702,13 +713,17 @@ class _DisplayState extends State<Display> {
                               borderRadius: BorderRadius.circular(10)),
                           // padding: EdgeInsets.symmetric(horizontal: 30, vertical: 25),
                         ),
-                        padding: EdgeInsets.only(top: 35, left: 15)),
+                        padding: EdgeInsets.only(top: 35, left: 10)),
+
+
+
                   ]),
 
-                  Row(children: <Widget>[
+                  Row(
+                    children: <Widget>[
                     Container(
-                      
-                      child: Column(
+                        
+                        child: Column(
                           // decoration: BoxDecoration(),
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
@@ -735,6 +750,7 @@ class _DisplayState extends State<Display> {
                       width: 350,
                       height: 95,
                       padding: EdgeInsets.only(top: 4.3),
+
                         )
                   ]),
                   
