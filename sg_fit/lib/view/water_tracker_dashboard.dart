@@ -477,7 +477,7 @@ class _DisplayState extends State<Display> {
                         onPressed: null,
                         alignment: Alignment.topRight,
                         iconSize: 50.0,
-                        padding: EdgeInsets.only(left: 180, top: 40),
+                        padding: EdgeInsets.only(left: 210, top: 40),
                         disabledColor: Colors.white,
                       ),
                       Container(
@@ -511,13 +511,7 @@ class _DisplayState extends State<Display> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text(
-                              '$waterconsumeds' + ' ml',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 60,
-                              ),
-                            ),
+                            
                             
                             FutureBuilder(
                                 future: readFromFileWeight(),
@@ -529,6 +523,27 @@ class _DisplayState extends State<Display> {
                                     return Text('');
                                   }
                                 }),
+                                FutureBuilder(
+                                future: readFromFileAge(),
+                                builder: (BuildContext context,
+                                    AsyncSnapshot<String> data) {
+                                  if (data.hasData != null) {
+                                    age = int.parse(data.data.toString());
+                                    print(age);
+                                    return Text('');
+                                  }
+                                }),
+
+
+                                Text(
+                                    '$waterconsumeds' + ' ml',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 60,
+                                    ),
+                                  ),
+
+
                             FutureBuilder<WeatherDetails>(
                               future: tempdata,
                               builder: (context, snapshot) {
@@ -542,7 +557,7 @@ class _DisplayState extends State<Display> {
                                   globals.target = a.toInt();
                                   finaltarget = globals.target.toString();
                                   return Text(
-                                    '/' + '$finaltarget' + 'ml',
+                                    'of ' + '$finaltarget' + 'ml',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 20,
@@ -556,19 +571,10 @@ class _DisplayState extends State<Display> {
                                 return CircularProgressIndicator();
                               },
                             ),
-                            FutureBuilder(
-                                future: readFromFileAge(),
-                                builder: (BuildContext context,
-                                    AsyncSnapshot<String> data) {
-                                  if (data.hasData != null) {
-                                    age = int.parse(data.data.toString());
-                                    print(age);
-                                    return Text('');
-                                  }
-                                }),
+                            
                           ],
                         ),
-                        margin: const EdgeInsets.only(top: 40),
+                        padding: EdgeInsets.only(bottom: 40),
                         width: 250,
                         height: 250,
                         decoration: new BoxDecoration(
@@ -629,77 +635,49 @@ class _DisplayState extends State<Display> {
 
 
                   ]),
+
                   Row(children: <Widget>[
                     Container(
-                        child: FlatButton(
-                          color: Colors.blue[500],
+                      width: 210,
+                      height: 120,
+                      child: FloatingActionButton.extended(
+
+                          backgroundColor: Colors.white,
+
                           onPressed: () async {
-                            print('start');
-                            SharedPreferences prefs =
-                                await SharedPreferences.getInstance();
+                            SharedPreferences prefs = await SharedPreferences.getInstance();
                             setState(() {
                               globals.waterconsumedi =
                                   globals.waterconsumedi + globals.containersize;
                               waterconsumeds = (globals.waterconsumedi).toString();
                               print(globals.containersize);
                             });
-
                             await prefs.setInt(
-                                'waterconsumed', globals.waterconsumedi);
-                            print('end');
+                                'waterconsumed', globals.waterconsumedi); 
                           },
-                          disabledColor: Colors.white,
-                          child: Text('CONFIRM WATER INTAKE!',
+
+                          label: Text('CONFIRM WATER\nINTAKE',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 22,
+                                color: Colors.blue[500],
+                                fontSize: 18,
                               )),
 
-                          //textColor: Colors.white,
+                          
                           shape: RoundedRectangleBorder(
                               side: BorderSide(
-                                  color: Colors.white,
+                                  color: Colors.blue[500],
                                   width: 3,
                                   style: BorderStyle.solid),
                               borderRadius: BorderRadius.circular(10)),
-                          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                          
                         ),
-                        padding: EdgeInsets.only(top: 60, left: 43))
-                  ]),
-                  Row(children: <Widget>[
-                    Container(
-                      child: Column(
-                          // decoration: BoxDecoration(),
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Icon(
-                              Icons.lightbulb_outline,
-                              color: Colors.white,
-                            ),
-                            Text('$tip',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  
-                                  fontFamily: 'Montserrat',
-                                  fontSize: 16,
-                                  color: Colors.white,
-                                ))
-                          ] //
-                          ),
-                      decoration: BoxDecoration(
-                        
-                          border: Border.all(
-                        color: Colors.white,
-                      )),
-                      margin: const EdgeInsets.only(left: 30, top: 32, right: 25),
-                      width: 150,
-                      height: 95,
-                      padding: EdgeInsets.only(top: 4.3),
+                        padding: EdgeInsets.only(top: 35, left: 15)
                     ),
                     
                     Container(
-                        width: 180,
-                        height: 130,
+                        width: 190,
+                        height: 120,
                         child: FloatingActionButton.extended(
                           onPressed: () {
                             showPopup(
@@ -724,8 +702,42 @@ class _DisplayState extends State<Display> {
                               borderRadius: BorderRadius.circular(10)),
                           // padding: EdgeInsets.symmetric(horizontal: 30, vertical: 25),
                         ),
-                        padding: EdgeInsets.only(top: 35, left: 5)),
+                        padding: EdgeInsets.only(top: 35, left: 15)),
                   ]),
+
+                  Row(children: <Widget>[
+                    Container(
+                      
+                      child: Column(
+                          // decoration: BoxDecoration(),
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Icon(
+                              Icons.lightbulb_outline,
+                              color: Colors.white,
+                            ),
+                            Text('$tip',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  
+                                  fontFamily: 'Montserrat',
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                ))
+                          ] //
+                          ),
+                      decoration: BoxDecoration(
+                        
+                          border: Border.all(
+                        color: Colors.white,
+                      )),
+                      margin: const EdgeInsets.only(left: 30, top: 32, right: 25),
+                      width: 350,
+                      height: 95,
+                      padding: EdgeInsets.only(top: 4.3),
+                        )
+                  ]),
+                  
                 ]),
           ),
         ),
