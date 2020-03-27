@@ -350,9 +350,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                           ),
                         ),
                       ]),
+                  SizedBox(
+                    height: 50,
+                  ),
                   Row(
                     children: <Widget>[
-                      SizedBox(width:80),
+                      SizedBox(width: 80),
                       Bubble(
                         margin: BubbleEdges.only(top: 10),
                         nip: BubbleNip.rightBottom,
@@ -365,8 +368,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                       SizedBox(width: 5),
                       Container(
                         margin: EdgeInsets.fromLTRB(0, 0, 10, 10),
-                        width: 100,
-                        height: 100,
+                        width: 90,
+                        height: 90,
                         child: FloatingActionButton(
                             shape: CircleBorder(
                                 side: BorderSide(color: Colors.white)),
