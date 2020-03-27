@@ -715,8 +715,6 @@ class _DisplayState extends State<Display> {
                         ),
                         padding: EdgeInsets.only(top: 35, left: 10)),
 
-
-
                   ]),
 
                   Row(
