@@ -5,6 +5,7 @@
  * @author Soham Dandapath
  */
 import 'package:flutter/material.dart';
+import 'package:bubble/bubble.dart';
 
 class FactsMessage extends StatelessWidget {
   FactsMessage({this.text, this.name, this.type});
@@ -30,16 +31,16 @@ class FactsMessage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(this.name, style: TextStyle(fontWeight: FontWeight.bold)),
-            Container(
-              margin: const EdgeInsets.only(top: 5.0),
-              padding: EdgeInsets.all(10),
+            Text(this.name,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.black)),
+            Bubble(
+              margin: BubbleEdges.only(top: 10),
+              nip: BubbleNip.leftTop,
+              color: Colors.blue[600],
               child: Text(
                 text,
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              ),
-              decoration: BoxDecoration(
-                color: Colors.blue[600],
+                style: TextStyle(color: Colors.white, fontSize: 16),
               ),
             ),
           ],
@@ -54,16 +55,16 @@ class FactsMessage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-            Text(this.name, style: TextStyle(fontWeight: FontWeight.bold)),
-            Container(
-              margin: const EdgeInsets.only(top: 5.0),
-              padding: EdgeInsets.all(10),
+            Text(this.name,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.black)),
+            Bubble(
+              margin: BubbleEdges.only(top: 10),
+              nip: BubbleNip.rightTop,
+              color: Colors.grey[200],
               child: Text(
                 text,
-                style: TextStyle(color: Colors.black, fontSize: 20),
-              ),
-              decoration: BoxDecoration(
-                color: Colors.grey[300],
+                style: TextStyle(color: Colors.black, fontSize: 16),
               ),
             ),
           ],
