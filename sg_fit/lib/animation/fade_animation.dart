@@ -1,3 +1,11 @@
+/**
+ * This class implements the fade animation.
+ *  
+ * Retrieved from https://github.com/afgprogrammer/Flutter-Login-Page-UI/blob/
+ * master/lib/Animation/FadeAnimation.dart
+ *
+ * @author Jay Gupta
+ */
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 

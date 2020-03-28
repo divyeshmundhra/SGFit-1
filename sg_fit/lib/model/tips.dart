@@ -1,3 +1,8 @@
+/**
+ * This class stores the list of tips related to the Water Consumption
+ *
+ * @author Swathi Kumar, Nishka Khendry
+ */
 library my_prj.globals;
 
 import 'dart:math' show Random;

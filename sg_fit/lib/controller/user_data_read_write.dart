@@ -1,3 +1,9 @@
+/**
+ * This class performs the Read & Write as well as stores the current user 
+ * information in text files. 
+ *
+ * @author Jay Gupta
+ */
 import 'dart:async';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';

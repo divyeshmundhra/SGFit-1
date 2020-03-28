@@ -8,7 +8,7 @@ import 'package:sgfit/view/help.dart';
 import 'package:sgfit/view/update_particulars.dart';
 import 'package:sgfit/view/diet_tracker_dashboard.dart';
 import 'package:sgfit/animation/fade_animation.dart';
-import 'package:sgfit/view/diettrackertry.dart';
+import 'package:sgfit/view/appbar.dart';
 
 import 'water_tracker_dashboard.dart';
 
@@ -19,24 +19,8 @@ class HomeScreen extends StatelessWidget {
     double _width_small = MediaQuery.of(context).size.width * 0.10;
 
     return new Scaffold(
-        appBar: AppBar(
-            title: Text("SGFit",
-                style: TextStyle(
-                    color: Colors.blue[600],
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold)),
-            backgroundColor: Colors.grey[50],
-            brightness: Brightness.light,
-            elevation: 0,
-            iconTheme: IconThemeData(
-              color: Colors.grey[50], //change your color here
-            ),
-            bottom: PreferredSize(
-                child: Container(
-                  color: Colors.blue[600],
-                  height: 4.0,
-                ),
-                preferredSize: Size.fromHeight(4.0))),
+        appBar: ReusableWidgets.getAppBar(
+            "SGFit", Colors.blue[600], Colors.grey[50]),
         backgroundColor: Colors.grey[50],
         body: Center(
           child: Column(

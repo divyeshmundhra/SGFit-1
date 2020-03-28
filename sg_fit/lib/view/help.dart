@@ -5,30 +5,15 @@
  */
 import 'package:flutter/material.dart';
 import 'package:sgfit/animation/fade_animation.dart';
+import 'package:sgfit/view/appbar.dart';
 
 class Help extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width * 0.05;
     return Scaffold(
-        appBar: AppBar(
-            title: Text("About",
-                style: TextStyle(
-                    color: Colors.blue[600],
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold)),
-            backgroundColor: Colors.grey[50],
-            brightness: Brightness.light,
-            elevation: 0,
-            iconTheme: IconThemeData(
-              color: Colors.blue[600], //change your color here
-            ),
-            bottom: PreferredSize(
-                child: Container(
-                  color: Colors.blue[600],
-                  height: 4.0,
-                ),
-                preferredSize: Size.fromHeight(4.0))),
+        appBar: ReusableWidgets.getAppBar(
+            "About", Colors.blue[600], Colors.grey[50]),
         backgroundColor: Colors.grey[50],
         body: Center(
           child: Column(

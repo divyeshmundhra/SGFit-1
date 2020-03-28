@@ -1,12 +1,20 @@
+/**
+ * This class implements the Water Tracker dashboard feature of our application.
+ * Daily Water Intake is calculated based on various factors using Age, Weight, 
+ * Height, etc.
+ *
+ * @author Swathi Kumar, Nishka Khendry
+ */
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'popup.dart';
-import 'popup_content.dart';
+import 'package:sgfit/view/popup.dart';
+import 'package:sgfit/controller/popup_content.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:sgfit/model/weather_details.dart';
 import 'package:sgfit/model/tips.dart' as globals;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sgfit/controller/user_data_read_write.dart';
+import 'package:sgfit/view/appbar.dart';
 
 //void main() => runApp(MyApp());
 
@@ -433,24 +441,8 @@ class _DisplayState extends State<Display> {
     int age = 0;
     int weight = 0;
     return Scaffold(
-      appBar: AppBar(
-          title: Text("Water Tracker",
-              style: TextStyle(
-                  color: Colors.grey[50],
-                  fontSize: 35,
-                  fontWeight: FontWeight.bold)),
-          backgroundColor: Colors.blue[800],
-          brightness: Brightness.light,
-          elevation: 0,
-          iconTheme: IconThemeData(
-            color: Colors.grey[50], //change your color here
-          ),
-          bottom: PreferredSize(
-              child: Container(
-                color: Colors.grey[50],
-                height: 4.0,
-              ),
-              preferredSize: Size.fromHeight(4.0))),
+      appBar: ReusableWidgets.getAppBar(
+          "Water Tracker", Colors.grey[50], Colors.blue[800]),
       backgroundColor: Colors.blue[800],
       body: Container(
         child: MediaQuery.removePadding(

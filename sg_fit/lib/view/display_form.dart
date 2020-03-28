@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:sgfit/controller/user_data_read_write.dart';
 import 'package:sgfit/view/home_screen.dart';
 import 'package:sgfit/view/toast_message.dart';
+import 'package:sgfit/view/appbar.dart';
 import 'package:sgfit/animation/fade_animation.dart';
 
 class DisplayForm extends StatefulWidget {
@@ -26,24 +27,8 @@ class RegistrationPageState extends State<DisplayForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            title: Text("Welcome",
-                style: TextStyle(
-                    color: Colors.blue[600],
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold)),
-            backgroundColor: Colors.grey[50],
-            brightness: Brightness.light,
-            elevation: 0,
-            iconTheme: IconThemeData(
-              color: Colors.blue[600], //change your color here
-            ),
-            bottom: PreferredSize(
-                child: Container(
-                  color: Colors.blue[600],
-                  height: 4.0,
-                ),
-                preferredSize: Size.fromHeight(4.0))),
+        appBar: ReusableWidgets.getAppBar(
+            "About", Colors.blue[600], Colors.grey[50]),
         backgroundColor: Colors.grey[50],
         body: Container(
             child: MediaQuery.removePadding(

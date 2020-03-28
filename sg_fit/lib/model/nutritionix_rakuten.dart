@@ -1,3 +1,8 @@
+/**
+ * This class retreives the calories in any food item using RakutenRapid API. 
+ *
+ * @author Ritik Bhatia, Divyesh Mundhra
+ */
 import 'dart:async';
 import 'dart:convert';
 
@@ -5,12 +10,14 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 Future<Album> fetchAlbum(String foodItem) async {
-    final response =
-    await http.get('https://nutritionix-api.p.rapidapi.com/v1_1/search/'+foodItem+'?fields=nf_calories',
-        headers: {
-          "x-rapidapi-host": "nutritionix-api.p.rapidapi.com",
-          "x-rapidapi-key" : "8811057512msh40abb75598017adp1131efjsn9721ef70af43"
-        });
+  final response = await http.get(
+      'https://nutritionix-api.p.rapidapi.com/v1_1/search/' +
+          foodItem +
+          '?fields=nf_calories',
+      headers: {
+        "x-rapidapi-host": "nutritionix-api.p.rapidapi.com",
+        "x-rapidapi-key": "8811057512msh40abb75598017adp1131efjsn9721ef70af43"
+      });
 
   print(response.body);
 
@@ -29,11 +36,9 @@ class Album {
   final double calories;
 
   Album({this.calories});
-  
+
   factory Album.fromJson(Map<String, dynamic> json) {
-    return Album(
-        calories: json["hits"][0]["fields"]["nf_calories"]
-    );
+    return Album(calories: json["hits"][0]["fields"]["nf_calories"]);
   }
 }
 

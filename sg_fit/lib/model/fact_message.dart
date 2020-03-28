@@ -1,3 +1,9 @@
+/**
+ * This class retreives the answer to the nutrition-related query made by the
+ * user using Google DialogFlow
+ *
+ * @author Soham Dandapath
+ */
 import 'package:flutter/material.dart';
 
 class FactsMessage extends StatelessWidget {

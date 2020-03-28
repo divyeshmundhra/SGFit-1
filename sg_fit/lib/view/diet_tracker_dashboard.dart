@@ -9,7 +9,7 @@ import 'dart:async';
 import 'dart:math';
 import 'package:sgfit/model/nutritionix_rakuten.dart';
 import 'package:sgfit/model/weather_details.dart';
-import 'package:sgfit/view/home_screen.dart';
+import 'package:sgfit/view/appbar.dart';
 import 'package:sgfit/view/chatbot_display.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:bubble/bubble.dart';
@@ -100,24 +100,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     ));
     TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      appBar: AppBar(
-          title: Text("Diet Tracker",
-              style: TextStyle(
-                  color: Colors.grey[50],
-                  fontSize: 35,
-                  fontWeight: FontWeight.bold)),
-          backgroundColor: Colors.blue[800],
-          brightness: Brightness.light,
-          elevation: 0,
-          iconTheme: IconThemeData(
-            color: Colors.grey[50], //change your color here
-          ),
-          bottom: PreferredSize(
-              child: Container(
-                color: Colors.grey[50],
-                height: 4.0,
-              ),
-              preferredSize: Size.fromHeight(4.0))),
+      appBar: ReusableWidgets.getAppBar(
+          "Diet Tracker", Colors.grey[50], Colors.blue[800]),
       backgroundColor: Colors.blue[800],
       body: Container(
         child: MediaQuery.removePadding(

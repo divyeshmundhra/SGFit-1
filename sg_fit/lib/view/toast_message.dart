@@ -1,3 +1,8 @@
+/**
+ * This class implements the toast message when a form is incorrectly filled.
+ *
+ * @author Jay Gupta
+ */
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
 

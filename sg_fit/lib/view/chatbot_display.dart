@@ -1,3 +1,8 @@
+/**
+ * This class implements the Conversational Nutritional Expert feature
+ *
+ * @author Soham Dandapath
+ */
 import 'package:flutter/material.dart';
 import 'package:sgfit/model/fact_message.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
