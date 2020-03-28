@@ -16,6 +16,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sgfit/controller/user_data_read_write.dart';
 import 'package:sgfit/view/appbar.dart';
 
+
 //void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
