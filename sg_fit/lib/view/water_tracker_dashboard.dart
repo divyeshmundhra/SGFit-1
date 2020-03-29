@@ -475,6 +475,7 @@ class _DisplayState extends State<Display> {
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 25,
+                                  
                                 ),
                               );
                             } else if (snapshot.hasError) {
@@ -499,6 +500,15 @@ class _DisplayState extends State<Display> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
+                            Text(
+                              '$waterconsumeds' + ' ml',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 60,
+                                fontStyle: FontStyle.italic
+                              ),
+                            ),
+                            
                             FutureBuilder(
                                 future: readFromFileWeight(),
                                 builder: (BuildContext context,
@@ -519,13 +529,7 @@ class _DisplayState extends State<Display> {
                                     return Text('');
                                   }
                                 }),
-                            Text(
-                              '$waterconsumeds' + ' ml',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 60,
-                              ),
-                            ),
+                            
                             FutureBuilder<WeatherDetails>(
                               future: tempdata,
                               builder: (context, snapshot) {
@@ -544,6 +548,7 @@ class _DisplayState extends State<Display> {
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 20,
+                                      fontStyle: FontStyle.italic
                                     ),
                                   );
                                 } else if (snapshot.hasError) {

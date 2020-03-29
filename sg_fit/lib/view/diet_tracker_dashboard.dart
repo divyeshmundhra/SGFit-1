@@ -98,7 +98,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       curve: Curves.fastOutSlowIn,
       parent: _controller,
     ));
-    TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: ReusableWidgets.getAppBar(
           "Diet Tracker", Colors.grey[50], Colors.blue[800]),
@@ -137,7 +136,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                                     .toStringAsFixed(1),
                                                 style: TextStyle(
                                                     color: Colors.white,
-                                                    fontSize: 60),
+                                                    fontSize: 60,
+                                                    fontStyle: FontStyle.italic),
                                               );
                                             },
                                           ),
@@ -147,7 +147,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                             "Calories",
                                             style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 20),
+                                                fontSize: 20,
+                                                fontStyle: FontStyle.italic),
                                           ),
                                         ),
                                       ]),
@@ -163,7 +164,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                           "$caloriesConsumed",
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 60),
+                                              fontSize: 60,
+                                              fontStyle: FontStyle.italic),
                                         ),
                                       ),
                                       Center(
@@ -171,7 +173,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 30,
-                                                fontFamily: 'Montserrat')),
+                                                fontFamily: 'Montserrat',
+                                                fontStyle: FontStyle.italic)),
                                       ),
                                     ]),
                               );
