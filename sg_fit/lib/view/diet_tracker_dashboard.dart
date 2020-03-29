@@ -6,13 +6,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'dart:math';
 import 'package:sgfit/model/nutritionix_rakuten.dart';
 import 'package:sgfit/model/weather_details.dart';
 import 'package:sgfit/view/appbar.dart';
 import 'package:sgfit/view/chatbot_display.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:bubble/bubble.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class DietTrackerDashboard extends StatelessWidget {
   // This widget is the root of your application.
@@ -89,6 +89,16 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     getDailyCalories();
   }
 
+  Widget _buildCircularProgressIndicator() {
+    if (control_flag == 1)
+      return SpinKitCircle(
+        color: Colors.white,
+        size: 50.0,
+      );
+    ;
+    return SizedBox(height: 0);
+  }
+
   @override
   Widget build(BuildContext context) {
     _animation = new Tween<double>(
@@ -137,7 +147,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                                 style: TextStyle(
                                                     color: Colors.white,
                                                     fontSize: 60,
-                                                    fontStyle: FontStyle.italic),
+                                                    fontStyle:
+                                                        FontStyle.italic),
                                               );
                                             },
                                           ),
@@ -176,6 +187,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                                 fontFamily: 'Montserrat',
                                                 fontStyle: FontStyle.italic)),
                                       ),
+                                      _buildCircularProgressIndicator()
                                     ]),
                               );
                             }),
