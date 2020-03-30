@@ -28,7 +28,7 @@ class RegistrationPageState extends State<DisplayForm> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: ReusableWidgets.getAppBar(
-            "About", Colors.blue[600], Colors.grey[50]),
+            "Register", Colors.blue[600], Colors.grey[50]),
         backgroundColor: Colors.grey[50],
         body: Container(
             child: MediaQuery.removePadding(

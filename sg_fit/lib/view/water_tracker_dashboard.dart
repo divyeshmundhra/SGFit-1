@@ -16,7 +16,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sgfit/controller/user_data_read_write.dart';
 import 'package:sgfit/view/appbar.dart';
 
-
 //void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -475,7 +474,6 @@ class _DisplayState extends State<Display> {
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 25,
-                                  
                                 ),
                               );
                             } else if (snapshot.hasError) {
@@ -491,7 +489,7 @@ class _DisplayState extends State<Display> {
                     ],
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 40,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -503,12 +501,10 @@ class _DisplayState extends State<Display> {
                             Text(
                               '$waterconsumeds' + ' ml',
                               style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 60,
-                                fontStyle: FontStyle.italic
-                              ),
+                                  color: Colors.white,
+                                  fontSize: 60,
+                                  fontStyle: FontStyle.italic),
                             ),
-                            
                             FutureBuilder(
                                 future: readFromFileWeight(),
                                 builder: (BuildContext context,
@@ -516,7 +512,7 @@ class _DisplayState extends State<Display> {
                                   if (data.hasData != null) {
                                     weight = int.parse(data.data.toString());
                                     print(weight);
-                                    return Text('');
+                                    return SizedBox(height: 0);
                                   }
                                 }),
                             FutureBuilder(
@@ -526,10 +522,9 @@ class _DisplayState extends State<Display> {
                                   if (data.hasData != null) {
                                     age = int.parse(data.data.toString());
                                     print(age);
-                                    return Text('');
+                                    return SizedBox(height: 0);
                                   }
                                 }),
-                            
                             FutureBuilder<WeatherDetails>(
                               future: tempdata,
                               builder: (context, snapshot) {
@@ -546,10 +541,9 @@ class _DisplayState extends State<Display> {
                                   return Text(
                                     'of ' + '$finaltarget' + 'ml',
                                     style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontStyle: FontStyle.italic
-                                    ),
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontStyle: FontStyle.italic),
                                   );
                                 } else if (snapshot.hasError) {
                                   return Text("${snapshot.error}");
