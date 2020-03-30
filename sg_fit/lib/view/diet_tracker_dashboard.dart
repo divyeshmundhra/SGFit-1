@@ -13,6 +13,7 @@ import 'package:sgfit/view/chatbot_display.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:bubble/bubble.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:sgfit/view/toast_message.dart';
 
 class DietTrackerDashboard extends StatelessWidget {
   // This widget is the root of your application.
@@ -288,18 +289,23 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                               ),
                               child: FlatButton(
                                 onPressed: () {
-                                  setState(() {
-                                    futureAlbum = fetchAlbum(myController.text);
-                                    control_flag = 1;
-                                    _animation = new Tween<double>(
-                                      begin: _animation.value,
-                                      end: double.parse('$caloriesConsumed'),
-                                    ).animate(new CurvedAnimation(
-                                      curve: Curves.fastOutSlowIn,
-                                      parent: _controller,
-                                    ));
-                                  });
-
+                                  if (myController.text == '') {
+                                    ToastMessage.showErrorToast(
+                                        "Invalid food item!");
+                                  } else {
+                                    setState(() {
+                                      futureAlbum =
+                                          fetchAlbum(myController.text);
+                                      control_flag = 1;
+                                      _animation = new Tween<double>(
+                                        begin: _animation.value,
+                                        end: double.parse('$caloriesConsumed'),
+                                      ).animate(new CurvedAnimation(
+                                        curve: Curves.fastOutSlowIn,
+                                        parent: _controller,
+                                      ));
+                                    });
+                                  }
                                   _controller.forward(from: 0.0);
                                 },
                                 padding: EdgeInsets.symmetric(
