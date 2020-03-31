@@ -148,8 +148,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                                 style: TextStyle(
                                                     color: Colors.white,
                                                     fontSize: 60,
-                                                    fontStyle:
-                                                        FontStyle.italic),
+                                                    // fontStyle:
+                                                    //     FontStyle.italic
+                                                        )
+                                                        ,
                                               );
                                             },
                                           ),
@@ -160,7 +162,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 20,
-                                                fontStyle: FontStyle.italic),
+                                                // fontStyle: FontStyle.italic
+                                                ),
                                           ),
                                         ),
                                       ]),
@@ -177,7 +180,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                           style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 60,
-                                              fontStyle: FontStyle.italic),
+                                              // fontStyle: FontStyle.italic
+                                              ),
                                         ),
                                       ),
                                       Center(
@@ -186,7 +190,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                                 color: Colors.white,
                                                 fontSize: 30,
                                                 fontFamily: 'Montserrat',
-                                                fontStyle: FontStyle.italic)),
+                                                // fontStyle: FontStyle.italic 
+                                                )),
                                       ),
                                       _buildCircularProgressIndicator()
                                     ]),

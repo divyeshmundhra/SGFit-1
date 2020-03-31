@@ -16,7 +16,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sgfit/controller/user_data_read_write.dart';
 import 'package:sgfit/view/appbar.dart';
 
-
 //void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -42,7 +41,6 @@ class _DisplayState extends State<Display> {
 
   // @override
   void initState() {
-    print('lalallalal');
     getdaily();
     super.initState();
     tempdata = getWeatherDetails();
@@ -62,7 +60,6 @@ class _DisplayState extends State<Display> {
         waterconsumeds = "0";
       });
     }
-    print('THIS IS WATER DAILY $waterdaily');
   }
 
   String waterconsumeds = '0';
@@ -131,7 +128,15 @@ class _DisplayState extends State<Display> {
   }
 
   Widget _popupBodyWorkout() {
-    return Column(
+
+    return 
+    Container(
+        child: MediaQuery.removePadding(
+          context: context,
+          removeTop: true,
+          child: SingleChildScrollView(
+    
+    child: Column(
       // mainAxisAlignment: MainAxisAlignment.center,
 
       children: <Widget>[
@@ -234,7 +239,7 @@ class _DisplayState extends State<Display> {
         // ]
         // ),
       ],
-    );
+    ))));
   }
 
   Widget _popupBodyContainer() {
@@ -504,15 +509,15 @@ class _DisplayState extends State<Display> {
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 60,
-                                  fontStyle: FontStyle.italic),
+                                  // fontStyle: FontStyle.italic
+                                  ),
                             ),
                             FutureBuilder(
                                 future: readFromFileWeight(),
                                 builder: (BuildContext context,
                                     AsyncSnapshot<String> data) {
                                   if (data.hasData != null) {
-                                    weight = int.parse(data.data.toString());
-                                    print(weight);
+                                    weight = int.parse(data.data.toString()); 
                                     return SizedBox(height: 0);
                                   }
                                 }),
@@ -522,7 +527,6 @@ class _DisplayState extends State<Display> {
                                     AsyncSnapshot<String> data) {
                                   if (data.hasData != null) {
                                     age = int.parse(data.data.toString());
-                                    print(age);
                                     return SizedBox(height: 0);
                                   }
                                 }),
@@ -543,8 +547,9 @@ class _DisplayState extends State<Display> {
                                     'of ' + '$finaltarget' + 'ml',
                                     style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 20,
-                                        fontStyle: FontStyle.italic),
+                                        fontSize: 25,
+                                        // fontStyle: FontStyle.italic
+                                        ),
                                   );
                                 } else if (snapshot.hasError) {
                                   return Text("${snapshot.error}");
@@ -621,7 +626,6 @@ class _DisplayState extends State<Display> {
                         child: FlatButton(
                           color: Colors.white,
                           onPressed: () async {
-                            print('start');
                             SharedPreferences prefs =
                                 await SharedPreferences.getInstance();
                             setState(() {
@@ -629,12 +633,10 @@ class _DisplayState extends State<Display> {
                                   globals.containersize;
                               waterconsumeds =
                                   (globals.waterconsumedi).toString();
-                              print(globals.containersize);
                             });
 
                             await prefs.setInt(
                                 'waterconsumed', globals.waterconsumedi);
-                            print('end');
                           },
                           disabledColor: Colors.white,
 
