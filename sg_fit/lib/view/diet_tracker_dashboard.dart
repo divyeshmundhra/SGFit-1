@@ -6,13 +6,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'dart:math';
 import 'package:sgfit/model/nutritionix_rakuten.dart';
 import 'package:sgfit/model/weather_details.dart';
 import 'package:sgfit/view/appbar.dart';
 import 'package:sgfit/view/chatbot_display.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:bubble/bubble.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:sgfit/view/toast_message.dart';
 
 class DietTrackerDashboard extends StatelessWidget {
   // This widget is the root of your application.
@@ -89,6 +90,16 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     getDailyCalories();
   }
 
+  Widget _buildCircularProgressIndicator() {
+    if (control_flag == 1)
+      return SpinKitCircle(
+        color: Colors.white,
+        size: 50.0,
+      );
+    ;
+    return SizedBox(height: 0);
+  }
+
   @override
   Widget build(BuildContext context) {
     _animation = new Tween<double>(
@@ -98,7 +109,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       curve: Curves.fastOutSlowIn,
       parent: _controller,
     ));
-    TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: ReusableWidgets.getAppBar(
           "Diet Tracker", Colors.grey[50], Colors.blue[800]),
@@ -137,7 +147,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                                     .toStringAsFixed(1),
                                                 style: TextStyle(
                                                     color: Colors.white,
-                                                    fontSize: 60),
+                                                    fontSize: 60,
+                                                    fontStyle:
+                                                        FontStyle.italic),
                                               );
                                             },
                                           ),
@@ -147,7 +159,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                             "Calories",
                                             style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 20),
+                                                fontSize: 20,
+                                                fontStyle: FontStyle.italic),
                                           ),
                                         ),
                                       ]),
@@ -163,7 +176,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                           "$caloriesConsumed",
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 60),
+                                              fontSize: 60,
+                                              fontStyle: FontStyle.italic),
                                         ),
                                       ),
                                       Center(
@@ -171,8 +185,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 30,
-                                                fontFamily: 'Montserrat')),
+                                                fontFamily: 'Montserrat',
+                                                fontStyle: FontStyle.italic)),
                                       ),
+                                      _buildCircularProgressIndicator()
                                     ]),
                               );
                             }),
@@ -273,18 +289,23 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                               ),
                               child: FlatButton(
                                 onPressed: () {
-                                  setState(() {
-                                    futureAlbum = fetchAlbum(myController.text);
-                                    control_flag = 1;
-                                    _animation = new Tween<double>(
-                                      begin: _animation.value,
-                                      end: double.parse('$caloriesConsumed'),
-                                    ).animate(new CurvedAnimation(
-                                      curve: Curves.fastOutSlowIn,
-                                      parent: _controller,
-                                    ));
-                                  });
-
+                                  if (myController.text == '') {
+                                    ToastMessage.showErrorToast(
+                                        "Invalid food item!");
+                                  } else {
+                                    setState(() {
+                                      futureAlbum =
+                                          fetchAlbum(myController.text);
+                                      control_flag = 1;
+                                      _animation = new Tween<double>(
+                                        begin: _animation.value,
+                                        end: double.parse('$caloriesConsumed'),
+                                      ).animate(new CurvedAnimation(
+                                        curve: Curves.fastOutSlowIn,
+                                        parent: _controller,
+                                      ));
+                                    });
+                                  }
                                   _controller.forward(from: 0.0);
                                 },
                                 padding: EdgeInsets.symmetric(
