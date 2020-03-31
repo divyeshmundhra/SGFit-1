@@ -41,7 +41,6 @@ class _DisplayState extends State<Display> {
 
   // @override
   void initState() {
-    print('lalallalal');
     getdaily();
     super.initState();
     tempdata = getWeatherDetails();
@@ -61,7 +60,6 @@ class _DisplayState extends State<Display> {
         waterconsumeds = "0";
       });
     }
-    print('THIS IS WATER DAILY $waterdaily');
   }
 
   String waterconsumeds = '0';
@@ -130,7 +128,15 @@ class _DisplayState extends State<Display> {
   }
 
   Widget _popupBodyWorkout() {
-    return Column(
+
+    return 
+    Container(
+        child: MediaQuery.removePadding(
+          context: context,
+          removeTop: true,
+          child: SingleChildScrollView(
+    
+    child: Column(
       // mainAxisAlignment: MainAxisAlignment.center,
 
       children: <Widget>[
@@ -233,7 +239,7 @@ class _DisplayState extends State<Display> {
         // ]
         // ),
       ],
-    );
+    ))));
   }
 
   Widget _popupBodyContainer() {
@@ -511,8 +517,7 @@ class _DisplayState extends State<Display> {
                                 builder: (BuildContext context,
                                     AsyncSnapshot<String> data) {
                                   if (data.hasData != null) {
-                                    weight = int.parse(data.data.toString());
-                                    print(weight);
+                                    weight = int.parse(data.data.toString()); 
                                     return SizedBox(height: 0);
                                   }
                                 }),
@@ -522,7 +527,6 @@ class _DisplayState extends State<Display> {
                                     AsyncSnapshot<String> data) {
                                   if (data.hasData != null) {
                                     age = int.parse(data.data.toString());
-                                    print(age);
                                     return SizedBox(height: 0);
                                   }
                                 }),
@@ -621,7 +625,6 @@ class _DisplayState extends State<Display> {
                         child: FlatButton(
                           color: Colors.white,
                           onPressed: () async {
-                            print('start');
                             SharedPreferences prefs =
                                 await SharedPreferences.getInstance();
                             setState(() {
@@ -629,12 +632,10 @@ class _DisplayState extends State<Display> {
                                   globals.containersize;
                               waterconsumeds =
                                   (globals.waterconsumedi).toString();
-                              print(globals.containersize);
                             });
 
                             await prefs.setInt(
                                 'waterconsumed', globals.waterconsumedi);
-                            print('end');
                           },
                           disabledColor: Colors.white,
 
