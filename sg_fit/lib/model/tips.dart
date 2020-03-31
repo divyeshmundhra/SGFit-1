@@ -1,7 +1,7 @@
 /**
  * This class stores the list of tips related to the Water Consumption
  *
- * @author Swathi Kumar, Nishka Khendry
+ * @author Swathi Kumar Vembu, Nishka Khendry
  */
 library my_prj.globals;
 

@@ -1,7 +1,7 @@
 /**
  * This class implements the pop-up of the Water Tracker Dashboard.
  *
- * @author Swathi Kumar, Nishka Khendry
+ * @author Swathi Kumar Vembu, Nishka Khendry
  */
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

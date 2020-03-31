@@ -1,7 +1,7 @@
 /**
  * This class retreives the current weather information using the Data.Gov.Sg
  *
- * @author Ritik Bhatia, Divyesh Mundhra
+ * @author Swathi Kumar Vembu, Nishka Khendry
  */
 import 'dart:async';
 import 'dart:convert';

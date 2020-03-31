@@ -3,7 +3,7 @@
  * Daily Water Intake is calculated based on various factors using Age, Weight, 
  * Height, etc.
  *
- * @author Swathi Kumar, Nishka Khendry
+ * @author Swathi Kumar Vembu, Nishka Khendry
  */
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
