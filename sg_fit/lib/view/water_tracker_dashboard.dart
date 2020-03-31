@@ -498,12 +498,13 @@ class _DisplayState extends State<Display> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
+                            SizedBox(height:30),
                             Text(
                               '$waterconsumeds' + ' ml',
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 60,
-                                  fontStyle: FontStyle.italic),
+                                  fontSize: 55,
+                                  ),
                             ),
                             FutureBuilder(
                                 future: readFromFileWeight(),
@@ -543,7 +544,7 @@ class _DisplayState extends State<Display> {
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 20,
-                                        fontStyle: FontStyle.italic),
+                                        fontWeight: FontWeight.bold),
                                   );
                                 } else if (snapshot.hasError) {
                                   return Text("${snapshot.error}");

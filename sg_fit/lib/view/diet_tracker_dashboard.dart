@@ -148,8 +148,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                                 style: TextStyle(
                                                     color: Colors.white,
                                                     fontSize: 60,
-                                                    fontStyle:
-                                                        FontStyle.italic),
+                                                    fontWeight: FontWeight.bold),
                                               );
                                             },
                                           ),
@@ -160,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 20,
-                                                fontStyle: FontStyle.italic),
+                                                fontWeight: FontWeight.bold),
                                           ),
                                         ),
                                       ]),
@@ -177,7 +176,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                           style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 60,
-                                              fontStyle: FontStyle.italic),
+                                              fontWeight: FontWeight.bold),
                                         ),
                                       ),
                                       Center(
@@ -186,7 +185,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                                 color: Colors.white,
                                                 fontSize: 30,
                                                 fontFamily: 'Montserrat',
-                                                fontStyle: FontStyle.italic)),
+                                                fontWeight: FontWeight.bold)),
                                       ),
                                       _buildCircularProgressIndicator()
                                     ]),
