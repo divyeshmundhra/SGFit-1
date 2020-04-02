@@ -15,6 +15,7 @@ import 'package:sgfit/model/tips.dart' as globals;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sgfit/controller/user_data_read_write.dart';
 import 'package:sgfit/view/appbar.dart';
+import 'package:sgfit/view/toast_message.dart';
 
 //void main() => runApp(MyApp());
 
@@ -217,17 +218,27 @@ class _DisplayState extends State<Display> {
                 Container(
                   child: FloatingActionButton.extended(
                       onPressed: () {
-                        globals.workoutmins = int.parse(myController1.text);
-                        globals.workoutintensity =
-                            int.parse(myController2.text);
-                        //WaterTracker.calculateTarget();
-                        setState(() {
-                          finaltarget = globals.target.toString();
-                        });
+                        if (int.parse(myController1.text) < 0 ||
+                            int.parse(myController1.text) > 180) {
+                          ToastMessage.showErrorToast(
+                              "Please enter valid Workout Details");
+                        } else if (int.parse(myController2.text) < 0 ||
+                            int.parse(myController2.text) > 5) {
+                          ToastMessage.showErrorToast(
+                              "Please enter valid Workout Details");
+                        } else {
+                          globals.workoutmins = int.parse(myController1.text);
+                          globals.workoutintensity =
+                              int.parse(myController2.text);
+                          //WaterTracker.calculateTarget();
+                          setState(() {
+                            finaltarget = globals.target.toString();
+                          });
 
-                        try {
-                          Navigator.pop(context); //close the popup
-                        } catch (e) {}
+                          try {
+                            Navigator.pop(context); //close the popup
+                          } catch (e) {}
+                        }
                       },
                       label: Text('Confirm',
                           style: TextStyle(
