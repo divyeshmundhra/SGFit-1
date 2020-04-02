@@ -82,29 +82,33 @@ class _FlutterFactsDialogFlowState extends State<FlutterFactsDialogFlow> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text("Nutrition Expert",
-              style: TextStyle(
+        appBar: AppBar(
+            title: Text("Nutrition Expert",
+                style: TextStyle(
+                    color: Colors.blue[600],
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold)),
+            backgroundColor: Colors.grey[50],
+            brightness: Brightness.light,
+            elevation: 0,
+            iconTheme: IconThemeData(
+              color: Colors.blue[600], //change your color here
+            ),
+            bottom: PreferredSize(
+                child: Container(
                   color: Colors.blue[600],
-                  fontSize: 35,
-                  fontWeight: FontWeight.bold)),
-          backgroundColor: Colors.grey[50],
-          brightness: Brightness.light,
-          elevation: 0,
-          iconTheme: IconThemeData(
-            color: Colors.blue[600], //change your color here
-          ),
-          bottom: PreferredSize(
-              child: Container(
-                color: Colors.blue[600],
-                height: 4.0,
-              ),
-              preferredSize: Size.fromHeight(4.0))),
-      backgroundColor: Colors.grey[50],
-      body: Column(children: <Widget>[
-        Row(
-          children: <Widget>[
-            /*
+                  height: 4.0,
+                ),
+                preferredSize: Size.fromHeight(4.0))),
+        backgroundColor: Colors.grey[50],
+        body: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
+          },
+          child: Column(children: <Widget>[
+            Row(
+              children: <Widget>[
+                /*
             IconButton(
               icon: Icon(Icons.home),
               disabledColor: Colors.white,
@@ -123,24 +127,24 @@ class _FlutterFactsDialogFlowState extends State<FlutterFactsDialogFlow> {
               disabledColor: Colors.white,
             ),
             */
-          ],
-        ),
-        Flexible(
-            child: ListView.builder(
-          padding: EdgeInsets.all(8.0),
-          reverse: true, //To keep the latest messages at the bottom
-          itemBuilder: (_, int index) => _messages[index],
-          itemCount: _messages.length,
-        )),
-        Divider(height: 1.0),
-        Container(
-          decoration: new BoxDecoration(color: Theme.of(context).cardColor),
-          child: _queryInputWidget(context),
-        ),
-        SizedBox(
-          height: 20,
-        ),
-      ]),
-    );
+              ],
+            ),
+            Flexible(
+                child: ListView.builder(
+              padding: EdgeInsets.all(8.0),
+              reverse: true, //To keep the latest messages at the bottom
+              itemBuilder: (_, int index) => _messages[index],
+              itemCount: _messages.length,
+            )),
+            Divider(height: 1.0),
+            Container(
+              decoration: new BoxDecoration(color: Theme.of(context).cardColor),
+              child: _queryInputWidget(context),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+          ]),
+        ));
   }
 }
