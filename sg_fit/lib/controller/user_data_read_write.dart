@@ -18,7 +18,7 @@ Future<String> get _localPath async {
 // Gets the location of the file
 Future<File> get _localFileisRegistered async {
   final path = await _localPath;
-  return new File('$path/user_reg_sta_fin.txt');
+  return new File('$path/user_reg_sta_f.txt');
 }
 
 Future<File> get _localFileAge async {

@@ -88,8 +88,16 @@ class RegistrationPageState extends State<DisplayForm> {
                                                 offset: Offset(0, 10))
                                           ]),
                                       child: Column(children: <Widget>[
-                                        TextFields.getTextField(_name, "Name"),
-                                        TextFields.getTextField(_age, "Age"),
+                                        TextFields.getTextField(
+                                            _name,
+                                            TextInputType.text,
+                                            TextInputAction.done,
+                                            "Name"),
+                                        TextFields.getTextField(
+                                            _age,
+                                            TextInputType.number,
+                                            TextInputAction.done,
+                                            "Age"),
                                         Container(
                                             padding: EdgeInsets.all(8.0),
                                             decoration: BoxDecoration(
@@ -136,9 +144,15 @@ class RegistrationPageState extends State<DisplayForm> {
                                               ),
                                             )),
                                         TextFields.getTextField(
-                                            _weight, "Weight (KG)"),
+                                            _weight,
+                                            TextInputType.number,
+                                            TextInputAction.done,
+                                            "Weight (KG)"),
                                         TextFields.getTextField(
-                                            _height, "Height (CM)"),
+                                            _height,
+                                            TextInputType.number,
+                                            TextInputAction.done,
+                                            "Height (CM)"),
                                       ])),
                                   SizedBox(
                                     height: 20,

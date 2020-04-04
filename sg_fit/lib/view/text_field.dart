@@ -6,7 +6,8 @@
 import 'package:flutter/material.dart';
 
 class TextFields {
-  static getTextField(var _controller, String hintText) {
+  static getTextField(var _controller, TextInputType keyboard,
+      TextInputAction action, String hintText) {
     return Container(
       padding: EdgeInsets.all(8.0),
       decoration: BoxDecoration(
@@ -14,7 +15,8 @@ class TextFields {
       child: TextField(
         controller: _controller,
         style: TextStyle(color: Colors.black),
-        keyboardType: TextInputType.number,
+        keyboardType: keyboard,
+        textInputAction: action,
         decoration: InputDecoration(
             border: InputBorder.none,
             hintText: hintText,

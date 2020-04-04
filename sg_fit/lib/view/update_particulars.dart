@@ -84,11 +84,21 @@ class UpdateParticularsStage extends State<UpdateParticulars> {
                                                 offset: Offset(0, 10))
                                           ]),
                                       child: Column(children: <Widget>[
-                                        TextFields.getTextField(_age, "Age"),
                                         TextFields.getTextField(
-                                            _weight, "Weight (KG)"),
+                                            _age,
+                                            TextInputType.number,
+                                            TextInputAction.done,
+                                            "Age"),
                                         TextFields.getTextField(
-                                            _height, "Height (CM)"),
+                                            _weight,
+                                            TextInputType.number,
+                                            TextInputAction.done,
+                                            "Weight (KG)"),
+                                        TextFields.getTextField(
+                                            _height,
+                                            TextInputType.number,
+                                            TextInputAction.done,
+                                            "Height (CM)"),
                                       ])),
                                   SizedBox(
                                     height: 20,
