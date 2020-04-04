@@ -10,6 +10,7 @@ import 'package:sgfit/view/toast_message.dart';
 import 'package:sgfit/animation/fade_animation.dart';
 import 'package:sgfit/view/appbar.dart';
 import 'package:sgfit/controller/input_validator.dart';
+import 'package:sgfit/view/text_field.dart';
 
 class UpdateParticulars extends StatefulWidget {
   State createState() => UpdateParticularsStage();
@@ -83,63 +84,11 @@ class UpdateParticularsStage extends State<UpdateParticulars> {
                                                 offset: Offset(0, 10))
                                           ]),
                                       child: Column(children: <Widget>[
-                                        Container(
-                                          padding: EdgeInsets.all(8.0),
-                                          decoration: BoxDecoration(
-                                              border: Border(
-                                                  bottom: BorderSide(
-                                                      color:
-                                                          Colors.grey[100]))),
-                                          child: TextField(
-                                            controller: _age,
-                                            style:
-                                                TextStyle(color: Colors.black),
-                                            keyboardType: TextInputType.number,
-                                            decoration: InputDecoration(
-                                                border: InputBorder.none,
-                                                hintText: "Age",
-                                                hintStyle: TextStyle(
-                                                    color: Colors.grey[400])),
-                                          ),
-                                        ),
-                                        Container(
-                                          padding: EdgeInsets.all(8.0),
-                                          decoration: BoxDecoration(
-                                              border: Border(
-                                                  bottom: BorderSide(
-                                                      color:
-                                                          Colors.grey[100]))),
-                                          child: TextField(
-                                            controller: _weight,
-                                            style:
-                                                TextStyle(color: Colors.black),
-                                            keyboardType: TextInputType.number,
-                                            decoration: InputDecoration(
-                                                border: InputBorder.none,
-                                                hintText: "Weight (KG)",
-                                                hintStyle: TextStyle(
-                                                    color: Colors.grey[400])),
-                                          ),
-                                        ),
-                                        Container(
-                                          padding: EdgeInsets.all(8.0),
-                                          decoration: BoxDecoration(
-                                              border: Border(
-                                                  bottom: BorderSide(
-                                                      color:
-                                                          Colors.grey[100]))),
-                                          child: TextField(
-                                            controller: _height,
-                                            style:
-                                                TextStyle(color: Colors.black),
-                                            keyboardType: TextInputType.number,
-                                            decoration: InputDecoration(
-                                                border: InputBorder.none,
-                                                hintText: "Height (CM)",
-                                                hintStyle: TextStyle(
-                                                    color: Colors.grey[400])),
-                                          ),
-                                        ),
+                                        TextFields.getTextField(_age, "Age"),
+                                        TextFields.getTextField(
+                                            _weight, "Weight (KG)"),
+                                        TextFields.getTextField(
+                                            _height, "Height (CM)"),
                                       ])),
                                   SizedBox(
                                     height: 20,

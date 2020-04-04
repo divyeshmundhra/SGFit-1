@@ -5,6 +5,7 @@
  */
 import 'package:flutter/material.dart';
 import 'package:sgfit/model/fact_message.dart';
+import 'package:sgfit/controller/input_validator.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
 
 class FlutterFactsDialogFlow extends StatefulWidget {
@@ -39,9 +40,13 @@ class _FlutterFactsDialogFlowState extends State<FlutterFactsDialogFlow> {
             Container(
               margin: EdgeInsets.symmetric(horizontal: 4.0),
               child: IconButton(
-                  icon: Icon(Icons.send),
-                  onPressed: () => _submitQuery(_textController.text)),
-            ),
+                icon: Icon(Icons.send),
+                onPressed: () {
+                  if (!InputValidator.isEmpty(_textController.text))
+                    _submitQuery(_textController.text);
+                },
+              ),
+            )
           ],
         ),
       ),

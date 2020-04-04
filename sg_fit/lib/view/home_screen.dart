@@ -9,7 +9,6 @@ import 'package:sgfit/view/update_particulars.dart';
 import 'package:sgfit/view/diet_tracker_dashboard.dart';
 import 'package:sgfit/animation/fade_animation.dart';
 import 'package:sgfit/view/appbar.dart';
-
 import 'water_tracker_dashboard.dart';
 
 class HomeScreen extends StatelessWidget {
