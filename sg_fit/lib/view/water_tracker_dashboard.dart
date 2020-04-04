@@ -6,10 +6,8 @@
  * @author Swathi Kumar Vembu, Nishka Khendry
  */
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:sgfit/view/popup.dart';
 import 'package:sgfit/controller/popup_content.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:sgfit/model/weather_details.dart';
 import 'package:sgfit/model/tips.dart' as globals;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,8 +18,7 @@ import 'package:sgfit/controller/input_validator.dart';
 import 'package:sgfit/view/tips_display.dart';
 import 'package:sgfit/view/reusable_widgets.dart';
 import 'dart:math';
-
-//void main() => runApp(MyApp());
+import 'package:sgfit/view/containers.dart';
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -104,24 +101,7 @@ class _DisplayState extends State<Display> with TickerProviderStateMixin {
         bottom: 140,
         child: PopupContent(
           content: Scaffold(
-            appBar: AppBar(
-              title: Text(
-                title,
-                style: ReusableWidgets2.kstyle(Colors.white, 18),
-              ),
-              backgroundColor: Colors.blue[800],
-              leading: new Builder(builder: (context) {
-                return IconButton(
-                  icon: Icon(Icons.close),
-                  onPressed: () {
-                    try {
-                      Navigator.pop(context); //close the popup
-                    } catch (e) {}
-                  },
-                );
-              }),
-              brightness: Brightness.light,
-            ),
+            appBar: ReusableWidgets2.waterTrackerAppBar(),
             resizeToAvoidBottomPadding: false,
             body: widget,
             backgroundColor: Colors.white,
@@ -138,86 +118,11 @@ class _DisplayState extends State<Display> with TickerProviderStateMixin {
             removeTop: true,
             child: SingleChildScrollView(
                 child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
-
               children: <Widget>[
-                // Row(children: <Widget>[
-                Container(
-                  height: 125,
-                  padding: EdgeInsets.only(top: 90),
-                  child: Text(
-                    "How long is your workout?",
-                    style: TextStyle(
-                        color: Colors.blue[800],
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 20, right: 20),
-                  // padding: EdgeInsets.all(2.0),
-                  //padding: EdgeInsets.only(bottom: 20),
-                  //color: Colors.grey[100],
-                  decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      border: Border.all(
-                          color: Colors.blue[800],
-                          width: 2,
-                          style: BorderStyle.solid)),
-
-                  child: TextField(
-                    textAlign: TextAlign.center,
-                    controller: myController1,
-                    keyboardType: TextInputType.number,
-                    inputFormatters: [
-                      WhitelistingTextInputFormatter.digitsOnly
-                    ],
-                    style: TextStyle(color: Colors.cyan[900]),
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Time in mins",
-                        hintStyle: TextStyle(
-                          color: Colors.cyan[900],
-                        )),
-                  ),
-                ),
-                Container(
-                  height: 125,
-                  padding: EdgeInsets.only(top: 90),
-                  child: Text(
-                    "Rate the Intensity",
-                    style: TextStyle(
-                        color: Colors.blue[800],
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 20, right: 20),
-                  padding: EdgeInsets.all(2.0),
-                  //color: Colors.grey[100],
-                  decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      border: Border.all(
-                          color: Colors.blue[800],
-                          width: 2,
-                          style: BorderStyle.solid)),
-                  child: TextField(
-                    textAlign: TextAlign.center,
-                    controller: myController2,
-                    keyboardType: TextInputType.number,
-                    inputFormatters: [
-                      WhitelistingTextInputFormatter.digitsOnly
-                    ],
-                    style: TextStyle(color: Colors.cyan[900]),
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "From 1 to 5",
-                        hintStyle: TextStyle(
-                          color: Colors.cyan[900],
-                        )),
-                  ),
-                ),
+                Containers.containerWorkout("How long is your workout?"),
+                Containers.containerWorkoutTime(myController1),
+                Containers.containerWorkout("Rate the Intensity"),
+                Containers.containerWorkoutTime(myController2),
                 Container(
                   child: FloatingActionButton.extended(
                       onPressed: () {
@@ -233,7 +138,6 @@ class _DisplayState extends State<Display> with TickerProviderStateMixin {
                           globals.workoutmins = int.parse(myController1.text);
                           globals.workoutintensity =
                               int.parse(myController2.text);
-                          //WaterTracker.calculateTarget();
                           setState(() {
                             finaltarget = globals.target.toString();
                           });
@@ -243,21 +147,14 @@ class _DisplayState extends State<Display> with TickerProviderStateMixin {
                           } catch (e) {}
                         }
                       },
-                      label: Text('Confirm',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 19,
-                            fontWeight: FontWeight.w700,
-                          )),
+                      label:
+                          ReusableWidgets2.mstyle('Confirm', Colors.white, 19),
                       backgroundColor: Colors.blue[800],
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(22.0),
                       )),
                   margin: const EdgeInsets.only(top: 30),
                 ),
-
-                // ]
-                // ),
               ],
             ))));
   }
@@ -271,189 +168,16 @@ class _DisplayState extends State<Display> with TickerProviderStateMixin {
           child: Column(
             children: <Widget>[
               Row(children: <Widget>[
-                Container(
-                  width: 120,
-                  height: 90,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white, width: 2),
-                  ),
-                  margin:
-                      EdgeInsets.only(top: 50, left: 20, right: 20, bottom: 20),
-                  child: FloatingActionButton.extended(
-                    onPressed: () {
-                      globals.containersize = 100;
-
-                      try {
-                        Navigator.pop(context); //close the popup
-                      } catch (e) {}
-                      // Add your onPressed code here!
-                    },
-                    label: Text('100 ml',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 19,
-                          fontWeight: FontWeight.w700,
-                        )),
-                    icon: Icon(
-                      FontAwesome5Solid.glass_martini,
-                      color: Colors.white,
-                    ),
-                    //icon: Icon(FontAwesome5.getIconData("glass_martini", weight: IconWeight.Solid));
-                    backgroundColor: Colors.blue[800],
-                    shape: RoundedRectangleBorder(),
-                  ),
-                ),
-                Container(
-                  width: 120,
-                  height: 90,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white, width: 2)),
-                  margin: EdgeInsets.only(
-                    top: 28,
-                  ),
-                  child: FloatingActionButton.extended(
-                    onPressed: () {
-                      globals.containersize = 250;
-
-                      try {
-                        Navigator.pop(context); //close the popup
-                      } catch (e) {}
-                      // Add your onPressed code here!
-                    },
-                    label: Text('250 ml',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 19,
-                          fontWeight: FontWeight.w700,
-                        )),
-                    icon: Icon(
-                      FontAwesome5Solid.coffee,
-                      color: Colors.white,
-                    ),
-                    backgroundColor: Colors.blue[800],
-                    shape: RoundedRectangleBorder(),
-                  ),
-                ),
+                Containers.container1(context),
+                Containers.container2(context),
               ]),
               Row(children: <Widget>[
-                Container(
-                  width: 120,
-                  height: 90,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white, width: 2)),
-                  margin: EdgeInsets.all(20),
-                  child: FloatingActionButton.extended(
-                    onPressed: () {
-                      globals.containersize = 350;
-
-                      try {
-                        Navigator.pop(context); //close the popup
-                      } catch (e) {}
-                      // Add your onPressed code here!
-                    },
-                    label: Text('350 ml',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 19,
-                          fontWeight: FontWeight.w700,
-                        )),
-                    icon: Icon(
-                      FontAwesome5Solid.glass_whiskey,
-                      color: Colors.white,
-                    ),
-                    backgroundColor: Colors.blue[800],
-                    shape: RoundedRectangleBorder(),
-                  ),
-                ),
-                Container(
-                  width: 120,
-                  height: 90,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white, width: 2)),
-                  child: FloatingActionButton.extended(
-                    onPressed: () {
-                      globals.containersize = 500;
-
-                      try {
-                        Navigator.pop(context); //close the popup
-                      } catch (e) {}
-                      // Add your onPressed code here!
-                    },
-                    label: Text('500 ml',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 19,
-                          fontWeight: FontWeight.w700,
-                        )),
-                    icon: Icon(
-                      MaterialCommunityIcons.glass_mug,
-                      color: Colors.white,
-                    ),
-                    backgroundColor: Colors.blue[800],
-                    shape: RoundedRectangleBorder(),
-                  ),
-                ),
+                Containers.container3(context),
+                Containers.container4(context),
               ]),
               Row(children: <Widget>[
-                Container(
-                  width: 120,
-                  height: 90,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white, width: 2)),
-                  margin: EdgeInsets.all(20),
-                  child: FloatingActionButton.extended(
-                    onPressed: () {
-                      globals.containersize = 750;
-
-                      try {
-                        Navigator.pop(context); //close the popup
-                      } catch (e) {}
-                      // Add your onPressed code here!
-                    },
-                    label: Text('750 ml',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 19,
-                          fontWeight: FontWeight.w700,
-                        )),
-                    icon: Icon(
-                      FontAwesome5Solid.prescription_bottle,
-                      color: Colors.white,
-                    ),
-                    backgroundColor: Colors.blue[800],
-                    shape: RoundedRectangleBorder(),
-                  ),
-                ),
-                Container(
-                  width: 120,
-                  height: 90,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white, width: 2),
-                  ),
-                  child: FloatingActionButton.extended(
-                    onPressed: () {
-                      globals.containersize = 1000;
-
-                      try {
-                        Navigator.pop(context); //close the popup
-                      } catch (e) {}
-                      // Add your onPressed code here!
-                    },
-                    label: Text('1000 ml',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17,
-                          fontWeight: FontWeight.w700,
-                        )),
-                    icon: Icon(
-                      MaterialCommunityIcons.bottle_wine,
-                      color: Colors.white,
-                      size: 35,
-                    ),
-                    backgroundColor: Colors.blue[800],
-                    shape: RoundedRectangleBorder(),
-                  ),
-                ),
+                Containers.container5(context),
+                Containers.container6(context),
               ]),
             ],
           ),
@@ -570,10 +294,8 @@ class _DisplayState extends State<Display> with TickerProviderStateMixin {
                                       finaltarget = globals.target.toString();
                                       return Text(
                                         'of ' + '$finaltarget' + 'ml',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
+                                        style: ReusableWidgets2.kstyle(
+                                            Colors.white, 20),
                                       );
                                     } else if (snapshot.hasError) {
                                       return Text("${snapshot.error}");
@@ -694,11 +416,8 @@ class _DisplayState extends State<Display> with TickerProviderStateMixin {
                                 backgroundColor: Colors.white,
                                 label: Text('ADD WORKOUT\nDETAILS',
                                     textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.blue[500],
-                                      fontSize: 18,
-                                    )),
+                                    style: ReusableWidgets2.kstyle(
+                                        Colors.blue[500], 18)),
                                 shape:
                                     ReusableWidgets2.border(Colors.blue[500])),
                             padding: EdgeInsets.only(top: 35, left: 10)),

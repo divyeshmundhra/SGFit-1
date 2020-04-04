@@ -32,4 +32,33 @@ class ReusableWidgets2 {
     return TextStyle(
         color: color, fontSize: number, fontWeight: FontWeight.bold);
   }
+
+  static mstyle(String text, Color color, double number) {
+    return Text(
+      text,
+      style: TextStyle(
+          color: color, fontSize: number, fontWeight: FontWeight.w700),
+    );
+  }
+
+  static waterTrackerAppBar(){
+    return AppBar(
+              title: Text(
+                "Water Tracker",
+                style: ReusableWidgets2.kstyle(Colors.white, 18),
+              ),
+              backgroundColor: Colors.blue[800],
+              leading: new Builder(builder: (context) {
+                return IconButton(
+                  icon: Icon(Icons.close),
+                  onPressed: () {
+                    try {
+                      Navigator.pop(context); //close the popup
+                    } catch (e) {}
+                  },
+                );
+              }),
+              brightness: Brightness.light,
+            );
+  }
 }

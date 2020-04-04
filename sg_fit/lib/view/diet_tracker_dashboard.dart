@@ -101,7 +101,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         color: Colors.white,
         size: 50.0,
       );
-    ;
     return SizedBox(height: 0);
   }
 
@@ -249,8 +248,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                     child: Container(
                                       child: TextField(
                                         textAlign: TextAlign.center,
-                                        textCapitalization:
-                                            TextCapitalization.words,
+                                        textCapitalization: TextCapitalization.words,
                                         controller: myController,
                                         style: TextStyle(
                                           color: Colors.blue[800],
