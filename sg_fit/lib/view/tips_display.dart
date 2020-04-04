@@ -1,3 +1,9 @@
+/**
+ * This class implements the UI of the common hydration tips shown in the Water
+ * Tracker Dashboard. 
+ *
+ * @author Swathi Kumar, Nishka Khendry
+ */
 import 'package:flutter/material.dart';
 
 class TipsDisplay {

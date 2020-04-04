@@ -51,6 +51,7 @@ class Registration {
                           },
                         )))));
           }
+          return SizedBox(height: 0);
         });
   }
 }

@@ -53,12 +53,7 @@ class Help extends StatelessWidget {
                         padding: EdgeInsets.fromLTRB(_width, 0, _width, 20),
                         textColor: Colors.blue[600],
                         color: Colors.grey[50],
-                        onPressed: () {
-                          // Navigator.push(
-                          //  context,
-                          // MaterialPageRoute(builder: (context) => DisplayForm()),
-                          //);
-                        },
+                        onPressed: () {},
                         child: Column(children: <Widget>[
                           Text(
                             "SGFit application aims to facilitate and encourage fitness, hydration and nutritional food intake throughout Singapore. ",

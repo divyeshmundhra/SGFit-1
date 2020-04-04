@@ -333,8 +333,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                         height: 100,
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
-                          SizedBox(width: 80),
                           ReusableWidgets2.getBubble(
                               'Chat with your Personal \n'
                               'Health Nutrition Expert!'),
