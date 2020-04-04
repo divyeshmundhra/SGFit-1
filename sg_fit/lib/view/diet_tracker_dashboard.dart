@@ -9,12 +9,12 @@ import 'dart:async';
 import 'package:sgfit/model/nutritionix_rakuten.dart';
 import 'package:sgfit/model/weather_details.dart';
 import 'package:sgfit/view/appbar.dart';
-import 'package:sgfit/view/chatbot_display.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:bubble/bubble.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:sgfit/view/toast_message.dart';
 import 'package:sgfit/controller/input_validator.dart';
+import 'package:sgfit/view/getcaloriebutton.dart';
+import 'package:sgfit/view/reusable_widgets.dart';
 
 class DietTrackerDashboard extends StatelessWidget {
   // This widget is the root of your application.
@@ -150,11 +150,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                                   return new Text(
                                                     _animation.value
                                                         .toStringAsFixed(1),
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontSize: 60,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                    style: ReusableWidgets2.kstyle(Colors.white, 60),
                                                   );
                                                 },
                                               ),
@@ -162,11 +158,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                             Center(
                                               child: Text(
                                                 "Calories",
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 20,
-                                                    fontWeight:
-                                                        FontWeight.bold),
+                                                style: ReusableWidgets2.kstyle(Colors.white, 20),
                                               ),
                                             ),
                                           ]),
@@ -181,10 +173,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                           Center(
                                             child: Text(
                                               "$caloriesConsumed",
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 60,
-                                                  fontWeight: FontWeight.bold),
+                                              style: ReusableWidgets2.kstyle(Colors.white, 60),
                                             ),
                                           ),
                                           Center(
@@ -264,15 +253,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                         ),
                                       ),
                                     ),
-
-                                    //textColor: Colors.white,
-                                    shape: RoundedRectangleBorder(
-                                        side: BorderSide(
-                                            color: Colors.blue[600],
-                                            width: 3,
-                                            style: BorderStyle.solid),
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
+                                    shape: ReusableWidgets2.border(
+                                        Colors.blue[600]),
                                   ),
                                   padding: EdgeInsets.only(top: 10, right: 15)),
                             )
@@ -323,89 +305,27 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                     },
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 10, vertical: 15),
-
                                     color: Colors.blue[500],
                                     child: Text('GET CALORIES',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
-                                        )),
-
-                                    //textColor: Colors.white,
-                                    shape: RoundedRectangleBorder(
-                                        side: BorderSide(
-                                            color: Colors.white,
-                                            width: 3,
-                                            style: BorderStyle.solid),
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
+                                        style: ReusableWidgets2.kstyle(Colors.white, 20)),
+                                    shape:
+                                        ReusableWidgets2.border(Colors.white),
                                   ),
                                   padding: EdgeInsets.only(
                                       top: 10, left: 15, right: 15)),
                             ),
                           ]),
                       SizedBox(
-                        height: 50,
-                      ),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Container(
-                              decoration: new BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.blue[900],
-                                    blurRadius:
-                                        20.0, // has the effect of softening the shadow
-                                    spreadRadius:
-                                        2.0, // has the effect of extending the shadow
-                                    offset: Offset(
-                                      3.0, // horizontal, move right 10
-                                      3.0, // vertical, move down 10
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ]),
-                      SizedBox(
-                        height: 50,
+                        height: 100,
                       ),
                       Row(
                         children: <Widget>[
                           SizedBox(width: 80),
-                          Bubble(
-                            margin: BubbleEdges.only(top: 10),
-                            nip: BubbleNip.rightBottom,
-                            child: Text(
+                          ReusableWidgets2.getBubble(
                               'Chat with your Personal \n'
-                              'Health Nutrition Expert!',
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 16),
-                            ),
-                          ),
+                              'Health Nutrition Expert!'),
                           SizedBox(width: 5),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(0, 0, 10, 10),
-                            width: 90,
-                            height: 90,
-                            child: FloatingActionButton(
-                                shape: CircleBorder(
-                                    side: BorderSide(color: Colors.white)),
-                                child: Icon(
-                                  Icons.chat,
-                                  size: 50,
-                                ),
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            FlutterFactsDialogFlow()),
-                                  );
-                                }),
-                          ),
+                          ReusableWidgets1.getChatbotButton(context),
                         ],
                       )
                     ]),

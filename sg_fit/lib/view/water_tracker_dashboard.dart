@@ -17,6 +17,8 @@ import 'package:sgfit/controller/user_data_read_write.dart';
 import 'package:sgfit/view/appbar.dart';
 import 'package:sgfit/view/toast_message.dart';
 import 'package:sgfit/controller/input_validator.dart';
+import 'package:sgfit/view/tips.dart';
+import 'package:sgfit/view/reusable_widgets.dart';
 
 //void main() => runApp(MyApp());
 
@@ -101,11 +103,7 @@ class _DisplayState extends State<Display> {
             appBar: AppBar(
               title: Text(
                 title,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: ReusableWidgets2.kstyle(Colors.white, 18),
               ),
               backgroundColor: Colors.blue[800],
               leading: new Builder(builder: (context) {
@@ -636,9 +634,6 @@ class _DisplayState extends State<Display> {
                               color: Colors.white,
                               size: 50.0,
                             ),
-
-                            // backgroundColor: Colors.cyan[900],
-                            shape: RoundedRectangleBorder(),
                           ),
                         ),
                       ]),
@@ -663,7 +658,6 @@ class _DisplayState extends State<Display> {
                                     'waterconsumed', globals.waterconsumedi);
                               },
                               disabledColor: Colors.white,
-
                               child: Text('CONFIRM WATER INTAKE',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
@@ -671,14 +665,7 @@ class _DisplayState extends State<Display> {
                                     color: Colors.blue[500],
                                     fontSize: 18,
                                   )),
-
-                              //textColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  side: BorderSide(
-                                      color: Colors.blue[500],
-                                      width: 3,
-                                      style: BorderStyle.solid),
-                                  borderRadius: BorderRadius.circular(10)),
+                              shape: ReusableWidgets2.border(Colors.blue[500]),
                               padding: EdgeInsets.symmetric(
                                   horizontal: 30, vertical: 20),
                             ),
@@ -687,61 +674,24 @@ class _DisplayState extends State<Display> {
                             width: 190,
                             height: 130,
                             child: FloatingActionButton.extended(
-                              onPressed: () {
-                                showPopup(context, _popupBodyWorkout(),
-                                    'WORKOUT DETAILS');
-                                //reset();
-                              },
-                              backgroundColor: Colors.white,
-
-                              label: Text('ADD WORKOUT\nDETAILS',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.blue[500],
-                                    fontSize: 18,
-                                  )),
-
-                              //textColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  side: BorderSide(
-                                      color: Colors.blue[500],
-                                      width: 3,
-                                      style: BorderStyle.solid),
-                                  borderRadius: BorderRadius.circular(10)),
-                              // padding: EdgeInsets.symmetric(horizontal: 30, vertical: 25),
-                            ),
-                            padding: EdgeInsets.only(top: 35, left: 10)),
-                      ]),
-                      Row(children: <Widget>[
-                        Container(
-                          child: Column(
-                              // decoration: BoxDecoration(),
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Icon(
-                                  Icons.lightbulb_outline,
-                                  color: Colors.white,
-                                ),
-                                Text('$tip',
+                                onPressed: () {
+                                  showPopup(context, _popupBodyWorkout(),
+                                      'WORKOUT DETAILS');
+                                  //reset();
+                                },
+                                backgroundColor: Colors.white,
+                                label: Text('ADD WORKOUT\nDETAILS',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.white,
-                                    ))
-                              ] //
-                              ),
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                            color: Colors.white,
-                          )),
-                          margin: const EdgeInsets.only(
-                              left: 30, top: 32, right: 25),
-                          width: 350,
-                          height: 100,
-                          padding: EdgeInsets.only(top: 4.3),
-                        )
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.blue[500],
+                                      fontSize: 18,
+                                    )),
+                                shape:
+                                    ReusableWidgets2.border(Colors.blue[500])),
+                            padding: EdgeInsets.only(top: 35, left: 10)),
                       ]),
+                      Tips.getTipDisplay('$tip'),
                     ]),
               ),
             ),
