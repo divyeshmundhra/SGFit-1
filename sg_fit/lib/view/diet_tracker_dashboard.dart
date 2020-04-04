@@ -14,6 +14,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:bubble/bubble.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:sgfit/view/toast_message.dart';
+import 'package:sgfit/controller/input_validator.dart';
 
 class DietTrackerDashboard extends StatelessWidget {
   // This widget is the root of your application.
@@ -299,9 +300,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                   ),
                                   child: FlatButton(
                                     onPressed: () {
-                                      if (myController.text == '') {
+                                      if (InputValidator.isEmpty(
+                                          myController.text)) {
                                         ToastMessage.showErrorToast(
-                                            "Invalid food item!");
+                                            "Invalid Food Item!");
                                       } else {
                                         setState(() {
                                           futureAlbum =

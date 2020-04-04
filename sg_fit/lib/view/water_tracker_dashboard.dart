@@ -16,6 +16,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sgfit/controller/user_data_read_write.dart';
 import 'package:sgfit/view/appbar.dart';
 import 'package:sgfit/view/toast_message.dart';
+import 'package:sgfit/controller/input_validator.dart';
 
 //void main() => runApp(MyApp());
 
@@ -218,12 +219,12 @@ class _DisplayState extends State<Display> {
                 Container(
                   child: FloatingActionButton.extended(
                       onPressed: () {
-                        if (int.parse(myController1.text) < 0 ||
-                            int.parse(myController1.text) > 180) {
+                        if (!InputValidator.validateWorkoutDuration(
+                            int.parse(myController1.text))) {
                           ToastMessage.showErrorToast(
                               "Please enter valid Workout Details");
-                        } else if (int.parse(myController2.text) < 0 ||
-                            int.parse(myController2.text) > 5) {
+                        } else if (!InputValidator.validateWorkoutIntensity(
+                            int.parse(myController2.text))) {
                           ToastMessage.showErrorToast(
                               "Please enter valid Workout Details");
                         } else {

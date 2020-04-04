@@ -11,6 +11,7 @@ import 'package:sgfit/view/home_screen.dart';
 import 'package:sgfit/view/toast_message.dart';
 import 'package:sgfit/view/appbar.dart';
 import 'package:sgfit/animation/fade_animation.dart';
+import 'package:sgfit/controller/input_validator.dart';
 
 class DisplayForm extends StatefulWidget {
   State createState() => RegistrationPageState();
@@ -216,27 +217,31 @@ class RegistrationPageState extends State<DisplayForm> {
                                           borderRadius:
                                               BorderRadius.circular(22.0)),
                                       onPressed: () {
-                                        if (_age.text.isEmpty ||
-                                            _weight.text.isEmpty ||
-                                            _name.text.isEmpty ||
-                                            _height.text.isEmpty) {
+                                        if (InputValidator.isEmpty(_age.text) ||
+                                            InputValidator.isEmpty(
+                                                _weight.text) ||
+                                            InputValidator.isEmpty(
+                                                _name.text) ||
+                                            InputValidator.isEmpty(
+                                                _height.text)) {
                                           ToastMessage.showErrorToast(
                                               "All fields must be filled.");
-                                        } else if (_name.text.length > 15) {
+                                        } else if (!InputValidator.validateName(
+                                            _name.text)) {
                                           ToastMessage.showErrorToast(
                                               "Name should be less than 15 characters.");
-                                        } else if (int.parse(_age.text) < 12 ||
-                                            int.parse(_age.text) > 100) {
+                                        } else if (!InputValidator.validateAge(
+                                            int.parse(_age.text))) {
                                           ToastMessage.showErrorToast(
                                               "Enter a Valid Age.");
-                                        } else if (int.parse(_height.text) <
-                                                120 ||
-                                            int.parse(_height.text) > 240) {
+                                        } else if (!InputValidator
+                                            .validateHeight(
+                                                int.parse(_height.text))) {
                                           ToastMessage.showErrorToast(
                                               "Enter a Valid Height.");
-                                        } else if (int.parse(_weight.text) <
-                                                20 ||
-                                            int.parse(_weight.text) > 140) {
+                                        } else if (!InputValidator
+                                            .validateWeight(
+                                                int.parse(_weight.text))) {
                                           ToastMessage.showErrorToast(
                                               "Enter a Valid Weight.");
                                         } else {

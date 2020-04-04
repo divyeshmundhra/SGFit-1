@@ -9,6 +9,7 @@ import 'package:sgfit/controller/user_data_read_write.dart';
 import 'package:sgfit/view/toast_message.dart';
 import 'package:sgfit/animation/fade_animation.dart';
 import 'package:sgfit/view/appbar.dart';
+import 'package:sgfit/controller/input_validator.dart';
 
 class UpdateParticulars extends StatefulWidget {
   State createState() => UpdateParticularsStage();
@@ -149,24 +150,25 @@ class UpdateParticularsStage extends State<UpdateParticulars> {
                                           borderRadius:
                                               BorderRadius.circular(22.0)),
                                       onPressed: () {
-                                        print(_age.text);
-                                        if (_age.text.isEmpty &&
-                                            _weight.text.isEmpty &&
-                                            _height.text.isEmpty) {
+                                        if (InputValidator.isEmpty(_age.text) &&
+                                            InputValidator.isEmpty(
+                                                _weight.text) &&
+                                            InputValidator.isEmpty(
+                                                _height.text)) {
                                           ToastMessage.showErrorToast(
                                               "Any one of the fields should be filled.");
-                                        } else if (int.parse(_age.text) < 12 ||
-                                            int.parse(_age.text) > 100) {
+                                        } else if (!InputValidator.validateAge(
+                                            int.parse(_age.text))) {
                                           ToastMessage.showErrorToast(
                                               "Enter a Valid Age.");
-                                        } else if (int.parse(_height.text) <
-                                                120 ||
-                                            int.parse(_height.text) > 240) {
+                                        } else if (!InputValidator
+                                            .validateHeight(
+                                                int.parse(_height.text))) {
                                           ToastMessage.showErrorToast(
                                               "Enter a Valid Height.");
-                                        } else if (int.parse(_weight.text) <
-                                                20 ||
-                                            int.parse(_weight.text) > 140) {
+                                        } else if (!InputValidator
+                                            .validateWeight(
+                                                int.parse(_weight.text))) {
                                           ToastMessage.showErrorToast(
                                               "Enter a Valid Weight.");
                                         } else {
