@@ -1,3 +1,10 @@
+/**
+ * This class implements the UI features of the Nutrition Chatbot.
+ * 
+ * @author Divyesh Mundhra
+ * 
+ */
+
 import 'package:flutter/material.dart';
 import 'package:bubble/bubble.dart';
 

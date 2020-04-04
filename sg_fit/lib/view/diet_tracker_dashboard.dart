@@ -5,6 +5,7 @@
  */
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'dart:math';
 import 'dart:async';
 import 'package:sgfit/model/nutritionix_rakuten.dart';
 import 'package:sgfit/model/weather_details.dart';
@@ -13,7 +14,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:sgfit/view/toast_message.dart';
 import 'package:sgfit/controller/input_validator.dart';
-import 'package:sgfit/view/getcaloriebutton.dart';
+import 'package:sgfit/view/button.dart';
 import 'package:sgfit/view/reusable_widgets.dart';
 
 class DietTrackerDashboard extends StatelessWidget {
@@ -33,6 +34,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
+  AnimationController animationResetController;
   String caloriesConsumed = "0";
   int control_flag = 0;
   Future<WeatherDetails> tempdata;
@@ -43,6 +45,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   void initState() {
     super.initState();
+    animationResetController = AnimationController(
+        vsync: this, duration: Duration(milliseconds: 500), upperBound: pi * 2);
     tempdata = getWeatherDetails();
     getDailyCalories();
     _controller = new AnimationController(
@@ -150,7 +154,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                                   return new Text(
                                                     _animation.value
                                                         .toStringAsFixed(1),
-                                                    style: ReusableWidgets2.kstyle(Colors.white, 60),
+                                                    style:
+                                                        ReusableWidgets2.kstyle(
+                                                            Colors.white, 60),
                                                   );
                                                 },
                                               ),
@@ -158,7 +164,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                             Center(
                                               child: Text(
                                                 "Calories",
-                                                style: ReusableWidgets2.kstyle(Colors.white, 20),
+                                                style: ReusableWidgets2.kstyle(
+                                                    Colors.white, 20),
                                               ),
                                             ),
                                           ]),
@@ -173,7 +180,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                           Center(
                                             child: Text(
                                               "$caloriesConsumed",
-                                              style: ReusableWidgets2.kstyle(Colors.white, 60),
+                                              style: ReusableWidgets2.kstyle(
+                                                  Colors.white, 60),
                                             ),
                                           ),
                                           Center(
@@ -205,16 +213,21 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Container(
-                                child: IconButton(
-                              icon: Icon(Icons.refresh),
-                              tooltip: 'Reset diet tracker value',
-                              color: Colors.white,
-                              padding: EdgeInsets.only(left: 0),
-                              onPressed: () {
-                                reset();
-                              },
-                              iconSize: 50.0,
-                            )),
+                                child: RotationTransition(
+                                    turns: Tween(begin: 0.0, end: 0.2)
+                                        .animate(animationResetController),
+                                    child: IconButton(
+                                      icon: Icon(Icons.refresh),
+                                      tooltip: 'Reset diet tracker value',
+                                      color: Colors.white,
+                                      padding: EdgeInsets.only(left: 0),
+                                      onPressed: () {
+                                        reset();
+                                        animationResetController.forward(
+                                            from: 0.0);
+                                      },
+                                      iconSize: 50.0,
+                                    ))),
                             Text("Reset Calories",
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 25))
@@ -307,7 +320,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                         horizontal: 10, vertical: 15),
                                     color: Colors.blue[500],
                                     child: Text('GET CALORIES',
-                                        style: ReusableWidgets2.kstyle(Colors.white, 20)),
+                                        style: ReusableWidgets2.kstyle(
+                                            Colors.white, 20)),
                                     shape:
                                         ReusableWidgets2.border(Colors.white),
                                   ),
@@ -325,7 +339,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                               'Chat with your Personal \n'
                               'Health Nutrition Expert!'),
                           SizedBox(width: 5),
-                          ReusableWidgets1.getChatbotButton(context),
+                          Button.getChatbotButton(context),
                         ],
                       )
                     ]),

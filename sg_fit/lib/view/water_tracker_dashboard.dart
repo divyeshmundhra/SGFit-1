@@ -17,8 +17,9 @@ import 'package:sgfit/controller/user_data_read_write.dart';
 import 'package:sgfit/view/appbar.dart';
 import 'package:sgfit/view/toast_message.dart';
 import 'package:sgfit/controller/input_validator.dart';
-import 'package:sgfit/view/tips.dart';
+import 'package:sgfit/view/tips_display.dart';
 import 'package:sgfit/view/reusable_widgets.dart';
+import 'dart:math';
 
 //void main() => runApp(MyApp());
 
@@ -40,13 +41,16 @@ class Display extends StatefulWidget {
   _DisplayState createState() => _DisplayState();
 }
 
-class _DisplayState extends State<Display> {
+class _DisplayState extends State<Display> with TickerProviderStateMixin {
+  AnimationController animationResetController;
   Future<WeatherDetails> tempdata;
 
   // @override
   void initState() {
     getdaily();
     super.initState();
+    animationResetController = AnimationController(
+        vsync: this, duration: Duration(milliseconds: 500), upperBound: pi * 2);
     tempdata = getWeatherDetails();
   }
 
@@ -596,26 +600,34 @@ class _DisplayState extends State<Display> {
                         height: 10,
                       ),
                       Column(children: <Widget>[
-                        Container(
-                          child: FlatButton.icon(
-                            onPressed: () {
-                              reset();
-                            },
-                            label: Text('Reset Water Intake',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 19,
-                                  fontWeight: FontWeight.w300,
-                                )),
-                            icon: Icon(
-                              Icons.refresh,
-                              color: Colors.white,
-                              size: 50.0,
-                            ),
-
-                            // backgroundColor: Colors.cyan[900],
-                            shape: RoundedRectangleBorder(),
-                          ),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Container(
+                                  child: RotationTransition(
+                                      turns: Tween(begin: 0.0, end: 0.2)
+                                          .animate(animationResetController),
+                                      child: IconButton(
+                                        icon: Icon(Icons.refresh),
+                                        tooltip: 'Reset Water Intake',
+                                        color: Colors.white,
+                                        padding: EdgeInsets.only(left: 0),
+                                        onPressed: () {
+                                          reset();
+                                          animationResetController.forward(
+                                              from: 0.0);
+                                        },
+                                        iconSize: 50.0,
+                                      ))),
+                              Text(" Reset Water Intake",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 19,
+                                    fontWeight: FontWeight.w300,
+                                  ))
+                            ]),
+                        SizedBox(
+                          height: 5,
                         ),
                         Container(
                           child: FlatButton.icon(
@@ -691,7 +703,7 @@ class _DisplayState extends State<Display> {
                                     ReusableWidgets2.border(Colors.blue[500])),
                             padding: EdgeInsets.only(top: 35, left: 10)),
                       ]),
-                      Tips.getTipDisplay('$tip'),
+                      TipsDisplay.getTipDisplay('$tip'),
                     ]),
               ),
             ),
