@@ -5,11 +5,13 @@
  */
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'dart:math';
 import 'dart:async';
 import 'package:sgfit/model/nutritionix_rakuten.dart';
 import 'package:sgfit/model/weather_details.dart';
 import 'package:sgfit/view/appbar.dart';
+import 'package:sgfit/controller/network.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:sgfit/view/toast_message.dart';
@@ -37,6 +39,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   AnimationController animationResetController;
   String caloriesConsumed = "0";
   int control_flag = 0;
+  bool isConnected = true;
   Future<WeatherDetails> tempdata;
   Future<Album> futureAlbum;
   final myController = TextEditingController();
@@ -49,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         vsync: this, duration: Duration(milliseconds: 500), upperBound: pi * 2);
     tempdata = getWeatherDetails();
     getDailyCalories();
-    _controller = new AnimationController(
+    _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 4500),
     );
@@ -60,6 +63,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   void dispose() {
     myController.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -73,6 +77,16 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     } else {
       setState(() {
         caloriesConsumed = "0.0";
+      });
+    }
+  }
+
+  checkValue() async {
+    final int status = await Network.checkNetwork();
+    if (status == 0) {
+      setState(() {
+        isConnected = false;
+        return false;
       });
     }
   }
@@ -248,7 +262,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                     child: Container(
                                       child: TextField(
                                         textAlign: TextAlign.center,
-                                        textCapitalization: TextCapitalization.words,
+                                        textCapitalization:
+                                            TextCapitalization.words,
                                         controller: myController,
                                         style: TextStyle(
                                           color: Colors.blue[800],
@@ -293,7 +308,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                   ),
                                   child: FlatButton(
                                     onPressed: () {
-                                      if (InputValidator.isEmpty(
+                                      if (!isConnected) {
+                                        ToastMessage.showErrorToast(
+                                            "Device not connected to the Internet!");
+                                      } else if (InputValidator.isEmpty(
                                           myController.text)) {
                                         ToastMessage.showErrorToast(
                                             "Invalid Food Item!");
