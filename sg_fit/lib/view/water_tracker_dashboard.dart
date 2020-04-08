@@ -383,8 +383,9 @@ class _DisplayState extends State<Display> with TickerProviderStateMixin {
                             height: 130,
                             child: FloatingActionButton.extended(
                                 onPressed: () {
-                                  showPopup(context, _popupBodyWorkout(),
-                                      'WORKOUT DETAILS');
+                                  // showPopup(context, _popupBodyWorkout(),
+                                  //     'WORKOUT DETAILS');
+                                  showPopup(context, _popupBodyWorkout(),'WORKOUT DETAILS');
                                   //reset();
                                 },
                                 backgroundColor: Colors.white,
