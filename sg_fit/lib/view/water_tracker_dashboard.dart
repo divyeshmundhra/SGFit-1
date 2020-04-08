@@ -19,6 +19,7 @@ import 'package:sgfit/view/tips_display.dart';
 import 'package:sgfit/view/reusable_widgets.dart';
 import 'dart:math';
 import 'package:sgfit/view/containers.dart';
+import 'container_class.dart' as containerclass;
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -157,33 +158,6 @@ class _DisplayState extends State<Display> with TickerProviderStateMixin {
                 ),
               ],
             ))));
-  }
-
-  Widget _popupBodyContainer() {
-    return Container(
-      child: MediaQuery.removePadding(
-        context: context,
-        removeTop: true,
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              Row(children: <Widget>[
-                Containers.container1(context),
-                Containers.container2(context),
-              ]),
-              Row(children: <Widget>[
-                Containers.container3(context),
-                Containers.container4(context),
-              ]),
-              Row(children: <Widget>[
-                Containers.container5(context),
-                Containers.container6(context),
-              ]),
-            ],
-          ),
-        ),
-      ),
-    );
   }
 
   @override
@@ -354,8 +328,8 @@ class _DisplayState extends State<Display> with TickerProviderStateMixin {
                         Container(
                           child: FlatButton.icon(
                             onPressed: () {
-                              showPopup(context, _popupBodyContainer(),
-                                  'CHOOSE A CONTAINER');
+
+                              showPopup(context, containerclass.ContainerClassState().popupBodyContainer(context),'CHOOSE A CONTAINER');
                             },
                             label: Text('Change Container',
                                 style: TextStyle(
